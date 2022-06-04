@@ -1,5 +1,10 @@
 {
   "name": "bskbMobile",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {},
+    "cordova": {
+      "enabled": false
+    }
+  },
   "type": "angular"
 }

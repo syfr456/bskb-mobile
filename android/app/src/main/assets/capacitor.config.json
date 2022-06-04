@@ -1,0 +1,6 @@
+{
+	"appId": "v1.1.1",
+	"appName": "bskbMobile",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

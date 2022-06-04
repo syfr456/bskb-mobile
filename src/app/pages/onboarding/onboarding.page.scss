@@ -1,0 +1,52 @@
+.ion-padding{
+    --background: linear-gradient(to top left, #FCFFF2, #A6CE39,) ;
+    /* fallback for old browsers */
+    --background: -webkit-linear-gradient(to left, #FCFFF2, #A6CE39);
+    /* Chrome 10-25, Safari 5.1-6 */
+    --background: linear-gradient(to left, #FCFFF2, #A6CE39);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    .flex {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+}
+
+
+
+.card-on{
+    display: flex;
+    // flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+    width: 330px;
+    height: 437px;
+    background: #FCFFF2;
+    border-radius: 20px;
+}
+
+img{
+    margin-top: 35px;
+    width: 100px;
+    height: 100px;
+}
+
+.tujuan {
+    text-align: center;
+    padding: 80px 20px 0px 20px;
+    color: #0d7a3f;
+}
+
+.lewati{
+    font-size: 14px;
+    background-color: white;
+    color: #b6b4b2;
+    margin: 60px 10px 0px 230px;
+}
+a{
+    text-decoration: none;
+    color: #b6b4b2;
+}
