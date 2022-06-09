@@ -1,0 +1,67 @@
+.ion-padding {
+    --background: #FCFFF2;
+    /* fallback for old browsers */
+    --background: #FCFFF2;
+    /* Chrome 10-25, Safari 5.1-6 */
+    --background: #FCFFF2;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    .head {
+        font-size: 36px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        color: #A6CE39;
+        padding-top: 7%;
+        font-family: 'Arial Narrow Bold';
+    }
+}
+.username{
+    margin-top: 32px;
+
+    ion-input{
+    border: 1px solid ;
+    border-color: rgba(203, 220, 157, 0.86);
+    border-radius: 12px;
+    }
+
+    ion-label{
+        margin-left: 5px;
+        margin-bottom: 10px;
+        color: #B5B5B5;
+        font-size: 23px;
+        font-family: poppins;
+    }
+}
+
+.password {
+    margin-top: 32px;
+
+    ion-input {
+        border: 1px solid;
+        border-color: rgba(203, 220, 157, 0.86);
+        border-radius: 12px;
+        font-family: poppins;
+    }
+
+    ion-label {
+        margin-left: 5px;
+        margin-bottom: 10px;
+        color: #B5B5B5;
+        font-size: 23px;
+        font-family: poppins;
+    }
+}
+
+.buttonL{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    
+    .login {
+        width:auto;
+        border-radius: 12px;
+        text-decoration-color: #FCFFF2;
+        --background: #1D8A4D;
+    }
+}
