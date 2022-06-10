@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'sdk',
+    loadChildren: () => import('./pages/sdk/sdk.module').then( m => m.SdkPageModule)
   }
 ];
 @NgModule({

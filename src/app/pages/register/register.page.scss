@@ -1,0 +1,101 @@
+.ion-padding {
+    --background: #FCFFF2;
+    /* fallback for old browsers */
+    --background: #FCFFF2;
+    /* Chrome 10-25, Safari 5.1-6 */
+    --background: #FCFFF2;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    .head {
+        font-size: 36px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        color: #A6CE39;
+        padding-top: 7%;
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
+    }
+
+}
+
+
+.items {
+    font-family: 'Poppins', sans-serif;
+}
+
+.username{
+    margin-top: 30px;
+}
+
+.password {
+    margin-top: 30px;
+}
+
+.buttonL{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    
+    .daftar {
+        width:auto;
+        border-radius: 12px;
+        text-decoration-color: #FCFFF2;
+        --background: #1D8A4D;
+    }
+}
+
+.nama{
+    margin-top: 30px;
+}
+.alamat {
+    margin-top: 30px;
+}
+.nik {
+    margin-top: 30px;
+}
+.nohp {
+    margin-top: 30px;
+}
+.ktp {
+    margin-top: 30px;
+}
+
+ion-input {
+    border: 1px solid;
+    border-color: rgba(203, 220, 157, 0.86);
+    border-radius: 12px;
+}
+
+ion-label {
+    margin-left: 5px;
+    color: #B5B5B5;
+    font-size: 18px;
+}
+
+
+a{
+    display: flex;
+    padding-top: 10px;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    text-align: center;
+    color: #B5B5B5;
+}
+
+.snk {
+    display: flex;
+    padding-top: 10px;
+    align-items: center;
+    justify-content: center;
+
+
+    .sk{
+        padding-left: 4px;
+        text-align: center;
+        color: #B5B5B5;
+
+    }
+}

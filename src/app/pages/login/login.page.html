@@ -5,18 +5,30 @@
     </ion-text>
   </div>
 
-  <ion-item class="username" id="username">
-    <ion-label position="stacked">Username</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
+  <div class="items">
+    <div class="username" id="username">
+      <ion-label class="users" position="stacked">Username</ion-label>
+      <ion-input class="user" placeholder="syahrizal"></ion-input>
+    </div>
 
-  <ion-item class="password" id="password">
-    <ion-label position="stacked">Password</ion-label>
-    <ion-input type="text" placeholder="syahrizal2890"></ion-input>
-  </ion-item>
+    <div class="password" id="password">
+      <ion-label class="pass" position="stacked">Password</ion-label>
+      <ion-input
+        class="psw"
+        type="text"
+        placeholder="syahrizal2890"
+      ></ion-input>
+    </div>
 
-  <div class="buttonL">
-    <ion-button class="login" click=""> Login </ion-button>
+    <div class="buttonL">
+      <ion-button class="login" click="" routerLink="/home"> Login </ion-button>
+    </div>
+
     <a class="link" routerLink="/register">Buat Akun</a>
+
+    <div class="snk">
+      <ion-checkbox class="cek" checked="true"></ion-checkbox>
+      <ion-label class="sk" routerLink="/sdk">Syarat dan Ketentuan</ion-label>
+    </div>
   </div>
 </ion-content>

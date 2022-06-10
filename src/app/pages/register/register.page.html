@@ -1,9 +1,60 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
+  <div class="head">
+    <ion-text>
+      <h1>REGISTRASI</h1>
+    </ion-text>
+  </div>
 
-<ion-content>
+  <div class="items">
+    <div class="username" id="username">
+      <ion-label position="stacked">Username</ion-label>
+      <ion-input placeholder="syahrizal"></ion-input>
+    </div>
 
+    <div class="nama" id="nama">
+      <ion-label position="stacked">Nama</ion-label>
+      <ion-input type="text" placeholder="Syahrizal"></ion-input>
+    </div>
+
+    <div class="alamat" id="alamat">
+      <ion-label position="stacked">Alamat</ion-label>
+      <ion-input type="text"></ion-input>
+    </div>
+
+    <div class="nohp" id="nohp">
+      <ion-label position="stacked">Nomor HP</ion-label>
+      <ion-input type="number" placeholder=""></ion-input>
+    </div>
+
+    <div class="nik" id="nik">
+      <ion-label position="stacked">Nomor Induk Keluarga</ion-label>
+      <ion-input type="number"></ion-input>
+    </div>
+
+    <div class="ktp">
+      <ion-label position="stacked">Kartu Tanda Penduduk</ion-label>
+      <ion-input
+        type="file"
+        (change)="loadImageFromDevice($event)"
+        id="file-input"
+        accept="image/png, image/jpeg"
+      ></ion-input>
+    </div>
+
+    <div class="password" id="password">
+      <ion-label position="stacked">Password</ion-label>
+      <ion-input type="text" placeholder="syahrizal2890"></ion-input>
+    </div>
+
+    <div class="buttonL">
+      <ion-button class="daftar" click=""> DAFTAR </ion-button>
+    </div>
+
+    <a class="link" routerLink="/login">Sudah Punya Akun?</a>
+
+    <div class="snk">
+      <ion-checkbox class="cek" checked="true"></ion-checkbox>
+      <ion-label class="sk" routerLink="/sdk">Syarat dan Ketentuan</ion-label>
+    </div>
+  </div>
 </ion-content>

@@ -13,43 +13,52 @@
         text-align: center;
         color: #A6CE39;
         padding-top: 7%;
-        font-family: 'Arial Narrow Bold';
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
     }
+
 }
+
+
+.items {
+    font-family: 'Poppins', sans-serif;
+}
+
 .username{
     margin-top: 32px;
+    
 
-    ion-input{
-    border: 1px solid ;
-    border-color: rgba(203, 220, 157, 0.86);
-    border-radius: 12px;
+    .user{
+        border: 1px solid ;
+        border-color: rgba(203, 220, 157, 0.86);
+        border-radius: 12px;
     }
 
-    ion-label{
+    .users{
         margin-left: 5px;
         margin-bottom: 10px;
         color: #B5B5B5;
-        font-size: 23px;
-        font-family: poppins;
+        font-size: 18px;
     }
 }
 
 .password {
     margin-top: 32px;
 
-    ion-input {
+    .psw {
         border: 1px solid;
         border-color: rgba(203, 220, 157, 0.86);
         border-radius: 12px;
-        font-family: poppins;
+        text-decoration: #B5B5B5;
+        text-align:justify ;
+
     }
 
-    ion-label {
+    .pass {
         margin-left: 5px;
         margin-bottom: 10px;
         color: #B5B5B5;
-        font-size: 23px;
-        font-family: poppins;
+        font-size: 18px;
     }
 }
 
@@ -63,5 +72,31 @@
         border-radius: 12px;
         text-decoration-color: #FCFFF2;
         --background: #1D8A4D;
+    }
+}
+
+a{
+    display: flex;
+    padding-top: 10px;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    text-align: center;
+    color: #B5B5B5;
+}
+
+.snk {
+    display: flex;
+    padding-top: 10px;
+    align-items: center;
+    justify-content: center;
+
+
+    .sk{
+        padding-left: 4px;
+        text-align: center;
+        color: #B5B5B5;
+
     }
 }
