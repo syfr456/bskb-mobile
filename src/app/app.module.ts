@@ -10,10 +10,11 @@ import { AppComponent } from './app.component';
 import { HttpClientModule }    from '@angular/common/http';
 import { RegisterPageModule } from './pages/register/register.module';
 import { LoginPageModule } from './pages/login/login.module';
+import { SwiperComponent } from 'swiper/angular';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SwiperComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, RegisterPageModule, LoginPageModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
