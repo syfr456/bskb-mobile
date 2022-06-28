@@ -1,52 +1,65 @@
+// home.page.scss
+@import '~swiper/swiper.scss';
+@import '~@ionic/angular/css/ionic-swiper';
+@import '~swiper/components/pagination/pagination.scss';
+
 .ion-padding{
-    --background: linear-gradient(to top left, #FCFFF2, #A6CE39,) ;
-    /* fallback for old browsers */
-    --background: -webkit-linear-gradient(to left, #FCFFF2, #A6CE39);
-    /* Chrome 10-25, Safari 5.1-6 */
-    --background: linear-gradient(to left, #FCFFF2, #A6CE39);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    --background: url('../../../assets/on1.png') 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-    .flex {
-            min-height: 95vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
 }
 
 
-
-.card-on{
-    display: flex;
-    // flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: stretch;
-    align-items: center;
-    width: 330px;
-    height: 437px;
-    background: #FCFFF2;
-    border-radius: 20px;
-}
-
-img{
-    margin-top: 35px;
-    width: 100px;
-    height: 100px;
-}
-
-.tujuan {
+.mySwiper {
     text-align: center;
-    padding: 80px 20px 0px 20px;
-    color: #0d7a3f;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    color: #167A42;
+
+    /* Center slide text vertically */
+    display: flex;
+    align-items: center;
+    min-height: 90vh;
+
 }
 
-.lewati{
+
+ .swiper-slide img {
+     max-height: 50%;
+     max-width: 80%;
+     pointer-events: none;
+ }
+
+   b {
+       font-weight: 500;
+   }
+
+   p {
+    margin: 2.8rem;
     font-size: 14px;
-    background-color: white;
-    color: #b6b4b2;
-    margin: 60px 10px 0px 230px;
+    line-height: 1.5;
+    
+   }
+
+   ion-button{
+    // width: auto;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 12px;
+    color: #FCFFF2;
+    --background: #1D8A4D;
+   }
+
+.swiper-slide h2{
+    font-weight: bold;
 }
-a{
-    text-decoration: none;
-    color: #b6b4b2;
-}
+
+// .bg{
+   
+// }
+
+/* slides.component.scss */
+
+/* slides.component.scss */
+

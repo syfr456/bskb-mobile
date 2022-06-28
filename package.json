@@ -27,6 +27,7 @@
     "@capacitor/status-bar": "1.0.8",
     "@ionic/angular": "^6.1.7",
     "@ionic/cordova-builders": "^6.1.0",
+    "@ng-bootstrap/ng-bootstrap": "^12.1.2",
     "rxjs": "~6.6.0",
     "swiper": "^6.8.4",
     "tslib": "^2.2.0",

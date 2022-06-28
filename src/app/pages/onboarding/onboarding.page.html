@@ -1,14 +1,36 @@
-<ion-content class="ion-padding">
-  <div class="flex">
-    <ion-card class="card-on">
-      <img src="../../../assets/gmbricon.png" />
-      <ion-card-content class="tujuan">
-        "Mereduksi (mengurangi) Timbunan Sampah di Tingkat Masyarakat. Dan
-        Mewujudkan Kota Tanjungpinang yang Bersih, Indah, dan Lestari"
-      </ion-card-content>
-      <button class="lewati">
-        <a class="nav-link" routerLink="/login">Lewati</a>
-      </button>
-    </ion-card>
-  </div>
+<ion-content fullscreen class="ion-padding" scroll-y="false">
+  <swiper [pagination]="true" class="mySwiper">
+    <ng-template swiperSlide>
+      <div class="slide">
+        <img src="../../../assets/transaksi.png" />
+        <h2>SELAMAT DATANG</h2>
+        <p>
+          Permudah transaksi anda di Bank Sampah Kuantan Bersih dengan M-BSKB
+        </p>
+      </div>
+    </ng-template>
+
+    <ng-template swiperSlide>
+      <div class="slide">
+        <img src="../../../assets/iconon.png" />
+        <h2>Kami Bertujuan</h2>
+        <p>
+          “Mereduksi (Mengurangi) Timbulan Sampah di tingkat masyarakat. dan
+          mewujudkan Kota Tanjungpinang yang bersih, indah dan lestari.”
+        </p>
+      </div>
+    </ng-template>
+
+    <ng-template swiperSlide>
+      <div class="slide bg">
+        <img src="../../../assets/truk.png" />
+        <h2>Permudah Setor Sampah</h2>
+        <p>
+          Gak perlu repot mikirin sampah yang susah di bawa, karena kami punya
+          layanan JEMPUT SAMPAH.
+        </p>
+        <ion-button fill="clear" click="" routerLink="/login">Mulai</ion-button>
+      </div>
+    </ng-template>
+  </swiper>
 </ion-content>
