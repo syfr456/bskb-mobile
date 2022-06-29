@@ -9,18 +9,28 @@
     <div>
       <form #form="ngForm">
         <ion-list>
-          <ion-item class="item">
+          <div class="item">
             <ion-label position="stacked" floating>Username</ion-label>
-            <ion-input type="text" name="username" required></ion-input>
-          </ion-item>
+            <ion-input
+              type="text"
+              placeholder="Username"
+              name="username"
+              required
+            ></ion-input>
+          </div>
           <!-- <ion-item>
             <ion-label floating>Email</ion-label>
             <ion-input type="text" name="email" required></ion-input>
           </ion-item> -->
-          <ion-item class="item">
+          <div class="item">
             <ion-label position="stacked" floating>Password</ion-label>
-            <ion-input type="password" name="password" required></ion-input>
-          </ion-item>
+            <ion-input
+              type="password"
+              placeholder="Password"
+              name="password"
+              required
+            ></ion-input>
+          </div>
         </ion-list>
         <ion-button routerLink="/home" class="log" type="submit" click="">
           MASUK
