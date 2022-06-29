@@ -1,84 +1,68 @@
 .ion-padding {
-    --background: #FCFFF2;
-    /* fallback for old browsers */
-    --background: #FCFFF2;
-    /* Chrome 10-25, Safari 5.1-6 */
-    --background: #FCFFF2;
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    .head {
-        font-size: 36px;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        color: #A6CE39;
-        padding-top: 7%;
-        font-weight: bold;
-        font-family: 'Poppins', sans-serif;
-    }
+    // --background: #FCFFF2;
+    --background: url('../../../assets/image/bglog.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
 }
 
+ .content {
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+ }
 
-.items {
+
+h1{
+    margin-bottom: 60px;
+    text-align: center;
+    color: #A6CE39;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+
+ion-list {
+    background: #FCFFF2;
+}
+
+.item{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #aaaaaa;
+}
+
+ion-input{
+    margin-top: 3px;
+}
+
+ion-button{
+    display: grid;
+    justify-content: center;
     font-family: 'Poppins', sans-serif;
 }
 
-.username{
-    margin-top: 32px;
-    
-
-    .user{
-        border: 1px solid ;
-        border-color: rgba(203, 220, 157, 0.86);
-        border-radius: 12px;
-    }
-
-    .users{
-        margin-left: 5px;
-        margin-bottom: 10px;
-        color: #B5B5B5;
-        font-size: 18px;
-    }
+.log{
+    margin-top: 20px;
+    border-radius: 12px;
+    color: #FCFFF2;
+    --background: #1D8A4D;
 }
 
-.password {
-    margin-top: 32px;
-
-    .psw {
-        border: 1px solid;
-        border-color: rgba(203, 220, 157, 0.86);
-        border-radius: 12px;
-        text-decoration: #B5B5B5;
-        text-align:justify ;
-
-    }
-
-    .pass {
-        margin-left: 5px;
-        margin-bottom: 10px;
-        color: #B5B5B5;
-        font-size: 18px;
-    }
-}
-
-.buttonL{
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-    
-    .login {
-        width:auto;
-        border-radius: 12px;
-        text-decoration-color: #FCFFF2;
-        --background: #1D8A4D;
-    }
+.reg{
+    margin-top: 10px;
+    border-radius: 12px;
+    color: #1D8A4D;
+    --background: #FCFFF2;
+    border-color: #1D8A4D;
 }
 
 a{
-    display: flex;
-    padding-top: 10px;
-    align-items: center;
+    display: grid;
+    margin-top: 20px;
     justify-content: center;
 
     text-decoration: none;
@@ -86,17 +70,4 @@ a{
     color: #B5B5B5;
 }
 
-.snk {
-    display: flex;
-    padding-top: 10px;
-    align-items: center;
-    justify-content: center;
 
-
-    .sk{
-        padding-left: 4px;
-        text-align: center;
-        color: #B5B5B5;
-
-    }
-}
