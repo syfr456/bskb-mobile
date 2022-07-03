@@ -1,9 +1,8 @@
 .ion-padding {
-    --background: url('../../../assets/image/bglog.png');
+    --background: url('../../../assets/image/bglog.png') no-repeat;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-
+   
 }
 
  .content {
@@ -37,6 +36,7 @@ ion-list {
 }
 
 ion-input{
+    font-family: 'Poppins', sans-serif;
     margin-top: 3px;
     background: #FCFFF2;
 }

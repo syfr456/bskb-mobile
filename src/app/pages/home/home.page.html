@@ -1,101 +1,101 @@
 <ion-content class="ion-content">
-  <div class="toolbar">
-    <ion-icon name="notifications-outline"></ion-icon>
-  </div>
-
-  <ion-slides class="slide">
-    <ion-slide>
-      <ion-card class="base-card">
-        <div>
-          <h2>Welcome</h2>
+  <ion-card class="swip">
+    <swiper [pagination]="false" class="swipers">
+      <ng-template swiperSlide>
+        <div class="slide">
+          <h2>REGULER</h2>
           <p>
-            The <b>ionic conference app</b> is a practical preview of the ionic
-            framework in action, and a demonstration of proper code use.
+            Permudah transaksi anda di Bank Sampah Kuantan Bersih dengan M-BSKB
           </p>
         </div>
-      </ion-card>
-    </ion-slide>
+      </ng-template>
 
-    <ion-slide>
-      <ion-card class="base-card">
-        <div>
-          <h2>Welcome</h2>
+      <!-- <ng-template swiperSlide>
+        <div class="slide">
+          <h2>Kami Bertujuan</h2>
           <p>
-            The <b>ionic conference app</b> is a practical preview of the ionic
-            framework in action, and a demonstration of proper code use.
+            “Mereduksi (Mengurangi) Timbulan Sampah di tingkat masyarakat. dan
+            mewujudkan Kota Tanjungpinang yang bersih, indah dan lestari.”
           </p>
         </div>
-      </ion-card>
-    </ion-slide>
+      </ng-template>
 
-    <ion-slide>
-      <ion-card class="base-card">
-        <div>
-          <h2>Welcome</h2>
+      <ng-template swiperSlide>
+        <div class="slide bg">
+          <h2>Permudah Setor Sampah</h2>
           <p>
-            The <b>ionic conference app</b> is a practical preview of the ionic
-            framework in action, and a demonstration of proper code use.
+            Gak perlu repot mikirin sampah yang susah di bawa, karena kami punya
+            layanan JEMPUT SAMPAH.
           </p>
+          <ion-button fill="clear" click="" routerLink="/login"
+            >Mulai</ion-button
+          >
         </div>
-      </ion-card>
-    </ion-slide>
-  </ion-slides>
+      </ng-template> -->
+    </swiper>
+  </ion-card>
 
   <ion-grid>
     <ion-col class="menu">
       <div>
         <button class="withdrawl">
-          <img src="../../../assets/withdraw.png" alt="img" />
+          <img src="../../../assets/image/withdraw.png" alt="img" />
         </button>
-        <ion-label> Tarik Tunai </ion-label>
+        <p>Tarik<br />Tunai</p>
       </div>
       <div>
         <button class="jmpt">
-          <img src="../../../assets/jmpt.png" alt="img" />
+          <img src="../../../assets/image/jmpt.png" alt="img" />
         </button>
-        <ion-label> Jemput Sampah </ion-label>
+        <p>Jemput<br />Sampah</p>
       </div>
       <div>
         <button class="sembako">
-          <img src="../../../assets/sembako.png" alt="img" />
+          <img src="../../../assets/image/sembako.png" alt="img" />
         </button>
-        <ion-label> Katalog Sembako </ion-label>
+        <p>
+          Katalog<br />
+          Sembako
+        </p>
       </div>
-      <div>
-        <button class="pinjam">
-          <img src="../../../assets/pinjam.png" alt="img" />
-        </button>
-        <ion-label> Pinjaman Sosial </ion-label>
-      </div>
-    </ion-col>
-  </ion-grid>
 
-  <ion-grid>
-    <ion-col class="menu">
       <div>
-        <button class="withdrawl">
-          <img src="../../../assets/withdraw.png" alt="img" />
+        <button class="pinjaman" click="">
+          <img src="../../../assets/image/pinjam.png" alt="img" />
         </button>
-        <ion-label> Tarik Tunai </ion-label>
+        <p>Pinjaman<br />Sosial</p>
       </div>
       <div>
-        <button class="jmpt">
-          <img src="../../../assets/jmpt.png" alt="img" />
+        <button class="invoice" click="">
+          <img src="../../../assets/image/invoice.png" alt="img" />
         </button>
-        <ion-label> Jemput Sampah </ion-label>
+        <p>Laporan<br />Penjualan</p>
       </div>
       <div>
-        <button class="sembako">
-          <img src="../../../assets/sembako.png" alt="img" />
+        <button class="sampah" click="">
+          <img src="../../../assets/image/sampah.png" alt="img" />
         </button>
-        <ion-label> Katalog Sembako </ion-label>
+        <p>Katalog<br />Sampah</p>
       </div>
       <div>
-        <button class="pinjam">
-          <img src="../../../assets/pinjam.png" alt="img" />
+        <button class="rekening">
+          <img src="../../../assets/image/tambah.png" alt="img" />
         </button>
-        <ion-label> Pinjaman Sosial </ion-label>
+        <p>
+          Buka<br />
+          Rekening
+        </p>
       </div>
     </ion-col>
   </ion-grid>
+  <ion-card class="log">
+    <ion-label> Riwayat Transaksi </ion-label>
+    <ion-infinite-scroll threshold="100px" id="infinite-scroll">
+      <ion-infinite-scroll-content
+        loading-spinner="bubbles"
+        loading-text="Loading more data..."
+      >
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-card>
 </ion-content>
