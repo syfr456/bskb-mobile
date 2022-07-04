@@ -31,6 +31,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
 @font-face {
     font-family: 'Poppins', sans-serif; //This is what we are going to call
     src: url('./assets/font/Poppins-Regular.ttf');
