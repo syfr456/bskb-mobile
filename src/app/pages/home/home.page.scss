@@ -18,20 +18,20 @@
     margin: 20px;
     background: url('../../../assets/image/bgrek.jpg')10%;
     border-radius: 20px;
+    width: 92%;
+    height: 30%;
  }
 
   .swiper-slide {
-      pointer-events: none;
+    margin: 20px;
+    pointer-events: none;
   }
 
-b {
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
+h3{
+    text-align: center;
 }
-
 p {
     font-family: 'Poppins', sans-serif;
-    // padding: 0 40px;
     font-size: 14px;
     line-height: 1.5;
     color: #000000;
@@ -39,15 +39,9 @@ p {
     
 }
 
-p b {
-    color: #000000;
-}
-
 .menu{
     display: flex;
     flex-wrap: wrap;
-    // margin: 20px;
-    // padding: 20px;
     justify-content: space-around;
     align-items: center;
     font-family: 'Poppins', sans-serif;
@@ -59,7 +53,6 @@ button{
     border-radius: 10px;
     width: 68px;
     height: 68px;
-    // margin: 20 20 20 20;
 }
 
 .withdrawl{
@@ -89,7 +82,7 @@ button{
 }
 
 div{
-    margin-top: 20px;
+    margin: 10px;
 }
 
 .log{
@@ -106,4 +99,5 @@ ion-label{
     margin-left: 20px;
     color: #167A42;
 }
+
 
