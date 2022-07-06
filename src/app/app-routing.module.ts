@@ -3,44 +3,30 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'menu',
     loadChildren: () => import ('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
-  }
-  // {
-  //   path: '',
-  //   redirectTo: 'onboarding', pathMatch: 'full'
-  // },
-  // { path: 'home',
-  //   loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  // },
-  // {
-  //   path: 'onboarding',
-  //   loadChildren: () => import('./pages/onboarding/onboarding.module').then( m => m.OnboardingPageModule)
-  // },
-  // {
-  //   path: 'login',
-  //   loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-  // },
-  // {
-  //   path: 'register',
-  //   loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  // },
-  // {
-  //   path: 'sdk',
-  //   loadChildren: () => import('./pages/sdk/sdk.module').then( m => m.SdkPageModule)
-  // },
-  // {
-  //   path: 'tabs',
-  //   loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
-  // },
-  // {
-  //   path: 'profile',
-  //   loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
-  // },
-  // {
-  //   path: 'pencairan',
-  //   loadChildren: () => import('./pages/pencairan/pencairan.module').then( m => m.PencairanPageModule)
-  // }
+  },
+  {
+    path: '',
+    redirectTo: 'onboarding', pathMatch: 'full'
+  },
+  {
+    path: 'onboarding',
+    loadChildren: () => import('./pages/onboarding/onboarding.module').then(m => m.OnboardingPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
+  },
+  {
+    path: 'sdk',
+    loadChildren: () => import('./pages/sdk/sdk.module').then(m => m.SdkPageModule)
+  },
+  
 ];
 @NgModule({
   imports: [
