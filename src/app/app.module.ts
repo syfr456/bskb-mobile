@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule }    from '@angular/common/http';
 import { RegisterPageModule } from './pages/register/register.module';
 import { LoginPageModule } from './pages/login/login.module';
-// import { SwiperComponent } from 'swiper/angular';
 
 
 @NgModule({
