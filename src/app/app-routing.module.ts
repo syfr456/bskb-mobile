@@ -26,7 +26,11 @@ const routes: Routes = [
     path: 'sdk',
     loadChildren: () => import('./pages/sdk/sdk.module').then(m => m.SdkPageModule)
   },
-  
+  {
+    path: 'log',
+    loadChildren: () => import('./pages/log/log.module').then( m => m.LogPageModule)
+  },
+
 ];
 @NgModule({
   imports: [
