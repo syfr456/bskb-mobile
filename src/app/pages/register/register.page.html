@@ -16,6 +16,14 @@
       <ion-input type="text" placeholder="Syahrizal"></ion-input>
     </div>
 
+    <div class="jk" id="jk">
+      <ion-label position="stacked">Jenis Kelamin</ion-label>
+      <ion-select>
+        <ion-select-option value="lk">Laki-Laki</ion-select-option>
+        <ion-select-option value="pr">Perempuan</ion-select-option>
+      </ion-select>
+    </div>
+
     <div class="alamat" id="alamat">
       <ion-label position="stacked">Alamat</ion-label>
       <ion-input type="text"></ion-input>
@@ -29,6 +37,16 @@
     <div class="nik" id="nik">
       <ion-label position="stacked">Nomor Induk Keluarga</ion-label>
       <ion-input type="number"></ion-input>
+    </div>
+
+    <div class="rek" id="rek">
+      <ion-label position="stacked">Jenis Rekening</ion-label>
+      <ion-select>
+        <ion-select-option value="reguler">Reguler</ion-select-option>
+        <ion-select-option value="pendidikan">Pendidikan</ion-select-option>
+        <ion-select-option value="perayaan">Perayaan</ion-select-option>
+        <ion-select-option value="sosial">Sosial</ion-select-option>
+      </ion-select>
     </div>
 
     <div class="ktp">
@@ -51,7 +69,10 @@
       </ion-button>
     </div>
 
-    <a class="link" routerLink="/login">Sudah Punya Akun?</a>
+    <p>
+      Sudah punya akun?
+      <a routerLink="/login" class="log">&nbsp;Masuk Sekarang</a>
+    </p>
 
     <div class="snk">
       <ion-checkbox class="cek" checked="true"></ion-checkbox>

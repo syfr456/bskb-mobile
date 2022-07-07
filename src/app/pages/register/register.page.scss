@@ -1,11 +1,7 @@
 .ion-padding {
-    --background: #FCFFF2;
-    /* fallback for old browsers */
-    --background: #FCFFF2;
-    /* Chrome 10-25, Safari 5.1-6 */
-    --background: #FCFFF2;
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    --background: url('../../../assets/image/bglog.png') no-repeat 100%;
+    background-size: cover;
+    background-position: center;
     .head {
         font-size: 36px;
         display: flex;
@@ -36,6 +32,7 @@
     display: flex;
     justify-content: center;
     margin-top: 40px;
+    margin-bottom: 10px;
     
     .daftar {
         width:auto;
@@ -59,12 +56,28 @@
 }
 .ktp {
     margin-top: 30px;
+    height: 50px;
+}
+
+.jk {
+    margin-top: 30px;
+}
+
+.rek {
+    margin-top: 30px;
 }
 
 ion-input {
     border: 1px solid;
     border-color: rgba(203, 220, 157, 0.86);
     border-radius: 12px;
+}
+
+ion-select {
+    border: 1px solid;
+    border-color: rgba(203, 220, 157, 0.86);
+    border-radius: 12px;
+    height: 40px;
 }
 
 ion-label {
@@ -74,13 +87,11 @@ ion-label {
 }
 
 
-a{
+p{
     display: flex;
-    padding-top: 10px;
-    align-items: center;
     justify-content: center;
-
-    text-decoration: none;
+    align-items: center;
+    
     text-align: center;
     color: #B5B5B5;
 }
@@ -98,4 +109,8 @@ a{
         color: #B5B5B5;
 
     }
+}
+
+.log{
+    text-decoration: none;
 }

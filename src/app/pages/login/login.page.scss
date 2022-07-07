@@ -49,25 +49,20 @@ ion-button{
 
 .log{
     margin-top: 20px;
+    margin-bottom: 20px;
     border-radius: 12px;
     color: #FCFFF2;
     --background: #1D8A4D;
 }
-
 .reg{
-    margin-top: 10px;
-    border-radius: 12px;
-    color: #1D8A4D;
-    --background: #FCFFF2;
-    border-color: #1D8A4D;
+    text-decoration: none;
 }
 
-a{
-    display: grid;
-    margin-top: 20px;
+p{
+    display: flex;
     justify-content: center;
+    align-items: center;
 
-    text-decoration: none;
     text-align: center;
     color: #B5B5B5;
 }
