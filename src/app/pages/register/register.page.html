@@ -6,77 +6,114 @@
   </div>
 
   <div class="items">
-    <div class="username" id="username">
-      <ion-label position="stacked">Username</ion-label>
-      <ion-input placeholder="syahrizal"></ion-input>
-    </div>
+    <form #form="ngForm">
+      <ion-list>
+        <div class="username">
+          <ion-label position="stacked" floating>Username</ion-label>
+          <ion-input
+            type="text"
+            placeholder="Masukkan Username"
+            name="username"
+            required
+          ></ion-input>
+        </div>
 
-    <div class="nama" id="nama">
-      <ion-label position="stacked">Nama</ion-label>
-      <ion-input type="text" placeholder="Syahrizal"></ion-input>
-    </div>
+        <div class="nama">
+          <ion-label position="stacked" floating>Nama</ion-label>
+          <ion-input
+            type="text"
+            placeholder="Masukkan Nama"
+            name="nama"
+            required
+          ></ion-input>
+        </div>
 
-    <div class="jk" id="jk">
-      <ion-label position="stacked">Jenis Kelamin</ion-label>
-      <ion-select>
-        <ion-select-option value="lk">Laki-Laki</ion-select-option>
-        <ion-select-option value="pr">Perempuan</ion-select-option>
-      </ion-select>
-    </div>
+        <div class="jk">
+          <ion-label position="stacked" floating>Jenis Kelamin</ion-label>
+          <ion-select>
+            <ion-select-option>Laki-Laki</ion-select-option>
+            <ion-select-option>Perempuan</ion-select-option>
+          </ion-select>
+        </div>
 
-    <div class="alamat" id="alamat">
-      <ion-label position="stacked">Alamat</ion-label>
-      <ion-input type="text"></ion-input>
-    </div>
+        <div class="alamat">
+          <ion-label position="stacked" floating>Alamat</ion-label>
+          <ion-input
+            type="text"
+            placeholder="Masukkan Alamat"
+            name="alamat"
+            required
+          ></ion-input>
+        </div>
 
-    <div class="nohp" id="nohp">
-      <ion-label position="stacked">Nomor HP</ion-label>
-      <ion-input type="number" placeholder=""></ion-input>
-    </div>
+        <div class="nohp">
+          <ion-label position="stacked" floating>Nomor Hp</ion-label>
+          <ion-input
+            type="number"
+            placeholder="Masukkan Nomor Hp"
+            name="nohp"
+            required
+          ></ion-input>
+        </div>
 
-    <div class="nik" id="nik">
-      <ion-label position="stacked">Nomor Induk Keluarga</ion-label>
-      <ion-input type="number"></ion-input>
-    </div>
+        <div class="nik">
+          <ion-label position="stacked" floating
+            >Nomor Induk Keluarga</ion-label
+          >
+          <ion-input
+            type="number"
+            placeholder="Masukkan NIK"
+            name="nik"
+            required
+          ></ion-input>
+        </div>
 
-    <div class="rek" id="rek">
-      <ion-label position="stacked">Jenis Rekening</ion-label>
-      <ion-select>
-        <ion-select-option value="reguler">Reguler</ion-select-option>
-        <ion-select-option value="pendidikan">Pendidikan</ion-select-option>
-        <ion-select-option value="perayaan">Perayaan</ion-select-option>
-        <ion-select-option value="sosial">Sosial</ion-select-option>
-      </ion-select>
-    </div>
+        <div class="rek">
+          <ion-label position="stacked" floating>Jenis Rekening</ion-label>
+          <ion-select>
+            <ion-select-option>Reguler</ion-select-option>
+            <ion-select-option>Pendidikan</ion-select-option>
+            <ion-select-option>Perayaan</ion-select-option>
+            <ion-select-option>Sosial</ion-select-option>
+          </ion-select>
+        </div>
 
-    <div class="ktp">
-      <ion-label position="stacked">Kartu Tanda Penduduk</ion-label>
-      <ion-input
-        type="file"
-        id="file-input"
-        accept="image/png, image/jpeg"
-      ></ion-input>
-    </div>
+        <div class="ktp">
+          <ion-label slot="end">Upload KTP</ion-label>
+          <ion-input
+            type="file"
+            (change)="loadImageFromDevice($event)"
+            id="file-input"
+            accept="image/png, image/jpeg"
+          ></ion-input>
+        </div>
 
-    <div class="password" id="password">
-      <ion-label position="stacked">Password</ion-label>
-      <ion-input type="text" placeholder="syahrizal2890"></ion-input>
-    </div>
+        <div class="password">
+          <ion-label position="stacked" floating>Password</ion-label>
+          <ion-input
+            type="password"
+            placeholder="Masukkan Password"
+            name="password"
+            required
+          ></ion-input>
+        </div>
+      </ion-list>
+    </form>
+  </div>
 
-    <div class="buttonL">
-      <ion-button routerLink="/login" class="daftar" click="">
-        DAFTAR
-      </ion-button>
-    </div>
+  <div class="buttonL">
+    <ion-button routerLink="/login" class="daftar" click="">
+      DAFTAR
+    </ion-button>
+  </div>
 
-    <p>
-      Sudah punya akun?
-      <a routerLink="/login" class="log">&nbsp;Masuk Sekarang</a>
-    </p>
+  <p>
+    Sudah punya akun?
+    <a routerLink="/login" class="log">&nbsp;Masuk Sekarang</a>
+  </p>
 
-    <div class="snk">
-      <ion-checkbox class="cek" checked="true"></ion-checkbox>
-      <ion-label class="sk" routerLink="/sdk">Syarat dan Ketentuan</ion-label>
-    </div>
+  <div class="snk">
+    <ion-checkbox class="cek" checked="true"></ion-checkbox>
+    <ion-label class="sk" routerLink="/sdk">Syarat dan Ketentuan</ion-label>
   </div>
 </ion-content>

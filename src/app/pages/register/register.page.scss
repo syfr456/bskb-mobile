@@ -3,16 +3,21 @@
     background-size: cover;
     background-position: center;
     .head {
-        font-size: 36px;
         display: flex;
         justify-content: center;
+        
+        font-family: 'Poppins', sans-serif;
+    }
+
+}
+
+h1{
+        font-size: 36px;
         text-align: center;
         color: #A6CE39;
         padding-top: 7%;
         font-weight: bold;
-        font-family: 'Poppins', sans-serif;
-    }
-
+        margin-bottom: 20px;
 }
 
 

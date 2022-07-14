@@ -1,64 +1,74 @@
 .ion-padding {
-    --background: url('../../../assets/image/bglog.png') no-repeat;
+    --background: url('../../../assets/image/bglog.png') no-repeat 100%;
     background-size: cover;
     background-position: center;
-   
+
+    .content {
+        display: grid;
+        min-height: 90vh;
+        align-content: center;
+    }
+
 }
-
- .content {
-    display: flex;
-    flex-direction: column;
-    min-height: 90vh;
-    justify-content: center;
-    font-family: 'Poppins', sans-serif;
- }
-
-
 h1{
-    margin-bottom: 60px;
+    font-size: 36px;
     text-align: center;
     color: #A6CE39;
+    padding-top: 7%;
     font-weight: bold;
-    font-size: 36px;
-}
-
-
-ion-list {
-    background: #FCFFF2;
-}
-
-.item{
     font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    color: #aaaaaa;
-    background: #FCFFF2;
-    
 }
 
-ion-input{
+
+
+.items {
     font-family: 'Poppins', sans-serif;
-    margin-top: 3px;
-    background: #FCFFF2;
 }
 
-ion-button{
-    display: grid;
+.username {
+    margin-top: 30px;
+}
+
+.password {
+    margin-top: 30px;
+}
+
+.buttonL {
+    display: flex;
     justify-content: center;
-    font-family: 'Poppins', sans-serif;
+    margin-top: 40px;
+    margin-bottom: 10px;
+
+    .log {
+        width: auto;
+        border-radius: 12px;
+        text-decoration-color: #FCFFF2;
+        --background: #1D8A4D;
+    }
 }
 
-.log{
-    margin-top: 20px;
-    margin-bottom: 20px;
+
+ion-input {
+    border: 1px solid;
+    border-color: rgba(203, 220, 157, 0.86);
     border-radius: 12px;
-    color: #FCFFF2;
-    --background: #1D8A4D;
-}
-.reg{
-    text-decoration: none;
 }
 
-p{
+ion-select {
+    border: 1px solid;
+    border-color: rgba(203, 220, 157, 0.86);
+    border-radius: 12px;
+    height: 40px;
+}
+
+ion-label {
+    margin-left: 5px;
+    color: #B5B5B5;
+    font-size: 18px;
+}
+
+
+p {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,4 +77,21 @@ p{
     color: #B5B5B5;
 }
 
+.snk {
+    display: flex;
+    padding-top: 10px;
+    align-items: center;
+    justify-content: center;
 
+
+    .sk {
+        padding-left: 4px;
+        text-align: center;
+        color: #B5B5B5;
+
+    }
+}
+
+.reg {
+    text-decoration: none;
+}

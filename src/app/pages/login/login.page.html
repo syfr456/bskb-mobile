@@ -1,15 +1,15 @@
 <ion-content class="ion-padding">
   <div class="content">
-    <div>
+    <div class="head">
       <ion-text>
         <h1>LOGIN</h1>
       </ion-text>
     </div>
 
-    <div>
+    <div class="items">
       <form #form="ngForm">
         <ion-list>
-          <div class="item">
+          <div class="username">
             <ion-label position="stacked" floating>Username</ion-label>
             <ion-input
               type="text"
@@ -22,7 +22,7 @@
             <ion-label floating>Email</ion-label>
             <ion-input type="text" name="email" required></ion-input>
           </ion-item> -->
-          <div class="item">
+          <div class="password">
             <ion-label position="stacked" floating>Password</ion-label>
             <ion-input
               type="password"
@@ -32,17 +32,18 @@
             ></ion-input>
           </div>
         </ion-list>
-        <ion-button routerLink="/menu/home" class="log" click="">
-          MASUK
-        </ion-button>
       </form>
     </div>
 
-    <div>
-      <p>
-        Belum memiliki akun?
-        <a routerLink="/register" class="reg">&nbsp;Daftar Sekarang</a>
-      </p>
+    <div class="buttonL">
+      <ion-button routerLink="/menu/home" class="log" click="">
+        MASUK
+      </ion-button>
     </div>
+
+    <p>
+      Belum punya akun?
+      <a routerLink="/register" class="reg">&nbsp;Daftar Sekarang</a>
+    </p>
   </div>
 </ion-content>
