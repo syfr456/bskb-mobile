@@ -30,6 +30,30 @@ const routes: Routes = [
     path: 'log',
     loadChildren: () => import('./pages/log/log.module').then( m => m.LogPageModule)
   },
+  {
+    path: 'penjemputan',
+    loadChildren: () => import('./pages/penjemputan/penjemputan.module').then( m => m.PenjemputanPageModule)
+  },
+  {
+    path: 'sembako',
+    loadChildren: () => import('./pages/sembako/sembako.module').then( m => m.SembakoPageModule)
+  },
+  {
+    path: 'pinjaman',
+    loadChildren: () => import('./pages/pinjaman/pinjaman.module').then( m => m.PinjamanPageModule)
+  },
+  {
+    path: 'laporan',
+    loadChildren: () => import('./pages/laporan/laporan.module').then( m => m.LaporanPageModule)
+  },
+  {
+    path: 'sampah',
+    loadChildren: () => import('./pages/sampah/sampah.module').then( m => m.SampahPageModule)
+  },
+  {
+    path: 'bukarek',
+    loadChildren: () => import('./pages/bukarek/bukarek.module').then( m => m.BukarekPageModule)
+  },
 
 ];
 @NgModule({

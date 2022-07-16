@@ -1,5 +1,5 @@
 .ion-padding {
-    --background: url('../../../assets/image/bglog.png') no-repeat 100%;
+    --background: url('../../../assets/image/bglog.png') no-repeat 20%;
     background-size: cover;
     background-position: center;
 
@@ -41,6 +41,7 @@ h1{
 
     .log {
         width: auto;
+        height: 45px;
         border-radius: 12px;
         text-decoration-color: #FCFFF2;
         --background: #1D8A4D;
