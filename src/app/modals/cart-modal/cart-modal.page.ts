@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { CartService, Product } from 'src/app/services/cart.service';
+import { CartService, Product } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-cart-modal',

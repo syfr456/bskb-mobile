@@ -4,21 +4,39 @@ ion-toolbar {
     text-align: justify;
 }
 
-ion-col {
-    display: flex;
+.cart-icon {
+    font-size: 45px;
+}
+
+.cart-length {
+    position: absolute;
+    top: 18px;
+    left: 25px;
+    font-weight: 600;
+    font-size: 1em;
+    min-width: 25px;
+    z-index: 10;
+    color: #1D8A4D;
 }
 
 ion-card {
-    width: 50%;
-    height: 50%;
-    margin: 10px;
+    margin: 30px;
     --background: #e5eec9;
     font-family: 'Poppins', sans-serif;
     text-align: center;
 }
+b{
+    text-align: center;
+}
 
 ion-card-title {
+    margin: 10px;
     font-size: 14px;
     text-transform: capitalize;
     font-weight: bold;
+}
+
+ion-button {
+    --background: #1D8A4D;
+    text-decoration: #1D8A4D;
 }

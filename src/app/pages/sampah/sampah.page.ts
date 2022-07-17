@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SampahService } from 'src/app/services/sampah/sampah.service';
 
 @Component({
   selector: 'app-sampah',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SampahPage implements OnInit {
 
-  constructor() { }
+  trash = [];
+
+  constructor(private sampahService: SampahService) { }
 
   ngOnInit() {
+    this.trash = this.sampahService.getTrash();
+
   }
 
 }
