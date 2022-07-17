@@ -35,6 +35,8 @@
 @import 'swiper/scss/navigation';
 @import 'swiper/scss/pagination';
 
+@import '~animate.css/animate.min.css';
+
 @font-face {
     font-family: 'Poppins', sans-serif; //This is what we are going to call
     src: url('./assets/font/Poppins-Regular.ttf');
@@ -44,4 +46,10 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+.cart-modal{
+    --height: 50%;
+    --border-radius: 10px;
+    padding: 25px;
 }

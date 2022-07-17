@@ -1,9 +1,46 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>sampah</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Jemput Sampah</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
+  <div class="items">
+    <form #form="ngForm">
+      <ion-list>
+        <div class="alamat">
+          <ion-label position="stacked" floating>Alamat Penjemputan</ion-label>
+          <ion-select>
+            <ion-select-option></ion-select-option>
+            <ion-select-option></ion-select-option>
+            <ion-select-option></ion-select-option>
+            <ion-select-option></ion-select-option>
+          </ion-select>
+        </div>
 
+        <div class="jumlah">
+          <ion-label position="stacked" floating
+            >Jumlah Sampah Perkantong</ion-label
+          >
+          <ion-input type="number" required></ion-input>
+        </div>
+
+        <div class="date">
+          <ion-label position="stacked" floating
+            >Pilih Tanggal Penjemputan</ion-label
+          >
+          <ion-input type="date" required></ion-input>
+          <p>*Pilih tanggal minimal 3 hari sebelum penjemputan</p>
+        </div>
+      </ion-list>
+    </form>
+
+    <div class="button">
+      <ion-button routerLink="/menu/home" class="log" click="">
+        KIRIM
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

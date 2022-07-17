@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SembakoPageRoutingModule } from './sembako-routing.module';
 
 import { SembakoPage } from './sembako.page';
+import { CartModalPageModule } from 'src/app/modals/cart-modal/cart-modal.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SembakoPageRoutingModule
+    SembakoPageRoutingModule,
+    CartModalPageModule
   ],
   declarations: [SembakoPage]
 })

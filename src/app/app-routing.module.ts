@@ -54,6 +54,10 @@ const routes: Routes = [
     path: 'bukarek',
     loadChildren: () => import('./pages/bukarek/bukarek.module').then( m => m.BukarekPageModule)
   },
+  {
+    path: 'cart-modal',
+    loadChildren: () => import('./modals/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
+  },
 
 ];
 @NgModule({
