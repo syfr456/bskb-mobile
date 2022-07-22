@@ -1,0 +1,102 @@
+.ion-padding {
+    --background: #fdfffe;
+
+}
+
+.head{
+    display: grid;
+    justify-content: center;
+}
+
+img{
+    margin: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+    color: #A6CE39;
+    padding-top: 7%;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+
+.items {
+    font-family: 'Poppins', sans-serif;
+}
+
+.username {
+    margin-top: 30px;
+}
+
+.buttonL {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    .save {
+        width: auto;
+        height: 45px;
+        border-radius: 12px;
+        text-decoration-color: #FCFFF2;
+        --background: #1D8A4D;
+    }
+}
+
+.nama {
+    margin-top: 30px;
+}
+
+.alamat {
+    margin-top: 30px;
+}
+
+.nik {
+    margin-top: 30px;
+}
+
+.nohp {
+    margin-top: 30px;
+}
+
+.ktp {
+    margin-top: 30px;
+}
+
+.jk {
+    margin-top: 30px;
+}
+
+.rek {
+    margin-top: 30px;
+}
+
+ion-input {
+    border: 1px solid;
+    border-color: rgba(203, 220, 157, 0.86);
+    border-radius: 12px;
+}
+
+ion-select {
+    border: 1px solid;
+    border-color: rgba(203, 220, 157, 0.86);
+    border-radius: 12px;
+    height: 40px;
+}
+
+ion-label {
+    margin-left: 5px;
+    color: #B5B5B5;
+    font-size: 18px;
+}
+
+
+p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: #B5B5B5;
+}

@@ -3,10 +3,12 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/menu/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Riwayat Transaksi</ion-title>
+    <ion-title>Pencairan</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
+  <!-- <ion-item> -->
   <div>
     <ion-label position="stacked" floating>Sumber Dana</ion-label>
     <ion-select>
@@ -19,23 +21,8 @@
 
   <ion-grid>
     <ion-col>
-      <ion-button (click)="startScanner()" [hidden]="scanActive"
-        >Mulai Scan</ion-button
-      >
+      <ion-button (click)="startScanner()">Mulai Scan</ion-button>
     </ion-col>
   </ion-grid>
-
-  <ion-row class="scan-button" [hidden]="!scanActive">
-    <ion-col>
-      <ion-label class="info">Scan untuk pencairan </ion-label>
-      <ion-button class="buttoninfo"
-        ><ion-icon name="information-circle-outline"></ion-icon
-      ></ion-button>
-    </ion-col>
-
-    <ion-col class="ion-no-padding">
-      <ion-button (click)="stopScanner()">Stop</ion-button>
-    </ion-col>
-  </ion-row>
-  <div class="scan-box" [hidden]="!scanActive"></div>
+  <!-- </ion-item> -->
 </ion-content>

@@ -4,10 +4,6 @@ ion-toolbar {
     text-align: justify;
 }
 
-// ion-col{
-//     display: flex;
-// }
-
 ion-fab-button{
     width: 60px;
     height: 60px;
@@ -16,8 +12,13 @@ ion-fab-button{
     
 }
 
+ion-title {
+    font-weight: bold;
+}
+
 .cart-icon{
     font-size: 45px;
+    // width: auto;
 }
 
 .cart-length{
@@ -32,6 +33,7 @@ ion-fab-button{
 }
 
 ion-card{
+    width: auto;
     margin: 30px;
     --background: #e5eec9;
     font-family: 'Poppins', sans-serif;
@@ -45,6 +47,7 @@ ion-card-title{
 }
 
 ion-button{
+    width: auto;
     --background: #1D8A4D;
     text-decoration: #1D8A4D;
 }

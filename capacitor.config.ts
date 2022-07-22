@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'v1.1.1',
-  appName: 'bskbMobile',
+  appName: 'MBSKB',
   webDir: 'www',
   bundledWebRuntime: false
 };

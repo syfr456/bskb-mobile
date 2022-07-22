@@ -2,24 +2,38 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
+export class Product {
+  idSembako: number;
+  namaSembako: string;
+  harga: number;
   satuan: string;
-  amount: number;
+  total: number;
+
 }
+
+// export class CartShop {
+//     idPembelian: number;
+//     idSembako: number;
+//     idNsbh: number;
+//     idRek: number;
+//     tanggalPembelian: Date = new Date();
+//     total: number;
+// }
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   data: Product[] = [
-    {id: 0, name:'Beras', price: 14000, satuan: '/Kg', amount: 1},
-    {id: 1, name:'Gula', price: 8000, satuan: '/Kg', amount: 1},
-    {id: 2, name:'Garam', price: 1000, satuan: '/pcks', amount: 1},
-    {id: 3, name:'Telur', price: 2000, satuan: '/butir', amount: 1},
-    {id: 4, name:'Minyak Goreng', price: 14000, satuan: '/Kg', amount: 1},
+    {idSembako: 0, namaSembako:'Beras', harga: 14000, satuan: '/Kg', total: 1},
+    {idSembako: 1, namaSembako:'Gula', harga: 8000, satuan: '/Kg', total: 1},
+    {idSembako: 2, namaSembako:'Garam', harga: 1000, satuan: '/pcks', total: 1},
+    {idSembako: 3, namaSembako:'Telur', harga: 2000, satuan: '/butir', total: 1},
+    {idSembako: 4, namaSembako:'Minyak Goreng', harga: 14000, satuan: '/Kg', total: 1},
   ];
+
+  // shop: CartShop[] = [
+  //   {idPembelian: 0, idSembako: 0, idNsbh: 0, idRek: 0, tanggalPembelian: null, total: 1 }
+  // ];
 
   private cart = [];
   private cartItemCount = new BehaviorSubject(0);
@@ -42,13 +56,13 @@ export class CartService {
     let added = false;
     for (const p of this.cart) {
       if (p.id === product.id) {
-        p.amount += 1;
+        p.total += 1;
         added = true;
         break;
       }
     }
     if (!added) {
-      product.amount = 1;
+      product.total = 1;
       this.cart.push(product);
     }
     this.cartItemCount.next(this.cartItemCount.value + 1);
@@ -57,8 +71,8 @@ export class CartService {
   decreaseProduct(product) {
     for (const [index, p] of this.cart.entries()) {
       if (p.id === product.id) {
-        p.amount -= 1;
-        if (p.amount == 0) {
+        p.total -= 1;
+        if (p.total == 0) {
           this.cart.splice(index, 1);
         }
       }
@@ -69,7 +83,7 @@ export class CartService {
   removeProduct(product) {
     for (const [index, p] of this.cart.entries()) {
       if (p.id === product.id) {
-        this.cartItemCount.next(this.cartItemCount.value - p.amount);
+        this.cartItemCount.next(this.cartItemCount.value - p.total);
         this.cart.splice(index, 1);
       }
     }

@@ -1,31 +1,31 @@
 .ion-padding {
-    --background: url('../../../assets/image/bglog.png') no-repeat 50%;
+    --background: url('../../../../assets/image/bglog.png') no-repeat 20%;
     background-size: cover;
     background-position: center;
-    .head {
-        display: flex;
-        justify-content: center;
-        
-        font-family: 'Poppins', sans-serif;
+
+    .content {
+        display: grid;
+        min-height: 90vh;
+        align-content: center;
     }
 
 }
-
 h1{
-        font-size: 36px;
-        text-align: center;
-        color: #A6CE39;
-        padding-top: 7%;
-        font-weight: bold;
-        margin-bottom: 20px;
+    font-size: 36px;
+    text-align: center;
+    color: #A6CE39;
+    padding-top: 7%;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
 }
+
 
 
 .items {
     font-family: 'Poppins', sans-serif;
 }
 
-.username{
+.username {
     margin-top: 30px;
 }
 
@@ -33,14 +33,14 @@ h1{
     margin-top: 30px;
 }
 
-.buttonL{
+.buttonL {
     display: flex;
     justify-content: center;
     margin-top: 40px;
     margin-bottom: 10px;
-    
-    .daftar {
-        width:auto;
+
+    .log {
+        width: auto;
         height: 45px;
         border-radius: 12px;
         text-decoration-color: #FCFFF2;
@@ -48,30 +48,6 @@ h1{
     }
 }
 
-.nama{
-    margin-top: 30px;
-}
-.alamat {
-    margin-top: 30px;
-}
-.nik {
-    margin-top: 30px;
-}
-.nohp {
-    margin-top: 30px;
-}
-.ktp {
-    margin-top: 30px;
-    height: 50px;
-}
-
-.jk {
-    margin-top: 30px;
-}
-
-.rek {
-    margin-top: 30px;
-}
 
 ion-input {
     border: 1px solid;
@@ -93,11 +69,11 @@ ion-label {
 }
 
 
-p{
+p {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     text-align: center;
     color: #B5B5B5;
 }
@@ -109,7 +85,7 @@ p{
     justify-content: center;
 
 
-    .sk{
+    .sk {
         padding-left: 4px;
         text-align: center;
         color: #B5B5B5;
@@ -117,6 +93,6 @@ p{
     }
 }
 
-.log{
+.reg {
     text-decoration: none;
 }

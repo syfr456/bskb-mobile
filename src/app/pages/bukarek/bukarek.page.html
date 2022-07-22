@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>bukarek</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Buka Rekening</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-label>Pilih Jenis Tabungan</ion-label>
+    <ion-select>
+      <ion-select-option>Reguler</ion-select-option>
+      <ion-select-option>Pendidikan</ion-select-option>
+      <ion-select-option>Perayaan</ion-select-option>
+      <ion-select-option>Sosial</ion-select-option>
+    </ion-select>
+  </ion-grid>
+  <div class="button">
+    <ion-button (click)="save()">Kirim</ion-button>
+  </div>
 </ion-content>

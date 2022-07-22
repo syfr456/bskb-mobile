@@ -17,13 +17,13 @@
   <ion-list>
     <ion-card *ngFor="let p of products">
       <ion-card-header>
-        <ion-card-title>{{ p.name }}</ion-card-title>
+        <ion-card-title>{{ p.namaSembako }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <ion-row class="ion-align-items-center">
           <ion-col size="8">
             <ion-label>
-              <b>{{ p.price | currency:'Rp' }}</b>
+              <b>{{ p.harga | currency:'Rp' }}</b>
             </ion-label>
           </ion-col>
           <ion-col size="4" class="ion-text-right">

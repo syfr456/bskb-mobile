@@ -1,0 +1,53 @@
+ion-title {
+    font-weight: bold;
+}
+
+ion-toolbar {
+    color: #a6ce39;
+    font-family: 'Poppins', sans-serif;
+    text-align: justify;
+}
+
+
+.cart-icon {
+    font-size: 45px;
+}
+
+.cart-length {
+    position: absolute;
+    top: 18px;
+    left: 25px;
+    font-weight: 600;
+    font-size: 1em;
+    min-width: 25px;
+    z-index: 10;
+    color: #1D8A4D;
+}
+
+ion-card {
+    margin: 30px;
+    --background: #e5eec9;
+    font-family: 'Poppins', sans-serif;
+    text-align: justify;
+}
+
+b {
+    text-align: justify;
+}
+
+a{
+    text-decoration: none;
+    color: #bbbbbb;
+}
+
+ion-card-title {
+    margin: 10px;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+ion-button {
+    --background: #1D8A4D;
+    text-decoration: #1D8A4D;
+}

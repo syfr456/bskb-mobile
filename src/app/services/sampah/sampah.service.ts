@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 export interface Trash {
   id: number;
   name: string;
-  bersih: string;
-  kotor: string;
+  bersih: number;
+  kotor: number;
   satuan: string;
 }
 
@@ -14,12 +14,12 @@ export interface Trash {
 export class SampahService {
 
   data: Trash[] = [
-    {id: 0, name:'Aqua Botol Putih Bersih', bersih: 'Bersih: Rp 2,500 ', kotor: 'Kotor: Rp 1,800', satuan: '/Kg'},
-    {id: 1, name:'Aqua Botol Putih Bersih', bersih: 'Bersih: Rp 2,500 ', kotor: 'Kotor: Rp 1,800', satuan: '/Kg'},
-    {id: 2, name:'Aqua Botol Putih Bersih', bersih: 'Bersih: Rp 2,500 ', kotor: 'Kotor: Rp 1,800', satuan: '/Kg'},
-    {id: 3, name:'Aqua Botol Putih Bersih', bersih: 'Bersih: Rp 2,500 ', kotor: 'Kotor: Rp 1,800', satuan: '/Kg'},
-    {id: 4, name:'Aqua Botol Putih Bersih', bersih: 'Bersih: Rp 2,500 ', kotor: 'Kotor: Rp 1,800', satuan: '/Kg'},
-    {id: 5, name:'Aqua Botol Putih Bersih', bersih: 'Bersih: Rp 2,500 ', kotor: 'Kotor: Rp 1,800', satuan: '/Kg'},
+    {id: 0, name:'Aqua Botol Putih Bersih', bersih: 2500, kotor: 1800, satuan: '/Kg'},
+    {id: 1, name:'Aqua Botol Putih Bersih', bersih: 2500, kotor: 1800, satuan: '/Kg'},
+    {id: 2, name:'Aqua Botol Putih Bersih', bersih: 2500, kotor: 1800, satuan: '/Kg'},
+    {id: 3, name:'Aqua Botol Putih Bersih', bersih: 2500, kotor: 1800, satuan: '/Kg'},
+    {id: 4, name:'Aqua Botol Putih Bersih', bersih: 2500, kotor: 1800, satuan: '/Kg'},
+    {id: 5, name:'Aqua Botol Putih Bersih', bersih: 2500, kotor: 1800, satuan: '/Kg'},
   ];
 
   constructor() { }

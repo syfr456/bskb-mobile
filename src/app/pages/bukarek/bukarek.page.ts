@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-bukarek',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BukarekPage implements OnInit {
 
-  constructor() { }
+  constructor(private alertCtrl: AlertController) { }
 
   ngOnInit() {
+  }
+
+  async save() {
+
+    const alert = await this.alertCtrl.create({
+      // header: 'Terima Kasih',
+      message: 'Pembukaan Rekening Berhasil',
+      buttons: ['OK']
+    });
+
+    alert.present();
+
   }
 
 }

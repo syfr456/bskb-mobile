@@ -16,11 +16,11 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('./pages/auth/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
+    loadChildren: () => import('./pages/auth/register/register.module').then(m => m.RegisterPageModule)
   },
   {
     path: 'sdk',
@@ -58,6 +58,15 @@ const routes: Routes = [
     path: 'cart-modal',
     loadChildren: () => import('./modals/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
   },
+  {
+    path: 'inv-modal',
+    loadChildren: () => import('./modals/inv-modal/inv-modal.module').then( m => m.InvModalPageModule)
+  },
+  {
+    path: 'scan-modal',
+    loadChildren: () => import('./modals/scan-modal/scan-modal.module').then( m => m.ScanModalPageModule)
+  },
+
 
 ];
 @NgModule({
