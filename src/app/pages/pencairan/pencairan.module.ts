@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { PencairanPageRoutingModule } from './pencairan-routing.module';
 
 import { PencairanPage } from './pencairan.page';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PencairanPageRoutingModule
+    PencairanPageRoutingModule,
+    ZXingScannerModule
+
   ],
   declarations: [PencairanPage]
 })

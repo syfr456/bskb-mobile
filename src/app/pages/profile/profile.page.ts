@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
+import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,11 +9,25 @@ import { AlertController, ModalController } from '@ionic/angular';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  Username: any;
 
-  constructor( private alertCtrl: AlertController) { }
+  constructor( private alertCtrl: AlertController,  public loadingController: LoadingController,
+    private serviceService: ServiceService) { }
 
   ngOnInit() {
+     const dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
+    this.Username=dataStorage.data.Username;
   }
+
+  async logout(){
+    const loading = await this.loadingController.create({
+      message: 'Please wait...'
+    });
+    await loading.present();
+    localStorage.clear();
+    this.serviceService.logout();
+    loading.dismiss();
+   }
 
   loadImageFromDevice(event) {
     const file = event.target.files[0];

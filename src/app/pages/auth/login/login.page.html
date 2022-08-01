@@ -1,49 +1,73 @@
 <ion-content class="ion-padding">
-  <div class="content">
-    <div class="head">
-      <ion-text>
-        <h1>LOGIN</h1>
-      </ion-text>
-    </div>
-
-    <div class="items">
-      <form #form="ngForm">
-        <ion-list>
-          <div class="username">
-            <ion-label position="stacked" floating>Username</ion-label>
-            <ion-input
-              type="text"
-              placeholder="Masukkan Username"
-              name="username"
-              required
-            ></ion-input>
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        ><br />
+        <div class="card boxContainer">
+          <div class="head">
+            <h1>LOGIN</h1>
           </div>
-          <!-- <ion-item>
-            <ion-label floating>Email</ion-label>
-            <ion-input type="text" name="email" required></ion-input>
-          </ion-item> -->
-          <div class="password">
-            <ion-label position="stacked" floating>Password</ion-label>
-            <ion-input
-              type="password"
-              placeholder="Masukkan Password"
-              name="password"
-              required
-            ></ion-input>
-          </div>
-        </ion-list>
-      </form>
-    </div>
-
-    <div class="buttonL">
-      <ion-button routerLink="/menu/home" class="log" click="">
-        MASUK
-      </ion-button>
-    </div>
-
-    <p>
-      Belum punya akun?
-      <a routerLink="/register" class="reg">&nbsp;Daftar Sekarang</a>
-    </p>
-  </div>
+        </div>
+        <br />
+        <br />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <form [formGroup]="FormLogin" (ngSubmit)="login()">
+    <ion-item>
+      <div color="dark" slot="start">
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+      </div>
+      <ion-input
+        type="text"
+        name="Username"
+        placeholder="Username"
+        formControlName="Username"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <div color="dark" slot="start">
+        <ion-icon slot="icon-only" name="lock-closed"></ion-icon>
+      </div>
+      <ion-input
+        type="text"
+        name="password"
+        placeholder="Password"
+        formControlName="Password"
+        *ngIf="showPasswordText"
+      ></ion-input>
+      <ion-input
+        type="password"
+        name="password"
+        placeholder="Password"
+        formControlName="Password"
+        *ngIf="!showPasswordText"
+      ></ion-input>
+      <ion-icon
+        color="dark"
+        slot="icon-only"
+        (click)="showPasswordText = !showPasswordText"
+        *ngIf="showPasswordText"
+        name="eye"
+        slot="end"
+        class="ion-align-self-center"
+      ></ion-icon>
+      <ion-icon
+        color="dark"
+        slot="icon-only"
+        (click)="showPasswordText = !showPasswordText"
+        *ngIf="!showPasswordText"
+        name="eye-off"
+        slot="end"
+        class="ion-align-self-center"
+      ></ion-icon>
+    </ion-item>
+    <ion-button type="submit" expand="block" [disabled]="!FormLogin.valid"
+      >Login</ion-button
+    >
+  </form>
+  <p class="ion-text-center">Sudah punya akun?</p>
+  <ion-button expand="block" color="danger" (click)="goToRegister()"
+    >Register</ion-button
+  >
 </ion-content>

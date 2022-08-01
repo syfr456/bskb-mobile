@@ -5,115 +5,210 @@
     </ion-text>
   </div>
 
-  <div class="items">
-    <form #form="ngForm">
-      <ion-list>
-        <div class="username">
-          <ion-label position="stacked" floating>Username</ion-label>
-          <ion-input
-            type="text"
-            placeholder="Masukkan Username"
-            name="username"
-            required
-          ></ion-input>
+  <form [formGroup]="FormRegister">
+    <ion-item>
+      <ion-label color="primary" position="floating">Username</ion-label>
+      <ion-input
+        type="text"
+        name="Username"
+        formControlName="Username"
+      ></ion-input>
+    </ion-item>
+    <div class="error-container">
+      <ng-container *ngFor="let validation of validations.Username">
+        <div
+          class="error-message"
+          *ngIf="FormRegister.get('Username').hasError(validation.type) && (FormRegister.get('Username').dirty || FormRegister.get('Username').touched)"
+        >
+          <span>{{ validation.message }}</span>
+          <br /><br />
         </div>
+      </ng-container>
+    </div>
 
-        <div class="nama">
-          <ion-label position="stacked" floating>Nama</ion-label>
-          <ion-input
-            type="text"
-            placeholder="Masukkan Nama"
-            name="nama"
-            required
-          ></ion-input>
+    <ion-item>
+      <ion-label color="primary" position="floating">Password</ion-label>
+      <ion-input
+        type="text"
+        name="Password"
+        formControlName="Password"
+        *ngIf="showPasswordText"
+      ></ion-input>
+      <ion-input
+        type="password"
+        name="Password"
+        formControlName="Password"
+        *ngIf="!showPasswordText"
+      ></ion-input>
+      <ion-icon
+        color="dark"
+        slot="icon-only"
+        (click)="showPasswordText = !showPasswordText"
+        *ngIf="showPasswordText"
+        name="eye"
+        slot="end"
+        class="ion-align-self-center"
+      ></ion-icon>
+      <ion-icon
+        color="dark"
+        slot="icon-only"
+        (click)="showPasswordText = !showPasswordText"
+        *ngIf="!showPasswordText"
+        name="eye-off"
+        slot="end"
+        class="ion-align-self-center"
+      ></ion-icon>
+    </ion-item>
+    <div class="error-container">
+      <ng-container *ngFor="let validation of validations.Password">
+        <div
+          class="error-message"
+          *ngIf="FormRegister.get('Password').hasError(validation.type) && (FormRegister.get('Password').dirty || FormRegister.get('Password').touched)"
+        >
+          <span>{{ validation.message }}</span>
+          <br /><br />
         </div>
+      </ng-container>
+    </div>
 
-        <div class="jk">
-          <ion-label position="stacked" floating>Jenis Kelamin</ion-label>
-          <ion-select>
-            <ion-select-option>Laki-Laki</ion-select-option>
-            <ion-select-option>Perempuan</ion-select-option>
-          </ion-select>
+    <ion-item>
+      <ion-label color="primary" position="floating">Nama</ion-label>
+      <ion-input type="text" name="Nama" formControlName="Nama"></ion-input>
+    </ion-item>
+    <div class="error-container">
+      <ng-container *ngFor="let validation of validations.Nama">
+        <div
+          class="error-message"
+          *ngIf="FormRegister.get('Nama').hasError(validation.type) && (FormRegister.get('Nama').dirty || FormRegister.get('Nama').touched)"
+        >
+          <span>{{ validation.message }}</span>
+          <br /><br />
         </div>
+      </ng-container>
+    </div>
 
-        <div class="alamat">
-          <ion-label position="stacked" floating>Alamat</ion-label>
-          <ion-input
-            type="text"
-            placeholder="Masukkan Alamat"
-            name="alamat"
-            required
-          ></ion-input>
+    <ion-item>
+      <ion-label color="primary" position="floating">Jenis Kelamin</ion-label>
+      <ion-select>
+        <ion-select-option>Laki-Laki</ion-select-option>
+        <ion-select-option>Perempuan</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="error-container">
+      <ng-container *ngFor="let validation of validations.JenisKelamin">
+        <div
+          class="error-message"
+          *ngIf="FormRegister.get('JenisKelamin').hasError(validation.type) && (FormRegister.get('JenisKelamin').dirty || FormRegister.get('JenisKelamin').touched)"
+        >
+          <span>{{ validation.message }}</span>
+          <br /><br />
         </div>
+      </ng-container>
+    </div>
 
-        <div class="nohp">
-          <ion-label position="stacked" floating>Nomor Hp</ion-label>
-          <ion-input
-            type="number"
-            placeholder="Masukkan Nomor Hp"
-            name="nohp"
-            required
-          ></ion-input>
+    <ion-item>
+      <ion-label color="primary" position="floating">No. Hp</ion-label>
+      <ion-input type="text" name="NoHp" formControlName="NoHp"></ion-input>
+    </ion-item>
+    <div class="error-container">
+      <ng-container *ngFor="let validation of validations.NoHp">
+        <div
+          class="error-message"
+          *ngIf="FormRegister.get('NoHp').hasError(validation.type) && (FormRegister.get('NoHp').dirty || FormRegister.get('NoHp').touched)"
+        >
+          <span>{{ validation.message }}</span>
+          <br /><br />
         </div>
+      </ng-container>
+    </div>
 
-        <div class="nik">
-          <ion-label position="stacked" floating
-            >Nomor Induk Keluarga</ion-label
-          >
-          <ion-input
-            type="number"
-            placeholder="Masukkan NIK"
-            name="nik"
-            required
-          ></ion-input>
+    <ion-item>
+      <ion-label color="primary" position="floating">Jenis Rekening</ion-label>
+      <ion-select>
+        <ion-select-option>Reguler</ion-select-option>
+        <ion-select-option>Pendidikan</ion-select-option>
+        <ion-select-option>Perayaan</ion-select-option>
+        <ion-select-option>Sosial</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="error-container">
+      <ng-container *ngFor="let validation of validations.Rek">
+        <div
+          class="error-message"
+          *ngIf="FormRegister.get('Rek').hasError(validation.type) && (FormRegister.get('Rek').dirty || FormRegister.get('Rek').touched)"
+        >
+          <span>{{ validation.message }}</span>
+          <br /><br />
         </div>
+      </ng-container>
+    </div>
 
-        <div class="rek">
-          <ion-label position="stacked" floating>Jenis Rekening</ion-label>
-          <ion-select>
-            <ion-select-option>Reguler</ion-select-option>
-            <ion-select-option>Pendidikan</ion-select-option>
-            <ion-select-option>Perayaan</ion-select-option>
-            <ion-select-option>Sosial</ion-select-option>
-          </ion-select>
+    <ion-item>
+      <ion-label color="primary" position="floating"
+        >Nomor Induk Keluarga</ion-label
+      >
+      <ion-input type="text" name="Nik" formControlName="Nik"></ion-input>
+    </ion-item>
+    <div class="error-container">
+      <ng-container *ngFor="let validation of validations.Nik">
+        <div
+          class="error-message"
+          *ngIf="FormRegister.get('Nik').hasError(validation.type) && (FormRegister.get('Nik').dirty || FormRegister.get('Nik').touched)"
+        >
+          <span>{{ validation.message }}</span>
+          <br /><br />
         </div>
+      </ng-container>
+    </div>
 
-        <div class="ktp">
-          <ion-label slot="end">Upload KTP</ion-label>
-          <ion-input
-            type="file"
-            (change)="loadImageFromDevice($event)"
-            id="file-input"
-            accept="image/png, image/jpeg"
-          ></ion-input>
+    <ion-item>
+      <ion-label color="primary" position="floating">Upload KTP</ion-label>
+      <br />
+      <ion-input
+        type="file"
+        (change)="loadImageFromDevice($event)"
+        id="file-input"
+        accept="image/png, image/jpeg"
+      ></ion-input>
+    </ion-item>
+    <div class="error-container">
+      <ng-container *ngFor="let validation of validations.Ktp">
+        <div
+          class="error-message"
+          *ngIf="FormRegister.get('Ktp').hasError(validation.type) && (FormRegister.get('Ktp').dirty || FormRegister.get('Ktp').touched)"
+        >
+          <span>{{ validation.message }}</span>
+          <br /><br />
         </div>
+      </ng-container>
+    </div>
 
-        <div class="password">
-          <ion-label position="stacked" floating>Password</ion-label>
-          <ion-input
-            type="password"
-            placeholder="Masukkan Password"
-            name="password"
-            required
-          ></ion-input>
+    <ion-item>
+      <ion-label color="primary" position="floating">Alamat</ion-label>
+      <ion-input type="text" name="Alamat" formControlName="Alamat"></ion-input>
+    </ion-item>
+    <div class="error-container">
+      <ng-container *ngFor="let validation of validations.Alamat">
+        <div
+          class="error-message"
+          *ngIf="FormRegister.get('Alamat').hasError(validation.type) && (FormRegister.get('Alamat').dirty || FormRegister.get('Alamat').touched)"
+        >
+          <span>{{ validation.message }}</span>
+          <br /><br />
         </div>
-      </ion-list>
-    </form>
-  </div>
+      </ng-container>
+    </div>
+    <br />
 
-  <div class="buttonL">
-    <ion-button routerLink="/login" class="daftar" click="">
-      DAFTAR
-    </ion-button>
-  </div>
+    <ion-button expand="full" (click)="Register()">Register</ion-button>
+  </form>
 
-  <p>
+  <a>
     Sudah punya akun?
-    <a routerLink="/login" class="log">&nbsp;Masuk Sekarang</a>
+    <a class="log">&nbsp;Masuk Sekarang</a>
+  </a>
+  <p>
+    Dengan mendaftar anda sudah menyetujui
+    <b routerLink="/sdk">Syarat & Ketentuan</b> yang berlaku.
   </p>
-
-  <div class="snk">
-    <ion-checkbox class="cek" checked="true"></ion-checkbox>
-    <ion-label class="sk" routerLink="/sdk">Syarat dan Ketentuan</ion-label>
-  </div>
 </ion-content>

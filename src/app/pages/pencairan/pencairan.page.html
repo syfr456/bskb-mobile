@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-item> -->
+  <!-- <div> -->
   <div>
     <ion-label position="stacked" floating>Sumber Dana</ion-label>
     <ion-select>
@@ -19,10 +19,28 @@
     </ion-select>
   </div>
 
-  <ion-grid>
-    <ion-col>
-      <ion-button (click)="startScanner()">Mulai Scan</ion-button>
-    </ion-col>
-  </ion-grid>
-  <!-- </ion-item> -->
+  <!-- <ion-grid>
+      <ion-col>
+        <ion-button (click)="startScanner(s)">Mulai Scan</ion-button>
+      </ion-col>
+       //(scanSuccess)="onCodeResult($event)"
+
+    </ion-grid> -->
+  <!-- </div> -->
+
+  <div *ngIf="isQRScannerActive" color="black">
+    <div id="container">
+      <zxing-scanner
+        #scanner
+        [(device)]="currentDevice"
+        (permissionResponse)="onHasPermission($event)"
+      >
+      </zxing-scanner>
+      <ion-icon
+        style="font-size: 40px; color: white"
+        name="close-circle-outline"
+        (click)="closeCamera()"
+      ></ion-icon>
+    </div>
+  </div>
 </ion-content>

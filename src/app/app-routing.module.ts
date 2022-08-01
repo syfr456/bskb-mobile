@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'menu',
+    canActivate: [AuthGuard],
     loadChildren: () => import ('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
@@ -62,16 +64,13 @@ const routes: Routes = [
     path: 'inv-modal',
     loadChildren: () => import('./modals/inv-modal/inv-modal.module').then( m => m.InvModalPageModule)
   },
-  {
-    path: 'scan-modal',
-    loadChildren: () => import('./modals/scan-modal/scan-modal.module').then( m => m.ScanModalPageModule)
-  },
 
 
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    // RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
 })

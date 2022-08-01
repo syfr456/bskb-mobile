@@ -1,7 +1,4 @@
 
-.ion-content{
-    --background: #FCFFF2;
-}
 
 .swipers {
     font-size: 18px;
@@ -19,8 +16,6 @@ ion-card{
     width: auto;
     margin: 20px;
     border-radius: 20px;
-    // width: 92%;
-    // height: 28%;
  }
 
  
@@ -40,16 +35,34 @@ p {
     
 }
 
-.menu{
-    justify-content : center;
-    font-size: 16px;
-    text-align: center;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.menu2{
-    justify-content: center;
-    font-size: 16px;
-    text-align: center;
+img {
+    border-radius: 0.3rem;
+    width: 3rem;
+}
+
+.card {
+    margin: 1rem;
+    border-radius: 0.3rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+        rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+
+    .flex {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 1rem 0.5rem;
+        text-align: center;
+
+        &>div {
+            padding: 0.3rem;
+        }
+    }
 }
 
 ion-button{
