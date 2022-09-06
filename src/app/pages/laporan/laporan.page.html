@@ -15,14 +15,14 @@
       </ion-card-header>
       <ion-card-content>
         <ion-row class="ion-align-items-center">
-          <ion-col size="8">
-            <ion-label>
-              <b>{{ i.jenis }} &nbsp;</b>
-              <b>{{ i.harga | currency:'Rp' }}</b>
-            </ion-label>
+          <ion-col>
+            <a>{{ i.jenis }} </a>
           </ion-col>
-          <ion-col size="4" class="ion-text-right">
-            <a (click)="openDetail()">Detail </a>
+          <ion-col>
+            <a>{{ i.harga | currency:'Rp' }}</a>
+          </ion-col>
+          <ion-col class="ion-text-right">
+            <a class="detail" (click)="openDetail()">Detail </a>
           </ion-col>
         </ion-row>
       </ion-card-content>

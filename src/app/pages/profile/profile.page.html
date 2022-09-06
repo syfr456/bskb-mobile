@@ -1,102 +1,77 @@
 <ion-content class="ion-padding">
-  <div class="items">
-    <form #form="ngForm">
-      <ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        ><br />
         <div class="head">
-          <img
-            src="../../../assets/image/person.png"
-            alt="img"
-            width="150px"
-            height="150px"
-          />
+          <h1>PROFILE</h1>
         </div>
-        <div class="username">
-          <ion-label position="stacked" floating>Username</ion-label>
-          <ion-input
-            type="text"
-            placeholder="Masukkan Username"
-            name="username"
-            required
-          ></ion-input>
-        </div>
+        <br />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-        <div class="nama">
-          <ion-label position="stacked" floating>Nama</ion-label>
-          <ion-input
-            type="text"
-            placeholder="Masukkan Nama"
-            name="nama"
-            required
-            disabled
-          ></ion-input>
-        </div>
+  <div class="items">
+    <form>
+      <ion-item>
+        <ion-label color="primary" position="floating">Username</ion-label>
+        <ion-input type="text" name="Username"></ion-input>
+      </ion-item>
 
-        <div class="jk">
-          <ion-label position="stacked" floating>Jenis Kelamin</ion-label>
-          <ion-select disabled>
-            <ion-select-option>Laki-Laki</ion-select-option>
-            <ion-select-option>Perempuan</ion-select-option>
-          </ion-select>
-        </div>
+      <ion-item>
+        <ion-label color="primary" position="floating">Password</ion-label>
+        <ion-input disabled type="text" name="Password"></ion-input>
+      </ion-item>
 
-        <div class="alamat">
-          <ion-label position="stacked" floating>Alamat</ion-label>
-          <ion-input
-            type="text"
-            placeholder="Masukkan Alamat"
-            name="alamat"
-            required
-          ></ion-input>
-        </div>
+      <ion-item>
+        <ion-label color="primary" position="floating">Nama</ion-label>
+        <ion-input disabled type="text" name="Nama"></ion-input>
+      </ion-item>
 
-        <div class="nohp">
-          <ion-label position="stacked" floating>Nomor Hp</ion-label>
-          <ion-input
-            type="number"
-            placeholder="Masukkan Nomor Hp"
-            name="nohp"
-            required
-          ></ion-input>
-        </div>
+      <ion-item>
+        <ion-label color="primary" position="floating">Jenis Kelamin</ion-label>
+        <ion-select disabled>
+          <ion-select-option>Laki-Laki</ion-select-option>
+          <ion-select-option>Perempuan</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-        <div class="nik">
-          <ion-label position="stacked" floating
-            >Nomor Induk Keluarga</ion-label
-          >
-          <ion-input
-            disabled
-            type="number"
-            placeholder="Masukkan NIK"
-            name="nik"
-            required
-          ></ion-input>
-        </div>
+      <ion-item>
+        <ion-label color="primary" position="floating">No. Hp</ion-label>
+        <ion-input type="text" name="NoHp"></ion-input>
+      </ion-item>
 
-        <div class="rek">
-          <ion-label position="stacked" floating>Jenis Rekening</ion-label>
-          <ion-select>
-            <ion-select-option>Reguler</ion-select-option>
-            <ion-select-option>Pendidikan</ion-select-option>
-            <ion-select-option>Perayaan</ion-select-option>
-            <ion-select-option>Sosial</ion-select-option>
-          </ion-select>
-        </div>
+      <ion-item>
+        <ion-label color="primary" position="floating"
+          >Nomor Induk Keluarga</ion-label
+        >
+        <ion-input disabled type="text" name="Nik"></ion-input>
+      </ion-item>
 
-        <div class="ktp">
-          <ion-label slot="end">Upload KTP</ion-label>
-          <ion-input
-            type="file"
-            (change)="loadImageFromDevice($event)"
-            id="file-input"
-            accept="image/png, image/jpeg"
-          ></ion-input>
-        </div>
-      </ion-list>
+      <ion-item>
+        <ion-label color="primary" position="floating">Upload KTP</ion-label>
+        <br />
+        <ion-input
+          type="file"
+          (change)="loadImageFromDevice($event)"
+          id="file-input"
+          accept="image/png, image/jpeg"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" position="floating">Alamat</ion-label>
+        <ion-input type="text" name="Alamat"></ion-input>
+      </ion-item>
+
+      <br />
+
+      <ion-button expand="full" (click)="save()">Simpan</ion-button>
     </form>
-  </div>
 
-  <div class="buttonL">
-    <ion-button class="save" (click)="save()"> Simpan </ion-button>
+    <ion-button color="danger" expand="full" (click)="logout()"
+      >Logout</ion-button
+    >
   </div>
 
   <ion-button color="danger" (click)="logout()">Logout</ion-button>

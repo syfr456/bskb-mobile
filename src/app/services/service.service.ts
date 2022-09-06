@@ -16,7 +16,7 @@ DataLogin: any;
   authenticationState = new ReplaySubject();
   token: any;
 
-  API_URL = 'http://localhost:88/slimrestjwt/public/';
+  API_URL = 'https://bskb.000webhostapp.com/api/';
 
   TOKEN_KEY = 'token';
 
@@ -60,7 +60,7 @@ DataLogin: any;
         'Content-Type': 'application/json',
         Authorization: 'Bearer '+this.token
       });
-    return this.http.get(this.API_URL + 'api/user/'+dataStorage.data.IdUser, { headers }).pipe(
+    return this.http.get(this.API_URL + 'https://bskb.000webhostapp.com/api/login'+dataStorage.data.IdUser, { headers }).pipe(
       timeout(8000),
       tap(Data => Data)
     );

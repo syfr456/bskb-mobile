@@ -6,40 +6,17 @@
         <br />
         <h3>Saldo</h3>
       </ng-template>
-
-      <!-- <ng-template swiperSlide>
-        <div class="slide">
-          <h2>Kami Bertujuan</h2>
-          <p>
-            “Mereduksi (Mengurangi) Timbulan Sampah di tingkat masyarakat. dan
-            mewujudkan Kota Tanjungpinang yang bersih, indah dan lestari.”
-          </p>
-        </div>
-      </ng-template>
-
-      <ng-template swiperSlide>
-        <div class="slide bg">
-          <h2>Permudah Setor Sampah</h2>
-          <p>
-            Gak perlu repot mikirin sampah yang susah di bawa, karena kami punya
-            layanan JEMPUT SAMPAH.
-          </p>
-          <ion-button fill="clear" click="" routerLink="/login"
-            >Mulai</ion-button
-          >
-        </div>
-      </ng-template> -->
     </swiper>
   </ion-card>
 
   <div class="card">
     <div class="flex">
       <!-- <div>
-          <ion-button class="withdrawl" routerLink="/menu/pencairan">
-            <img src="../../../assets/image/withdraw.png" alt="img" />
-          </ion-button>
-          <p>Tarik<br />Tunai</p>
-        </div> -->
+        <ion-button class="withdrawl" routerLink="/menu/pencairan">
+          <img src="../../../assets/image/withdraw.png" alt="img" />
+        </ion-button>
+        <p>Tarik<br />Tunai</p>
+      </div> -->
       <div>
         <ion-button class="jmpt" routerLink="/penjemputan">
           <img src="../../../assets/image/jmpt.png" alt="img" />
@@ -47,7 +24,7 @@
         <p>Jemput<br />Sampah</p>
       </div>
       <div>
-        <ion-button class="sembako" routerLink="/sembako">
+        <ion-button class="sembako" (click)="goToCart()">
           <img src="../../../assets/image/sembako.png" alt="img" />
         </ion-button>
         <p>

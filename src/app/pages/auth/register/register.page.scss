@@ -1,5 +1,5 @@
 ion-content {
-    --background: url('../../../../assets/image/bglog.png') no-repeat 20%;
+    --background: url('../../../../assets/image/bglog.png') no-repeat 60%;
     background-size: cover;
     background-position: center;
 
@@ -8,12 +8,10 @@ ion-content {
 }
 ion-item {
     border-radius: 10px !important;
-    //padding-left: 30px !important;
     font-size: 0.9em;
     margin-bottom: 4px;
     border: 1px solid rgba(34, 34, 34, 0.096);
     border-bottom: 0px !important;
-    //box-shadow: none !important;
 
     background-color: #ffffff;
     -webkit-box-shadow: 4px 8px 6px -6px #222;
@@ -36,8 +34,6 @@ h1 {
 }
 
 
-
-
 ion-button {
     margin-top: 20px;
     text-decoration-color: #FCFFF2;
@@ -46,12 +42,11 @@ ion-button {
 
 
 ion-label {
-    margin-left: 5px;
     color: #B5B5B5;
-    font-size: 18px;
 }
 
-
-a {
-    color: #252525;
+p{
+    font-size: 14px;
+    margin: 8px;
 }
+

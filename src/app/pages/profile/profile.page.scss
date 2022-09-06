@@ -1,89 +1,50 @@
-.ion-padding {
-    --background: #fdfffe;
+ion-content{
+    --background: url('../../../assets/image/bgpro.png') no-repeat 50% ;
+        background-size: cover;
+        background-position: center;
 
+        font-family: 'Poppins', sans-serif;
 }
 
-.head{
-    display: grid;
-    justify-content: center;
+
+ion-item {
+    border-radius: 10px !important;
+    //padding-left: 30px !important;
+    font-size: 0.9em;
+    margin-bottom: 4px;
+    border: 1px solid rgba(34, 34, 34, 0.096);
+    border-bottom: 0px !important;
+    //box-shadow: none !important;
+
+    background-color: #ffffff;
+    -webkit-box-shadow: 4px 8px 6px -6px #222;
+    -moz-box-shadow: 4px 8px 6px -6px #222;
+    box-shadow: 4px 4px 6px -6px #222;
 }
 
-img{
-    margin: 20px;
+.error-container {
+    color: red;
+    font-size: 0.8em;
 }
+
 
 h1 {
     font-size: 36px;
-    text-align: center;
-    color: #A6CE39;
-    padding-top: 7%;
+    text-align: left;
+    color: #fafafa;
+    padding-top: 5%;
     font-weight: bold;
-    margin-bottom: 20px;
 }
 
 
-.items {
-    font-family: 'Poppins', sans-serif;
-}
 
-.username {
-    margin-top: 30px;
-}
 
-.buttonL {
-    display: flex;
-    justify-content: center;
+ion-button {
     margin-top: 20px;
-
-    .save {
-        width: auto;
-        height: 45px;
-        border-radius: 12px;
-        text-decoration-color: #FCFFF2;
-        --background: #1D8A4D;
-    }
+    text-decoration-color: #FCFFF2;
+    --background: #1D8A4D;
 }
 
-.nama {
-    margin-top: 30px;
-}
-
-.alamat {
-    margin-top: 30px;
-}
-
-.nik {
-    margin-top: 30px;
-}
-
-.nohp {
-    margin-top: 30px;
-}
-
-.ktp {
-    margin-top: 30px;
-}
-
-.jk {
-    margin-top: 30px;
-}
-
-.rek {
-    margin-top: 30px;
-}
-
-ion-input {
-    border: 1px solid;
-    border-color: rgba(203, 220, 157, 0.86);
-    border-radius: 12px;
-}
-
-ion-select {
-    border: 1px solid;
-    border-color: rgba(203, 220, 157, 0.86);
-    border-radius: 12px;
-    height: 40px;
-}
 
 ion-label {
     margin-left: 5px;
@@ -92,11 +53,6 @@ ion-label {
 }
 
 
-p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-    color: #B5B5B5;
+a {
+    color: #252525;
 }

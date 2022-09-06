@@ -22,9 +22,7 @@
       <ion-card-content>
         <ion-row class="ion-align-items-center">
           <ion-col size="8">
-            <ion-label>
-              <b>{{ p.harga | currency:'Rp' }}</b>
-            </ion-label>
+            <a>{{ p.harga | currency:'Rp' }}</a>
           </ion-col>
           <ion-col size="4" class="ion-text-right">
             <ion-button (click)="addToCart(p)">

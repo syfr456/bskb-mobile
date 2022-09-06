@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { CartModalPage } from 'src/app/modals/cart-modal/cart-modal.page';
 import { CartService } from 'src/app/services/cart/cart.service';
@@ -19,14 +19,16 @@ export class SembakoPage implements OnInit {
 
   @ViewChild('cart', {static: false, read: ElementRef})fab: ElementRef;
 
-  constructor(private cartService: CartService, private modalCtrl: ModalController) {}
+  constructor(private cartService: CartService, private modalCtrl: ModalController, private navCtrl: NavController,) {}
 
   ngOnInit() {
     this.products = this.cartService.getProducts();
     this.cart = this.cartService.getCart();
     this.cartItemCount = this.cartService.getCartItemCount();
   }
-
+goHome(){
+    this.navCtrl.navigateForward('/menu/home');
+  }
   addToCart(product) {
     this.cartService.addProduct(product);
     this.animateCSS('tada');

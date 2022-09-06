@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { ServiceService } from 'src/app/services/service.service';
@@ -11,22 +12,23 @@ import { ServiceService } from 'src/app/services/service.service';
 export class ProfilePage implements OnInit {
   Username: any;
 
+
   constructor( private alertCtrl: AlertController,  public loadingController: LoadingController,
     private serviceService: ServiceService) { }
 
   ngOnInit() {
-     const dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
-    this.Username=dataStorage.data.Username;
+    //  const dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
+    // this.Username=dataStorage.data.Username;
   }
 
   async logout(){
-    const loading = await this.loadingController.create({
-      message: 'Please wait...'
-    });
-    await loading.present();
-    localStorage.clear();
-    this.serviceService.logout();
-    loading.dismiss();
+    // const loading = await this.loadingController.create({
+    //   message: 'Please wait...'
+    // });
+    // await loading.present();
+    // localStorage.clear();
+    // this.serviceService.logout();
+    // loading.dismiss();
    }
 
   loadImageFromDevice(event) {

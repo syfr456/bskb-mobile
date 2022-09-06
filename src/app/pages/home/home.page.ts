@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 import { ServiceService } from '../../services/service.service';
-
 import SwiperCore, { Pagination } from 'swiper';
 
 SwiperCore.use([Pagination]);
@@ -14,6 +13,7 @@ SwiperCore.use([Pagination]);
 
 })
 export class HomePage implements OnInit {
+
   Username: any;
   constructor(
     public loadingController: LoadingController,
