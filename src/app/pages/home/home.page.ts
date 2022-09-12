@@ -10,10 +10,8 @@ SwiperCore.use([Pagination]);
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   encapsulation: ViewEncapsulation.None,
-
 })
 export class HomePage implements OnInit {
-
   Username: any;
   constructor(
     public loadingController: LoadingController,
@@ -22,21 +20,21 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     //ambil data dari localstorage
-    const dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
-    this.Username=dataStorage.data.Username;
+    // const dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
+    // this.Username=dataStorage.data.Username;
   }
 
-  async logout(){
+  async logout() {
     const loading = await this.loadingController.create({
-      message: 'Please wait...'
+      message: 'Please wait...',
     });
     await loading.present();
     localStorage.clear();
     this.serviceService.logout();
     loading.dismiss();
-   }
+  }
 
-   onSwiper([swiper]) {
+  onSwiper([swiper]) {
     console.log(swiper);
   }
   onSlideChange() {

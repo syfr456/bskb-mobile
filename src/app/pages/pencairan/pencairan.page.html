@@ -28,19 +28,10 @@
     </ion-grid> -->
   <!-- </div> -->
 
-  <div *ngIf="isQRScannerActive" color="black">
-    <div id="container">
-      <zxing-scanner
-        #scanner
-        [(device)]="currentDevice"
-        (permissionResponse)="onHasPermission($event)"
-      >
-      </zxing-scanner>
-      <ion-icon
-        style="font-size: 40px; color: white"
-        name="close-circle-outline"
-        (click)="closeCamera()"
-      ></ion-icon>
-    </div>
+  <div id="container">
+    <ion-button (click)="barcodeScanner()">Scan My Code</ion-button>
+
+    <p>{{scannedOutput}}</p>
   </div>
+  <!-- </div> -->
 </ion-content>

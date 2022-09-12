@@ -9,10 +9,13 @@ import { CartService, Product } from 'src/app/services/cart/cart.service';
   styleUrls: ['./cart-modal.page.scss'],
 })
 export class CartModalPage implements OnInit {
-
   cart: Product[] = [];
 
-  constructor(private cartService: CartService, private modalCtrl: ModalController, private alertCtrl: AlertController) { }
+  constructor(
+    private cartService: CartService,
+    private modalCtrl: ModalController,
+    private alertCtrl: AlertController
+  ) {}
 
   ngOnInit() {
     this.cart = this.cartService.getCart();
@@ -39,16 +42,15 @@ export class CartModalPage implements OnInit {
   }
 
   async checkout() {
-    // Perfom PayPal or Stripe checkout process
+    // Perfom or Stripe checkout process
 
     const alert = await this.alertCtrl.create({
       header: 'Terima Kasih',
       message: 'Mohon konfirmasi ke petugas untuk pesanan anda',
-      buttons: ['OK']
+      buttons: ['OK'],
     });
     alert.present().then(() => {
       this.modalCtrl.dismiss();
     });
   }
-
 }

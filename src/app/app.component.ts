@@ -10,11 +10,10 @@ import { Platform, NavController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-
   constructor(
     private platform: Platform,
     private navCtrl: NavController,
-    private serviceService: ServiceService,
+    private serviceService: ServiceService
   ) {
     this.initializeApp();
   }
@@ -22,17 +21,17 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       // this.splashScreen.hide();
-      this.Auth();
+      // this.Auth();
     });
   }
 
-  Auth(){
-    this.serviceService.authenticationState.subscribe((data) => {
-      if (data==true) {
-          this.navCtrl.navigateRoot(['home']);
-        } else {
-          this.navCtrl.navigateRoot(['onboarding']);
-        }
-   });
-  }
+  // Auth(){
+  //   this.serviceService.authenticationState.subscribe((data) => {
+  //     if (data==true) {
+  //         this.navCtrl.navigateRoot(['home']);
+  //       } else {
+  //         this.navCtrl.navigateRoot(['onboarding']);
+  //       }
+  //  });
+  // }
 }

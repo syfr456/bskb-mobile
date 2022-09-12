@@ -15,7 +15,7 @@ export class RegisterPage implements OnInit {
   showPasswordText: any;
   showKonfirmPasswordText: any;
 
-validations = {
+  validations = {
     Username: [
       { type: 'required', message: 'Username harus diisi.' },
       { type: 'validUsername', message: 'Username sudah terdaftar.' }
@@ -29,7 +29,7 @@ validations = {
       { type: 'required', message: 'Nama lengkap harus diisi.' },
     ],
     JenisKelamin: [
-      { type: 'required', message: 'Jenis kelamin harus diisi'},
+      { type: 'required', message: 'Jenis kelamin harus diisi' },
     ],
     NoHp: [
       { type: 'required', message: 'No Hp harus diisi.' },
@@ -63,60 +63,57 @@ validations = {
     public alertController: AlertController,
     public modalController: ModalController,
     private serviceService: ServiceService
-  ) { }
-
-  ngOnInit() {
+  ) {
     this.FormRegister = this.formBuilder.group({
-      Username:new FormControl('', Validators.compose([
+      Username: new FormControl('', Validators.compose([
         Validators.required,
       ])),
-      Password:new FormControl('', Validators.compose([
+      Password: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(5),
         // Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
       ])),
-      Nama:new FormControl('', Validators.compose([Validators.required])),
-      NoHp:new FormControl('', Validators.compose([
+      Nama: new FormControl('', Validators.compose([Validators.required])),
+      NoHp: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(10),
         Validators.maxLength(15)
       ])),
-      JenisKelamin:new FormControl('', Validators.compose([Validators.required])),
-      Nik:new FormControl('', Validators.compose([
+      JenisKelamin: new FormControl('', Validators.compose([Validators.required])),
+      Nik: new FormControl('', Validators.compose([
         Validators.required,
         Validators.maxLength(16)
       ])),
-      Rek:new FormControl('', Validators.compose([Validators.required])),
-      Ktp:new FormControl('', Validators.compose([Validators.required])),
-      Alamat:new FormControl('', Validators.compose([Validators.required])),
-
+      Rek: new FormControl('', Validators.compose([Validators.required])),
+      Ktp: new FormControl('', Validators.compose([Validators.required])),
+      Alamat: new FormControl('', Validators.compose([Validators.required])),
     });
   }
 
-  async Register(){
-    //menampilkan loading
-    const loading = await this.loadingController.create({
-      message: 'Please wait...'
-    });
-    await loading.present();
-    //panggil fungsi register di service
-    this.serviceService.RegisterApi(this.FormRegister.value,'register').subscribe(
-      data => {
-        this.ResponseRegister=data;
-        //cek apakah register berhasil atau tidak
-        if(this.ResponseRegister.status=='error'){
-          this.AlertRegister('Pendaftaran user tidak berhasil, silahkan coba lagi.');
-          loading.dismiss();
-        }else{
-           loading.dismiss();
-          this.modalController.dismiss();
-        }
-        loading.dismiss();
-      },
-      error => {
-        loading.dismiss();
-      }
-    );
+  ngOnInit() {
+
+  }
+
+  async Register() {
+    try {
+      //menampilkan loading
+      const loading = await this.loadingController.create({
+        message: 'Please wait...'
+      });
+      await loading.present();
+      debugger
+      const tokenUser: any = await new Promise(async (res, rej) => {
+        await this.serviceService.loginApi(this.FormRegister.value, 'register').subscribe(
+          result => res(result), err => rej(err)
+        )
+      })
+      debugger
+      console.log(tokenUser)
+    } catch (error) {
+      alert(error.Message)
+      // const message='Tidak ada koneksi internet. Silakan periksa koneksi Anda.';
+      // this.presentToast(message);
+    }
   }
 
   dismissRegister() {

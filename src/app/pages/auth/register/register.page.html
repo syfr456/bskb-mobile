@@ -89,7 +89,7 @@
 
     <ion-item>
       <ion-label color="primary" position="floating">Jenis Kelamin</ion-label>
-      <ion-select>
+      <ion-select formControlName="JenisKelamin">
         <ion-select-option>Laki-Laki</ion-select-option>
         <ion-select-option>Perempuan</ion-select-option>
       </ion-select>
@@ -124,7 +124,7 @@
 
     <ion-item>
       <ion-label color="primary" position="floating">Jenis Rekening</ion-label>
-      <ion-select>
+      <ion-select formControlName="Rek">
         <ion-select-option>Reguler</ion-select-option>
         <ion-select-option>Pendidikan</ion-select-option>
         <ion-select-option>Perayaan</ion-select-option>
@@ -169,6 +169,7 @@
         (change)="loadImageFromDevice($event)"
         id="file-input"
         accept="image/png, image/jpeg"
+        formControlName="Ktp"
       ></ion-input>
     </ion-item>
     <div class="error-container">
