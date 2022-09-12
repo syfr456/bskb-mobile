@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
+import { NavController, ModalController, LoadingController, ToastController, Platform, AlertController } from '@ionic/angular';
 import { RegisterPage } from '../register/register.page';
 import { ServiceService } from '../../../services/service.service';
 
@@ -14,9 +14,10 @@ import { ServiceService } from '../../../services/service.service';
 })
 export class LoginPage implements OnInit {
 
-FormLogin: FormGroup;
+  FormLogin: FormGroup;
   showPasswordText: any;
   dataLogin: any;
+  isLoading: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,39 +27,37 @@ FormLogin: FormGroup;
     private platform: Platform,
     public toastController: ToastController,
     private serviceService: ServiceService,
-  ) { }
-
-  ngOnInit() {
+    private alertController: AlertController
+  ) {
     //setting form login
-    this.FormLogin=this.formBuilder.group({
-      Username:['',Validators.required],
-      Password:['',Validators.required]
+    this.FormLogin = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
+  ngOnInit() {
+
+  }
+
   //fungsi login
-  async login(){
-    //menampilkan loading
-    const loading = await this.loadingController.create({
-      message: 'Please wait...'
-    });
-    await loading.present();
-    //memanggil fungsi loginapi yang berada di service
-    this.serviceService.loginApi(this.FormLogin.value,'login').subscribe(
-      data => {
-        this.dataLogin=data;
-        if(this.dataLogin.status=='error'){
-          const message='Nama pengguna dan kata sandi yang Anda masukkan tidak cocok. Silahkan periksa dan coba lagi.';
-          this.presentToast(message);
-        }
-        loading.dismiss();
-      },
-      error => {
-        const message='Tidak ada koneksi internet. Silakan periksa koneksi Anda.';
-        this.presentToast(message);
-        loading.dismiss();
-      }
-    );
+  async login() {
+    try {
+      await this.showLoading();
+      const tokenUser: any = await new Promise(async (res, rej) => {
+        await this.serviceService.loginApi(this.FormLogin.value, 'login').subscribe(
+          {
+            next: result => res(result),
+            error: err => rej(err.message)
+          }
+        )
+      })
+      this.hideLoading();
+    } catch (error) {
+      debugger
+      this.hideLoading();
+      await this.showAlert("Error", error)
+    }
   }
 
   //menampilkan halaman register
@@ -69,7 +68,7 @@ FormLogin: FormGroup;
   //   return await modal.present();
   // }
 
-  goToRegister(){
+  goToRegister() {
     this.navCtrl.navigateForward('/register');
   }
 
@@ -81,4 +80,29 @@ FormLogin: FormGroup;
     });
     toast.present();
   }
+  async showLoading() {
+    try {
+      this.isLoading = await this.loadingController.create({
+        message: 'Please wait...'
+      });
+      await this.isLoading.present();
+    } catch (error) {
+      await this.showAlert("Error", error.message)
+    }
+  }
+
+  async showAlert(type: string, msg: string) {
+    const alert = await this.alertController.create({
+      header: type,
+      message: msg,
+      buttons: ['Ok'],
+    });
+
+    await alert.present();
+  }
+
+  hideLoading() {
+    return this.isLoading.dismiss();
+  }
+
 }
