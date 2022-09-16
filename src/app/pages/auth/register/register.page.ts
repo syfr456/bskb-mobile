@@ -50,12 +50,12 @@ export class RegisterPage implements OnInit {
       { type: 'minlength', message: 'No Hp minimal harus 10 karakter.' },
       { type: 'maxlength', message: 'No Hp maksimal harus 15 karakter.' },
     ],
-    nik: [
-      { type: 'required', message: 'NIK harus diisi.' },
-      { type: 'maxlength', message: 'NIK maksimal harus 16 karakter.' },
-    ],
-    rek: [{ type: 'required', message: 'Jenis Rekening harus diisi.' }],
-    ktp: [{ type: 'required', message: 'Harap upload KTP anda' }],
+    // nik: [
+    //   { type: 'required', message: 'NIK harus diisi.' },
+    //   { type: 'maxlength', message: 'NIK maksimal harus 16 karakter.' },
+    // ],
+    ttl: [{ type: 'required', message: 'Jenis Rekening harus diisi.' }],
+    // ktp: [{ type: 'required', message: 'Harap upload KTP anda' }],
     alamat: [{ type: 'required', message: 'Alamat harus diisi.' }],
   };
 
@@ -73,8 +73,8 @@ export class RegisterPage implements OnInit {
     private serviceService: ServiceService
   ) {
     this.FormRegister = this.formBuilder.group({
-      Username: new FormControl('', Validators.compose([Validators.required])),
-      Password: new FormControl(
+      username: new FormControl('', Validators.compose([Validators.required])),
+      password: new FormControl(
         '',
         Validators.compose([
           Validators.required,
@@ -82,8 +82,8 @@ export class RegisterPage implements OnInit {
           // Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
         ])
       ),
-      Nama: new FormControl('', Validators.compose([Validators.required])),
-      NoHp: new FormControl(
+      nama: new FormControl('', Validators.compose([Validators.required])),
+      no_hp: new FormControl(
         '',
         Validators.compose([
           Validators.required,
@@ -91,23 +91,20 @@ export class RegisterPage implements OnInit {
           Validators.maxLength(15),
         ])
       ),
-      JenisKelamin: new FormControl(
-        '',
-        Validators.compose([Validators.required])
-      ),
-      Nik: new FormControl(
-        '',
-        Validators.compose([Validators.required, Validators.maxLength(16)])
-      ),
-      Rek: new FormControl('', Validators.compose([Validators.required])),
-      Ktp: new FormControl('', Validators.compose([Validators.required])),
-      Alamat: new FormControl('', Validators.compose([Validators.required])),
+      jk: new FormControl('', Validators.compose([Validators.required])),
+      // Nik: new FormControl(
+      //   '',
+      //   Validators.compose([Validators.required, Validators.maxLength(16)])
+      // ),
+      ttl: new FormControl('', Validators.compose([Validators.required])),
+      // Ktp: new FormControl('', Validators.compose([Validators.required])),
+      alamat: new FormControl('', Validators.compose([Validators.required])),
     });
   }
 
   ngOnInit() {}
 
-  async login() {
+  async register() {
     try {
       await this.showLoading();
       const tokenUser: any = await new Promise(async (res, rej) => {
