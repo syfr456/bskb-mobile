@@ -109,7 +109,7 @@ export class RegisterPage implements OnInit {
       await this.showLoading();
       const tokenUser: any = await new Promise(async (res, rej) => {
         await this.serviceService
-          .loginApi(this.FormRegister.value, 'login')
+          .RegisterApi(this.FormRegister.value, 'register')
           .subscribe({
             next: (result) => res(result),
             error: (err) => rej(err.message),

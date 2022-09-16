@@ -96,7 +96,7 @@ export class ServiceService {
     const options = {
       headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' }),
     };
-    return this.http.post(`${this.API_URL}/api/${type}`, credentials, {
+    return this.http.post(`${this.API_URL}/api/register`, credentials, {
       ...options,
       responseType: 'text',
     });
