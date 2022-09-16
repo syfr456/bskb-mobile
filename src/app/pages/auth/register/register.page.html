@@ -10,15 +10,15 @@
       <ion-label color="primary" position="floating">Username</ion-label>
       <ion-input
         type="text"
-        name="Username"
-        formControlName="Username"
+        name="username"
+        formControlName="username"
       ></ion-input>
     </ion-item>
     <div class="error-container">
-      <ng-container *ngFor="let validation of validations.Username">
+      <ng-container *ngFor="let validation of validations.username">
         <div
           class="error-message"
-          *ngIf="FormRegister.get('Username').hasError(validation.type) && (FormRegister.get('Username').dirty || FormRegister.get('Username').touched)"
+          *ngIf="FormRegister.get('username').hasError(validation.type) && (FormRegister.get('Username').dirty || FormRegister.get('Username').touched)"
         >
           <span>{{ validation.message }}</span>
           <br /><br />
@@ -30,14 +30,14 @@
       <ion-label color="primary" position="floating">Password</ion-label>
       <ion-input
         type="text"
-        name="Password"
-        formControlName="Password"
+        name="password"
+        formControlName="password"
         *ngIf="showPasswordText"
       ></ion-input>
       <ion-input
         type="password"
-        name="Password"
-        formControlName="Password"
+        name="password"
+        formControlName="password"
         *ngIf="!showPasswordText"
       ></ion-input>
       <ion-icon
@@ -60,10 +60,10 @@
       ></ion-icon>
     </ion-item>
     <div class="error-container">
-      <ng-container *ngFor="let validation of validations.Password">
+      <ng-container *ngFor="let validation of validations.password">
         <div
           class="error-message"
-          *ngIf="FormRegister.get('Password').hasError(validation.type) && (FormRegister.get('Password').dirty || FormRegister.get('Password').touched)"
+          *ngIf="FormRegister.get('password').hasError(validation.type) && (FormRegister.get('Password').dirty || FormRegister.get('Password').touched)"
         >
           <span>{{ validation.message }}</span>
           <br /><br />
@@ -73,13 +73,13 @@
 
     <ion-item>
       <ion-label color="primary" position="floating">Nama</ion-label>
-      <ion-input type="text" name="Nama" formControlName="Nama"></ion-input>
+      <ion-input type="text" name="nama" formControlName="nama"></ion-input>
     </ion-item>
     <div class="error-container">
-      <ng-container *ngFor="let validation of validations.Nama">
+      <ng-container *ngFor="let validation of validations.nama">
         <div
           class="error-message"
-          *ngIf="FormRegister.get('Nama').hasError(validation.type) && (FormRegister.get('Nama').dirty || FormRegister.get('Nama').touched)"
+          *ngIf="FormRegister.get('nama').hasError(validation.type) && (FormRegister.get('Nama').dirty || FormRegister.get('Nama').touched)"
         >
           <span>{{ validation.message }}</span>
           <br /><br />
@@ -89,16 +89,16 @@
 
     <ion-item>
       <ion-label color="primary" position="floating">Jenis Kelamin</ion-label>
-      <ion-select formControlName="JenisKelamin">
+      <ion-select formControlName="jk">
         <ion-select-option>Laki-Laki</ion-select-option>
         <ion-select-option>Perempuan</ion-select-option>
       </ion-select>
     </ion-item>
     <div class="error-container">
-      <ng-container *ngFor="let validation of validations.JenisKelamin">
+      <ng-container *ngFor="let validation of validations.jk">
         <div
           class="error-message"
-          *ngIf="FormRegister.get('JenisKelamin').hasError(validation.type) && (FormRegister.get('JenisKelamin').dirty || FormRegister.get('JenisKelamin').touched)"
+          *ngIf="FormRegister.get('jk').hasError(validation.type) && (FormRegister.get('JenisKelamin').dirty || FormRegister.get('JenisKelamin').touched)"
         >
           <span>{{ validation.message }}</span>
           <br /><br />
@@ -108,13 +108,13 @@
 
     <ion-item>
       <ion-label color="primary" position="floating">No. Hp</ion-label>
-      <ion-input type="text" name="NoHp" formControlName="NoHp"></ion-input>
+      <ion-input type="text" name="no_hp" formControlName="no_hp"></ion-input>
     </ion-item>
     <div class="error-container">
-      <ng-container *ngFor="let validation of validations.NoHp">
+      <ng-container *ngFor="let validation of validations.no_hp">
         <div
           class="error-message"
-          *ngIf="FormRegister.get('NoHp').hasError(validation.type) && (FormRegister.get('NoHp').dirty || FormRegister.get('NoHp').touched)"
+          *ngIf="FormRegister.get('no_hp').hasError(validation.type) && (FormRegister.get('NoHp').dirty || FormRegister.get('NoHp').touched)"
         >
           <span>{{ validation.message }}</span>
           <br /><br />
@@ -124,7 +124,7 @@
 
     <ion-item>
       <ion-label color="primary" position="floating">Jenis Rekening</ion-label>
-      <ion-select formControlName="Rek">
+      <ion-select formControlName="rek">
         <ion-select-option>Reguler</ion-select-option>
         <ion-select-option>Pendidikan</ion-select-option>
         <ion-select-option>Perayaan</ion-select-option>
@@ -132,10 +132,10 @@
       </ion-select>
     </ion-item>
     <div class="error-container">
-      <ng-container *ngFor="let validation of validations.Rek">
+      <ng-container *ngFor="let validation of validations.rek">
         <div
           class="error-message"
-          *ngIf="FormRegister.get('Rek').hasError(validation.type) && (FormRegister.get('Rek').dirty || FormRegister.get('Rek').touched)"
+          *ngIf="FormRegister.get('rek').hasError(validation.type) && (FormRegister.get('Rek').dirty || FormRegister.get('Rek').touched)"
         >
           <span>{{ validation.message }}</span>
           <br /><br />
@@ -147,13 +147,13 @@
       <ion-label color="primary" position="floating"
         >Nomor Induk Keluarga</ion-label
       >
-      <ion-input type="text" name="Nik" formControlName="Nik"></ion-input>
+      <ion-input type="text" name="nik" formControlName="nik"></ion-input>
     </ion-item>
     <div class="error-container">
-      <ng-container *ngFor="let validation of validations.Nik">
+      <ng-container *ngFor="let validation of validations.nik">
         <div
           class="error-message"
-          *ngIf="FormRegister.get('Nik').hasError(validation.type) && (FormRegister.get('Nik').dirty || FormRegister.get('Nik').touched)"
+          *ngIf="FormRegister.get('nik').hasError(validation.type) && (FormRegister.get('Nik').dirty || FormRegister.get('Nik').touched)"
         >
           <span>{{ validation.message }}</span>
           <br /><br />
@@ -169,14 +169,14 @@
         (change)="loadImageFromDevice($event)"
         id="file-input"
         accept="image/png, image/jpeg"
-        formControlName="Ktp"
+        formControlName="ktp"
       ></ion-input>
     </ion-item>
     <div class="error-container">
-      <ng-container *ngFor="let validation of validations.Ktp">
+      <ng-container *ngFor="let validation of validations.ktp">
         <div
           class="error-message"
-          *ngIf="FormRegister.get('Ktp').hasError(validation.type) && (FormRegister.get('Ktp').dirty || FormRegister.get('Ktp').touched)"
+          *ngIf="FormRegister.get('ktp').hasError(validation.type) && (FormRegister.get('Ktp').dirty || FormRegister.get('Ktp').touched)"
         >
           <span>{{ validation.message }}</span>
           <br /><br />
@@ -186,13 +186,13 @@
 
     <ion-item>
       <ion-label color="primary" position="floating">Alamat</ion-label>
-      <ion-input type="text" name="Alamat" formControlName="Alamat"></ion-input>
+      <ion-input type="text" name="alamat" formControlName="alamat"></ion-input>
     </ion-item>
     <div class="error-container">
-      <ng-container *ngFor="let validation of validations.Alamat">
+      <ng-container *ngFor="let validation of validations.alamat">
         <div
           class="error-message"
-          *ngIf="FormRegister.get('Alamat').hasError(validation.type) && (FormRegister.get('Alamat').dirty || FormRegister.get('Alamat').touched)"
+          *ngIf="FormRegister.get('alamat').hasError(validation.type) && (FormRegister.get('Alamat').dirty || FormRegister.get('Alamat').touched)"
         >
           <span>{{ validation.message }}</span>
           <br /><br />

@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap, timeout } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { Platform, ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,8 @@ export class ServiceService {
   constructor(
     private http: HttpClient,
     private platform: Platform,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private router: Router
   ) {
     this.platform.ready().then(() => {
       this.checkToken();
@@ -102,6 +104,9 @@ export class ServiceService {
 
   //logout
   logout() {
-    this.authenticationState.next(false);
+    localStorage.clear();
+    sessionStorage.clear();
+    this.router.navigate(['/auth/login']);
+    location.reload();
   }
 }

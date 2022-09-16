@@ -20,7 +20,6 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // this.splashScreen.hide();
       this.Auth();
     });
   }

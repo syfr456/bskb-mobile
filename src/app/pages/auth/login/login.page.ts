@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable eqeqeq */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
@@ -17,8 +18,8 @@ import {
   Platform,
   AlertController,
 } from '@ionic/angular';
-import { RegisterPage } from '../register/register.page';
 import { ServiceService } from '../../../services/service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -27,8 +28,6 @@ import { ServiceService } from '../../../services/service.service';
 })
 export class LoginPage implements OnInit {
   FormLogin: FormGroup;
-  showPasswordText: any;
-  dataLogin: any;
   isLoading: any;
 
   constructor(
@@ -39,6 +38,7 @@ export class LoginPage implements OnInit {
     private platform: Platform,
     public toastController: ToastController,
     private serviceService: ServiceService,
+    private router: Router,
     private alertController: AlertController
   ) {
     //setting form login
@@ -48,9 +48,13 @@ export class LoginPage implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (sessionStorage.getItem('islogin')) {
+      this.router.navigate(['/menu/home']);
+    }
+  }
 
-  //fungsi login
+  // fungsi login
   async login() {
     try {
       await this.showLoading();
@@ -62,20 +66,14 @@ export class LoginPage implements OnInit {
             error: (err) => rej(err.message),
           });
       });
+      await localStorage.setItem('islogin', tokenUser.data.username);
+      await this.router.navigate(['/menu/home']);
       this.hideLoading();
     } catch (error) {
       this.hideLoading();
       await this.showAlert('Error', error);
     }
   }
-
-  //menampilkan halaman register
-  // async registerModal() {
-  //   const modal = await this.modalController.create({
-  //     component: RegisterPage,
-  //   });
-  //   return await modal.present();
-  // }
 
   goToRegister() {
     this.navCtrl.navigateForward('/register');
