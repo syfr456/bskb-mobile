@@ -22,13 +22,7 @@ export class ProfilePage implements OnInit {
   }
 
   async logout(){
-    // const loading = await this.loadingController.create({
-    //   message: 'Please wait...'
-    // });
-    // await loading.present();
-    // localStorage.clear();
-    // this.serviceService.logout();
-    // loading.dismiss();
+    this.serviceService.logout();
    }
 
   loadImageFromDevice(event) {
