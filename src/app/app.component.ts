@@ -15,22 +15,22 @@ export class AppComponent {
     private navCtrl: NavController,
     private serviceService: ServiceService
   ) {
-    this.initializeApp();
+    // this.initializeApp();
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.Auth();
-    });
-  }
+  // initializeApp() {
+  //   this.platform.ready().then(() => {
+  //     this.Auth();
+  //   });
+  // }
 
-  Auth() {
-    this.serviceService.authenticationState.subscribe((data) => {
-      if (data == true) {
-        this.navCtrl.navigateRoot(['home']);
-      } else {
-        this.navCtrl.navigateRoot(['onboarding']);
-      }
-    });
-  }
+  // Auth() {
+  //   this.serviceService.authenticationState.subscribe((data) => {
+  //     if (data == true) {
+  //       this.navCtrl.navigateRoot(['home']);
+  //     } else {
+  //       this.navCtrl.navigateRoot(['onboarding']);
+  //     }
+  //   });
+  // }
 }

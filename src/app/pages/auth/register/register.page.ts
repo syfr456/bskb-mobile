@@ -30,10 +30,10 @@ export class RegisterPage implements OnInit {
   showKonfirmPasswordText: any;
 
   validations = {
-    username: [
-      { type: 'required', message: 'Username harus diisi.' },
-      { type: 'validUsername', message: 'Username sudah terdaftar.' },
-    ],
+    nama: [{ type: 'required', message: 'Nama lengkap harus diisi.' }],
+    email: [{ type: 'required', message: 'Email harus diisi.' }],
+    ttl: [{ type: 'required', message: 'Jenis Rekening harus diisi.' }],
+    alamat: [{ type: 'required', message: 'Alamat harus diisi.' }],
     password: [
       { type: 'required', message: 'Password harus diisi.' },
       { type: 'minlength', message: 'Password minimal harus 5 karakter.' },
@@ -42,21 +42,7 @@ export class RegisterPage implements OnInit {
         message:
           'Password harus mengandung huruf (baik huruf besar dan kecil) dan angka.',
       },
-    ],
-    nama: [{ type: 'required', message: 'Nama lengkap harus diisi.' }],
-    jk: [{ type: 'required', message: 'Jenis kelamin harus diisi' }],
-    no_hp: [
-      { type: 'required', message: 'No Hp harus diisi.' },
-      { type: 'minlength', message: 'No Hp minimal harus 10 karakter.' },
-      { type: 'maxlength', message: 'No Hp maksimal harus 15 karakter.' },
-    ],
-    // nik: [
-    //   { type: 'required', message: 'NIK harus diisi.' },
-    //   { type: 'maxlength', message: 'NIK maksimal harus 16 karakter.' },
-    // ],
-    ttl: [{ type: 'required', message: 'Jenis Rekening harus diisi.' }],
-    // ktp: [{ type: 'required', message: 'Harap upload KTP anda' }],
-    alamat: [{ type: 'required', message: 'Alamat harus diisi.' }],
+    ]
   };
 
   FormRegister: FormGroup;
@@ -73,7 +59,10 @@ export class RegisterPage implements OnInit {
     private serviceService: ServiceService
   ) {
     this.FormRegister = this.formBuilder.group({
-      username: new FormControl('', Validators.compose([Validators.required])),
+      nama: new FormControl('', Validators.compose([Validators.required])),
+      email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
+      ttl: new FormControl('', Validators.compose([Validators.required])),
+      alamat: new FormControl('', Validators.compose([Validators.required])),
       password: new FormControl(
         '',
         Validators.compose([
@@ -81,24 +70,7 @@ export class RegisterPage implements OnInit {
           Validators.minLength(5),
           // Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
         ])
-      ),
-      nama: new FormControl('', Validators.compose([Validators.required])),
-      no_hp: new FormControl(
-        '',
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(10),
-          Validators.maxLength(15),
-        ])
-      ),
-      jk: new FormControl('', Validators.compose([Validators.required])),
-      // Nik: new FormControl(
-      //   '',
-      //   Validators.compose([Validators.required, Validators.maxLength(16)])
-      // ),
-      ttl: new FormControl('', Validators.compose([Validators.required])),
-      // Ktp: new FormControl('', Validators.compose([Validators.required])),
-      alamat: new FormControl('', Validators.compose([Validators.required])),
+      )
     });
   }
 
@@ -106,10 +78,11 @@ export class RegisterPage implements OnInit {
 
   async register() {
     try {
+      debugger
       await this.showLoading();
       const tokenUser: any = await new Promise(async (res, rej) => {
         await this.serviceService
-          .loginApi(this.FormRegister.value, 'login')
+          .RegisterApi(this.FormRegister.value, 'register')
           .subscribe({
             next: (result) => res(result),
             error: (err) => rej(err.message),

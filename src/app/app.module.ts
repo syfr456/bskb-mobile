@@ -8,8 +8,6 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ZBar } from '@ionic-native/zbar/ngx';
-
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterPageModule } from './pages/auth/register/register.module';
 import { LoginPageModule } from './pages/auth/login/login.module';
@@ -26,7 +24,6 @@ import { LoginPageModule } from './pages/auth/login/login.module';
     LoginPageModule,
   ],
   providers: [
-    ZBar,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent],
