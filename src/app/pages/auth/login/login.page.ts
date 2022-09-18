@@ -3,11 +3,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import {
-  FormControl,
-  FormGroupDirective,
   FormBuilder,
   FormGroup,
-  NgForm,
   Validators,
 } from '@angular/forms';
 import {
@@ -15,7 +12,6 @@ import {
   ModalController,
   LoadingController,
   ToastController,
-  Platform,
   AlertController,
 } from '@ionic/angular';
 import { ServiceService } from '../../../services/service.service';
@@ -35,7 +31,6 @@ export class LoginPage implements OnInit {
     private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,
-    private platform: Platform,
     public toastController: ToastController,
     private serviceService: ServiceService,
     private router: Router,
@@ -49,7 +44,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    if (sessionStorage.getItem('islogin')) {
+    if (localStorage.getItem('islogin')) {
       this.router.navigate(['/menu/home']);
     }
   }
@@ -66,7 +61,7 @@ export class LoginPage implements OnInit {
             error: (err) => rej(err.message),
           });
       });
-      await localStorage.setItem('islogin', tokenUser.data.username);
+      await localStorage.setItem('islogin', JSON.parse(tokenUser).data.username);
       await this.router.navigate(['/menu/home']);
       this.hideLoading();
     } catch (error) {

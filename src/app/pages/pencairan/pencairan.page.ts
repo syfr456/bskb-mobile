@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 // import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
-import { ZBarOptions, ZBar } from '@ionic-native/zbar/ngx';
 
 @Component({
   selector: 'app-pencairan',
@@ -15,7 +14,7 @@ export class PencairanPage implements OnInit {
 
   optionZbar: any;
   scannedOutput: any;
-  constructor(private zbarPlugin: ZBar) {
+  constructor() {
     this.optionZbar = {
       flash: 'off',
       drawSight: false,
@@ -23,15 +22,15 @@ export class PencairanPage implements OnInit {
   }
 
   barcodeScanner() {
-    this.zbarPlugin
-      .scan(this.optionZbar)
-      .then((respone) => {
-        console.log(respone);
-        this.scannedOutput = respone;
-      })
-      .catch((error) => {
-        alert(error);
-      });
+    // this.zbarPlugin
+    //   .scan(this.optionZbar)
+    //   .then((respone) => {
+    //     console.log(respone);
+    //     this.scannedOutput = respone;
+    //   })
+    //   .catch((error) => {
+    //     alert(error);
+    //   });
   }
 
   ngOnInit() {}
