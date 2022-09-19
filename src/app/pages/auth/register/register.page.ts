@@ -3,17 +3,14 @@
 import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
-  FormGroupDirective,
   FormBuilder,
   FormGroup,
-  NgForm,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
-  NavController,
   LoadingController,
   ToastController,
-  Platform,
   ModalController,
   AlertController,
 } from '@ionic/angular';
@@ -31,8 +28,9 @@ export class RegisterPage implements OnInit {
 
   validations = {
     nama: [{ type: 'required', message: 'Nama lengkap harus diisi.' }],
+    username: [{ type: 'required', message: 'Username harus diisi.' }],
     email: [{ type: 'required', message: 'Email harus diisi.' }],
-    ttl: [{ type: 'required', message: 'Jenis Rekening harus diisi.' }],
+    ttl: [{ type: 'required', message: 'Tempat Tanggal Lahir harus diisi.' }],
     alamat: [{ type: 'required', message: 'Alamat harus diisi.' }],
     password: [
       { type: 'required', message: 'Password harus diisi.' },
@@ -50,16 +48,16 @@ export class RegisterPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private navCtrl: NavController,
     public loadingController: LoadingController,
-    private platform: Platform,
     public toastController: ToastController,
     public alertController: AlertController,
     public modalController: ModalController,
-    private serviceService: ServiceService
+    private serviceService: ServiceService,
+    private router: Router
   ) {
     this.FormRegister = this.formBuilder.group({
       nama: new FormControl('', Validators.compose([Validators.required])),
+      username: new FormControl('', Validators.compose([Validators.required])),
       email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
       ttl: new FormControl('', Validators.compose([Validators.required])),
       alamat: new FormControl('', Validators.compose([Validators.required])),
@@ -80,7 +78,7 @@ export class RegisterPage implements OnInit {
     try {
       debugger
       await this.showLoading();
-      const tokenUser: any = await new Promise(async (res, rej) => {
+      await new Promise(async (res, rej) => {
         await this.serviceService
           .RegisterApi(this.FormRegister.value, 'register')
           .subscribe({
@@ -88,12 +86,14 @@ export class RegisterPage implements OnInit {
             error: (err) => rej(err.message),
           });
       });
+      this.router.navigate(['login']);
+      this.showAlert("Success", "Pendaftaran yang anda lakukan berhasil.. silahkan untuk login!!")
       this.hideLoading();
     } catch (error) {
       this.hideLoading();
       await this.showAlert('Error', error);
     }
-  }
+  }k
 
   async showLoading() {
     try {

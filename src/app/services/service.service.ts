@@ -32,11 +32,12 @@ export class ServiceService {
   //register
   RegisterApi(credentials: RegisterModel, type) {
     const form = new FormData();
-    form.append(credentials.nama, credentials.nama);
-    form.append(credentials.email, credentials.email);
-    form.append(credentials.ttl, credentials.ttl);
-    form.append(credentials.password, credentials.password);
-    form.append(credentials.alamat, credentials.alamat);
+    form.append("nama", credentials.nama);
+    form.append("username", credentials.username);
+    form.append("email", credentials.email);
+    form.append("ttl", credentials.ttl);
+    form.append("password", credentials.password);
+    form.append("alamat", credentials.alamat);
     return this.http.post(`${this.API_URL}/api/${type}`, form, {
       responseType: 'text',
     });

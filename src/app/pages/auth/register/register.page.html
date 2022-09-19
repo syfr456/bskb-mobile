@@ -21,6 +21,20 @@
     </ion-item>
 
     <ion-item>
+      <ion-label color="primary" position="floating">Username</ion-label>
+      <ion-input type="text" name="username" formControlName="username"></ion-input>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.username">
+          <div class="error-message"
+            *ngIf="FormRegister.get('username').hasError(validation.type) && (FormRegister.get('username').dirty || FormRegister.get('username').touched)">
+            <span>{{ validation.message }}</span>
+            <br /><br />
+          </div>
+        </ng-container>
+      </div>
+    </ion-item>
+
+    <ion-item>
       <ion-label color="primary" position="floating">Email</ion-label>
       <ion-input type="text" name="email" formControlName="email"></ion-input>
       <div class="error-container">
