@@ -1,8 +1,7 @@
 <ion-content class="ion-padding">
   <ion-grid>
     <ion-row>
-      <ion-col
-        ><br />
+      <ion-col><br />
         <div class="card boxContainer">
           <div class="head">
             <h1>LOGIN</h1>
@@ -13,61 +12,28 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <form [formGroup]="FormLogin" (ngSubmit)="login()">
+  <form [formGroup]="FormLogin">
     <ion-item>
       <div color="dark" slot="start">
         <ion-icon slot="icon-only" name="person"></ion-icon>
       </div>
-      <ion-input
-        type="text"
-        name="Username"
-        placeholder="Username"
-        formControlName="username"
-      ></ion-input>
+      <ion-input type="text" name="Username" placeholder="Username" formControlName="username"></ion-input>
     </ion-item>
     <ion-item>
       <div color="dark" slot="start">
         <ion-icon slot="icon-only" name="lock-closed"></ion-icon>
       </div>
-      <ion-input
-        type="text"
-        name="password"
-        placeholder="Password"
-        formControlName="password"
-        *ngIf="showPasswordText"
-      ></ion-input>
-      <ion-input
-        type="password"
-        name="password"
-        placeholder="Password"
-        formControlName="password"
-        *ngIf="!showPasswordText"
-      ></ion-input>
-      <ion-icon
-        color="dark"
-        slot="icon-only"
-        (click)="showPasswordText = !showPasswordText"
-        *ngIf="showPasswordText"
-        name="eye"
-        slot="end"
-        class="ion-align-self-center"
-      ></ion-icon>
-      <ion-icon
-        color="dark"
-        slot="icon-only"
-        (click)="showPasswordText = !showPasswordText"
-        *ngIf="!showPasswordText"
-        name="eye-off"
-        slot="end"
-        class="ion-align-self-center"
-      ></ion-icon>
+      <ion-input (keyup.enter)="login()" type="text" name="password" placeholder="Password" formControlName="password" *ngIf="showPasswordText">
+      </ion-input>
+      <ion-input type="password" name="password" placeholder="Password" formControlName="password"
+        *ngIf="!showPasswordText" (keyup.enter)="login()"></ion-input>
+      <ion-icon color="dark" slot="icon-only" (click)="showPasswordText = !showPasswordText" *ngIf="showPasswordText"
+        name="eye" slot="end" class="ion-align-self-center"></ion-icon>
+      <ion-icon color="dark" slot="icon-only" (click)="showPasswordText = !showPasswordText" *ngIf="!showPasswordText"
+        name="eye-off" slot="end" class="ion-align-self-center"></ion-icon>
     </ion-item>
-    <ion-button type="submit" expand="block" [disabled]="!FormLogin.valid"
-      >Login</ion-button
-    >
   </form>
+  <ion-button [disabled]="!FormLogin.valid" (click)="login()">Login</ion-button>
   <p class="ion-text-center">Sudah punya akun?</p>
-  <ion-button expand="block" color="danger" (click)="goToRegister()"
-    >Register</ion-button
-  >
+  <ion-button color="danger" (click)="goToRegister()">Register</ion-button>
 </ion-content>
