@@ -1,0 +1,30 @@
+.support {
+    // --background:white !important;
+    input[type='file'] {
+        display: none;
+    }
+    ion-label {
+        font-weight: 600;
+    }
+    .upload-file {
+        border: dashed 1px rgb(0 96 100 / 50%);
+        border-radius: 5px;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        ion-label {
+            color: var(--ion-color-primary);
+            font-size: 14px;
+        }
+        ion-button {
+            display: block;
+            margin-left: auto;
+            ion-icon {
+                margin-right: 5px;
+            }
+        }
+    }
+    ion-row {
+        margin-bottom: 1.5em;
+    }
+}

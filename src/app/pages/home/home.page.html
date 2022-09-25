@@ -1,4 +1,4 @@
-<ion-content class="ion-content">
+<ion-content>
   <ion-card class="swip">
     <swiper [pagination]="false" class="swipers">
       <ng-template swiperSlide>
@@ -9,7 +9,7 @@
     </swiper>
   </ion-card>
 
-  <div class="card">
+  <ion-card>
     <div class="flex">
       <div>
         <ion-button class="jmpt" routerLink="/penjemputan">
@@ -58,19 +58,15 @@
         </p>
       </div>
     </div>
-  </div>
+  </ion-card>
 
   <div class="rt">
     <b>Riwayat Transaksi</b>
-    <!-- <ion-nav root="nav-see">Lihat Semua</ion-nav> -->
     <a class="link" routerLink="/log" click="">Lihat Semua</a>
   </div>
   <ion-card class="log">
     <ion-infinite-scroll threshold="100px" id="infinite-scroll">
-      <ion-infinite-scroll-content
-        loading-spinner="bubbles"
-        loading-text="Loading more data..."
-      >
+      <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data...">
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </ion-card>

@@ -25,7 +25,11 @@ const routes: Routes = [
       {
         path: 'pencairan',
         loadChildren: () => import('../pencairan/pencairan.module').then(m => m.PencairanPageModule)
-      }
+      },
+      {
+        path: 'account',
+        loadChildren: () => import('../account/account.module').then( m => m.AccountPageModule)
+      },
     ]
   }
 ];

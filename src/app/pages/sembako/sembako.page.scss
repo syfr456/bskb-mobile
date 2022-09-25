@@ -1,32 +1,28 @@
-ion-toolbar {
-    color: #a6ce39;
-    font-family: 'Poppins', sans-serif;
-}
-
-div{
+div {
     margin: 0;
 }
-ion-fab-button{
+
+ion-fab-button {
     width: 50px;
     height: 50px;
     --background: #1D8A4D;
-    
+
 }
 
 ion-title {
     font-weight: bold;
 }
 
-a{
+a {
     color: black;
 }
 
-.cart-icon{
+.cart-icon {
     font-size: 40px;
     // width: auto;
 }
 
-.cart-length{
+.cart-length {
     font-family: 'Poppins', sans-serif;
     position: fixed;
     margin-bottom: 3px;
@@ -36,7 +32,7 @@ a{
     color: #1D8A4D;
 }
 
-ion-card{
+ion-card {
     margin: 20px;
     width: auto;
     height: 100px;
@@ -45,13 +41,13 @@ ion-card{
     border-radius: 0;
 }
 
-ion-card-title{
+ion-card-title {
     margin: 10px;
     font-size: 14px;
     font-weight: bold;
 }
 
-ion-button{
+ion-button {
     width: auto;
     height: 50px;
     --background: #1D8A4D;

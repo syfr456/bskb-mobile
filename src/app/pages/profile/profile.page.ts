@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
-import { AlertController, LoadingController, ModalController } from '@ionic/angular';
-import { ServiceService } from 'src/app/services/service.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertController, LoadingController } from '@ionic/angular';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,51 +12,102 @@ import { ServiceService } from 'src/app/services/service.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  Username: any;
+profile: any;
+FormProfile: FormGroup;
+isEdit: boolean = false;
+  isLoading: any;
 
 
-  constructor( private alertCtrl: AlertController,  public loadingController: LoadingController,
-    private serviceService: ServiceService) { }
-
-  ngOnInit() {
-    //  const dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
-    // this.Username=dataStorage.data.Username;
-  }
-
-  async logout(){
-    this.serviceService.logout();
+  constructor(
+    private formBuilder: FormBuilder,
+    public alertController: AlertController,
+    public loadingController: LoadingController,
+    private router: Router, private profileService: ProfileService, 
+  ) {
+    this.FormProfile = this.formBuilder.group({
+      nama: ['', Validators.compose([Validators.required])],
+      username: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required])],
+      ttl: ['', Validators.compose([Validators.required])],
+      alamat: ['', Validators.compose([Validators.required])],
+      nik: ['', Validators.compose([Validators.required])],
+      no_hp: ['', Validators.compose([Validators.required])],
+    });
    }
 
-  loadImageFromDevice(event) {
-    const file = event.target.files[0];
-
-    const reader = new FileReader();
-
-    reader.readAsArrayBuffer(file);
-
-    reader.onload = () => {
-      // get the blob of the image:
-      const blob: Blob = new Blob([new Uint8Array(reader.result as ArrayBuffer)]);
-
-      // create blobURL, such that we could use it in an image element:
-      const blobURL: string = URL.createObjectURL(blob);
-    };
-
-    reader.onerror = (error) => {
-      //handle errors
-    };
+  async ngOnInit() {
+    await this.getProfile();
+    this.FormProfile.patchValue(this.profile);
+    this.FormProfile.disable();
+    
   }
 
-  async save() {
+  async getProfile(){
+    const id = localStorage.getItem('islogin');
+    this.profile = await new Promise((res, rej) => {
+      this.profileService.getUser(id).subscribe({
+        next: result => res(result[0]),
+        error: err => rej(err.Message)
+      })
+    })
+  }
+  async doRefresh(event) {
+    await this.ngOnInit();
+    event.target.complete();
+  }
 
-    const alert = await this.alertCtrl.create({
-      // header: 'Terima Kasih',
-      message: 'Data sudah di perbarui',
-      buttons: ['OK']
+  async edit(){
+    this.FormProfile.enable();
+    this.FormProfile.controls['username'].disable();
+    this.FormProfile.controls['email'].disable();
+    this.isEdit = true;
+  }
+
+  async save(){
+    await this.updateProfile(this.FormProfile.value);
+    this.FormProfile.disable()
+  }
+
+  async updateProfile(user: any) {
+    try {
+        await this.showLoading();
+        await this.profileService.updateUser(this.profile.id, user);
+        this.showAlert('Sukses', 'Profil anda sudah diperbarui');
+        this.hideLoading();
+    } catch (error) {
+        this.showAlert('Error',error);
+        this.hideLoading();
+    }
+}
+
+async showLoading() {
+  try {
+    this.isLoading = await this.loadingController.create({
+      message: 'Please wait...',
     });
+    await this.isLoading.present();
+  } catch (error) {
+    await this.showAlert('Error', error.message);
+  }
+}
 
-    alert.present();
+async showAlert(type: string, msg: string) {
+  const alert = await this.alertController.create({
+    header: type,
+    message: msg,
+    buttons: ['Ok'],
+  });
 
+  await alert.present();
+}
+
+hideLoading() {
+  return this.isLoading.dismiss();
+}
+
+
+  back() {
+    this.router.navigate(['/menu/account']);
   }
 
 }

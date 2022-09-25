@@ -1,29 +1,25 @@
-
-
 .swipers {
     font-size: 18px;
     font-family: 'Poppins', sans-serif;
     color: #000;
-
-
 }
 
-.swip{
+.swip {
     background: url('../../../assets/image/bgrek.jpg')10%;
 }
 
-ion-card{
+ion-card {
     width: auto;
     margin: 20px;
     border-radius: 20px;
- }
+}
 
- 
 
-  .swiper-slide {
+
+.swiper-slide {
     pointer-events: none;
     font-weight: bold;
-  }
+}
 
 
 p {
@@ -32,7 +28,7 @@ p {
     line-height: 1.5;
     color: #000000;
     text-align: center;
-    
+
 }
 
 
@@ -47,11 +43,8 @@ img {
     width: 3rem;
 }
 
-.card {
+ion-card {
     margin: 1rem;
-    border-radius: 0.3rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-        rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 
     .flex {
         display: flex;
@@ -62,68 +55,73 @@ img {
     }
 }
 
-ion-button{
+ion-button {
     border-radius: 10px;
     width: 68px;
     height: 68px;
 }
 
-.withdrawl{
+.withdrawl {
     --background: rgba(46, 204, 113, 0.2);
-    
+
 }
+
 .jmpt {
     --background: rgba(243, 156, 18, 0.2);
-    
+
 }
+
 .sembako {
     --background: rgba(231, 76, 60, 0.2);
-    
+
 }
+
 .pinjaman {
     --background: rgba(120, 192, 219, 0.2);
-    
+
 }
-.sampah{
+
+.sampah {
     --background: rgba(231, 76, 60, 0.2);
 }
-.invoice{
+
+.invoice {
     --background: rgba(243, 156, 18, 0.2);
 }
-.rekening{
+
+.rekening {
     --background: rgba(46, 204, 113, 0.2);
 }
 
-div{
+div {
     margin: 10px;
 }
 
-.log{
+.log {
     margin: 20px;
     height: 50%;
     border-radius: 20px;
     font-family: "Poppins", sans-serif;
-    
+
 }
 
-.rt{
+.rt {
     font-family: "Poppins", sans-serif;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-b{
+b {
     font-size: 18px;
     font-weight: bold;
     margin: 20px;
     color: #000;
 }
-.link{
+
+.link {
     text-decoration: none;
     font-size: 14px;
     margin-right: 10px;
     color: #B9B4B4;
 }
-
-

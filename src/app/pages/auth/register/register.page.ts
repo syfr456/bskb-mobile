@@ -14,6 +14,8 @@ import {
   ModalController,
   AlertController,
 } from '@ionic/angular';
+import { RegisterModel } from 'src/app/model/register.model';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 import { ServiceService } from '../../../services/service.service';
 
 @Component({
@@ -53,6 +55,7 @@ export class RegisterPage implements OnInit {
     public alertController: AlertController,
     public modalController: ModalController,
     private serviceService: ServiceService,
+    private profileService: ProfileService,
     private router: Router
   ) {
     this.FormRegister = this.formBuilder.group({
@@ -74,26 +77,51 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {}
 
-  async register() {
+  // async register() {
+  //   try {
+  //     debugger
+  //     await this.showLoading();
+  //     await new Promise(async (res, rej) => {
+  //       await this.serviceService
+  //         .RegisterApi(this.FormRegister.value, 'register')
+  //         .subscribe({
+  //           next: (result) => res(result),
+  //           error: (err) => rej(err.message),
+  //         });
+  //     });
+  //     this.router.navigate(['login']);
+  //     this.showAlert("Success", "Pendaftaran yang anda lakukan berhasil.. silahkan untuk login!!")
+  //     this.hideLoading();
+  //   } catch (error) {
+  //     this.hideLoading();
+  //     await this.showAlert('Error', error);
+  //   }
+  // }
+
+  async register(data: RegisterModel){
     try {
-      debugger
       await this.showLoading();
-      await new Promise(async (res, rej) => {
-        await this.serviceService
-          .RegisterApi(this.FormRegister.value, 'register')
-          .subscribe({
-            next: (result) => res(result),
-            error: (err) => rej(err.message),
-          });
-      });
-      this.router.navigate(['login']);
+      await this.serviceService.register(data.email, data.password);
+      const profileModel = this.generateProfile(data)
+      await this.profileService.createUser(profileModel);
+      this.router.navigate(['/login'])
       this.showAlert("Success", "Pendaftaran yang anda lakukan berhasil.. silahkan untuk login!!")
-      this.hideLoading();
+      this.hideLoading()
     } catch (error) {
       this.hideLoading();
       await this.showAlert('Error', error);
     }
-  }k
+  }
+  generateProfile(data: RegisterModel) {
+    const profile = new RegisterModel()
+    profile.id = Number(Math.random().toPrecision(36).substring(2,4));
+    profile.username = data.username;
+    profile.nama = data.nama;
+    profile.alamat = data.alamat;
+    profile.email = data.email;
+    profile.ttl = data.ttl;
+    return profile;
+  }
 
   async showLoading() {
     try {

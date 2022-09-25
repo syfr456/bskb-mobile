@@ -2,7 +2,7 @@
   <ion-grid>
     <ion-row>
       <ion-col><br />
-        <div class="card boxContainer">
+        <div class="boxContainer">
           <div class="head">
             <h1>LOGIN</h1>
           </div>
@@ -23,7 +23,8 @@
       <div color="dark" slot="start">
         <ion-icon slot="icon-only" name="lock-closed"></ion-icon>
       </div>
-      <ion-input (keyup.enter)="login()" type="text" name="password" placeholder="Password" formControlName="password" *ngIf="showPasswordText">
+      <ion-input (keyup.enter)="login()" type="text" name="password" placeholder="Password" formControlName="password"
+        *ngIf="showPasswordText">
       </ion-input>
       <ion-input type="password" name="password" placeholder="Password" formControlName="password"
         *ngIf="!showPasswordText" (keyup.enter)="login()"></ion-input>

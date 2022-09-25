@@ -1,76 +1,72 @@
-<ion-content class="ion-padding">
-  <ion-grid>
-    <ion-row>
-      <ion-col
-        ><br />
-        <div class="head">
-          <h1>PROFILE</h1>
-        </div>
-        <br />
+<ion-toolbar class="text-color toolbar-pad" mode="ios">
+  <ion-icon (click)="back()" slot="start" size="large" name="arrow-back-circle-outline"> </ion-icon>
+  <ion-title>Profile</ion-title>
+  <ion-buttons slot="end" (click)="edit()" *ngIf="!isEdit">
+    <ion-button>Edit</ion-button>
+  </ion-buttons>
+  <ion-buttons slot="end" (click)="save()" *ngIf="isEdit">
+    <ion-button>Simpan</ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content mode="ios" style="--background:white">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid class="ion-padding">
+    <ion-row class="ion-padding">
+      <ion-col>
+        <form [formGroup]="FormProfile">
+          <ion-row>
+            <ion-col size="12" size-sm>
+              <ion-label position="stacked">Username</ion-label>
+              <ion-input placeholder="Input username" type="text" formControlName="username">
+              </ion-input>
+              <hr>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" size-sm>
+              <ion-label position="stacked">Nama</ion-label>
+              <ion-input placeholder="Input name" type="text" formControlName="nama">
+              </ion-input>
+              <hr>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" size-sm>
+              <ion-label position="stacked">Email</ion-label>
+              <ion-input placeholder="Input email" type="email" formControlName="email">
+              </ion-input>
+              <hr>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" size-sm>
+              <ion-label position="stacked">Tempat Tanggal Lahir</ion-label>
+              <ion-input placeholder="Input tempat tanggal lahir" type="text" formControlName="ttl">
+              </ion-input>
+              <hr>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" size-sm>
+              <ion-label position="stacked">No Hp</ion-label>
+              <ion-input placeholder="Input No Hp" type="text" formControlName="no_hp">
+              </ion-input>
+              <hr>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" size-sm>
+              <ion-label position="stacked">Nomer Induk Kewarganegaraan (NIK)</ion-label>
+              <ion-input placeholder="Input Nomer induk kewarganegaraan" type="text" formControlName="nik">
+              </ion-input>
+              <hr>
+            </ion-col>
+          </ion-row>
+        </form>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <div class="items">
-    <form>
-      <ion-item>
-        <ion-label color="primary" position="floating">Username</ion-label>
-        <ion-input type="text" name="Username"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label color="primary" position="floating">Password</ion-label>
-        <ion-input disabled type="text" name="Password"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label color="primary" position="floating">Nama</ion-label>
-        <ion-input disabled type="text" name="Nama"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label color="primary" position="floating">Jenis Kelamin</ion-label>
-        <ion-select disabled>
-          <ion-select-option>Laki-Laki</ion-select-option>
-          <ion-select-option>Perempuan</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label color="primary" position="floating">No. Hp</ion-label>
-        <ion-input type="text" name="NoHp"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label color="primary" position="floating"
-          >Nomor Induk Keluarga</ion-label
-        >
-        <ion-input disabled type="text" name="Nik"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label color="primary" position="floating">Upload KTP</ion-label>
-        <br />
-        <ion-input
-          type="file"
-          (change)="loadImageFromDevice($event)"
-          id="file-input"
-          accept="image/png, image/jpeg"
-        ></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label color="primary" position="floating">Alamat</ion-label>
-        <ion-input type="text" name="Alamat"></ion-input>
-      </ion-item>
-
-      <br />
-
-      <ion-button class="button" (click)="save()">Simpan</ion-button>
-    </form>
-  </div>
-
-  <ion-button class="button" color="danger" (click)="logout()"
-    >Logout</ion-button
-  >
 </ion-content>

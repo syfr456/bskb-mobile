@@ -1,0 +1,29 @@
+ion-content {
+    --background: url('../../../assets/image/bgpro.png') no-repeat 50%;
+    background-size: cover;
+    background-position: center;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+.profile-img {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12px;
+}
+
+ion-icon {
+    font-size: 20px;
+    padding-right: 15px;
+}
+
+.title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 0;
+}

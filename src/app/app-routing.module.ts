@@ -90,7 +90,15 @@ const routes: Routes = [
       import('./modals/inv-modal/inv-modal.module').then(
         (m) => m.InvModalPageModule
       ),
+  },  {
+    path: 'change-password',
+    loadChildren: () => import('./pages/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
+  {
+    path: 'dc-support',
+    loadChildren: () => import('./pages/dc-support/dc-support.module').then( m => m.DcSupportPageModule)
+  }
+
 ];
 @NgModule({
   imports: [

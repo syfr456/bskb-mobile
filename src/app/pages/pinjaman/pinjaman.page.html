@@ -9,7 +9,7 @@
 
 <ion-content>
   <div class="items">
-    <p>Mohon isi data yang diperlukan dengan benar</p>
+    <p style="text-align: center;">Mohon isi data yang diperlukan dengan benar</p>
 
     <form #form="ngForm">
       <ion-list>
@@ -17,17 +17,6 @@
           <ion-label position="stacked" floating>Nominal Peminjaman</ion-label>
           <ion-input></ion-input>
           <p>*Peminjaman sosial maksimal Rp 200.000</p>
-        </div>
-
-        <div class="sktm">
-          <ion-label position="stacked" floating>Upload Foto SKTM</ion-label>
-          <ion-input
-            type="file"
-            (change)="loadImageFromDevice($event)"
-            id="file-input"
-            accept="image/png, image/jpeg"
-            required
-          ></ion-input>
         </div>
 
         <div class="keperluan">

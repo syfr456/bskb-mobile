@@ -12,4 +12,7 @@ export class SdkPage implements OnInit {
   ngOnInit() {
   }
 
+  back() {
+    window.history.back();
+  }
 }
