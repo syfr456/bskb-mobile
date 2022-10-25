@@ -1,20 +1,20 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="tool">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/menu/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Laporan Penjualan</ion-title>
+    <ion-title class="title">Laporan Penjualan</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-card *ngFor="let i of inv">
+    <ion-card *ngFor="let i of inv" class="card">
       <ion-card-header>
-        <ion-card-title>{{i.tanggalPembelian }}</ion-card-title>
+        <ion-card-title class="ct">{{i.tanggalPembelian }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <ion-row class="ion-align-items-center">
+        <ion-row class="ion-align-items-center row">
           <ion-col>
             <a>{{ i.jenis }} </a>
           </ion-col>

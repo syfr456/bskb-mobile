@@ -30,12 +30,12 @@ export class DcSupportPage implements OnInit {
 
   async getProfile() {
     const id = localStorage.getItem('islogin');
-    this.profile = await new Promise((res, rej) => {
-      this.profileService.getUser(id).subscribe({
-        next: result => res(result[0]),
-        error: err => rej(err.Message)
-      })
-    })
+    // this.profile = await new Promise((res, rej) => {
+    //   this.profileService.getUser(id).subscribe({
+    //     next: result => res(result[0]),
+    //     error: err => rej(err.Message)
+    //   })
+    // })
   }
 
   openFile(type: string) {
@@ -60,9 +60,9 @@ export class DcSupportPage implements OnInit {
           reader.readAsDataURL(file);
         })
         if (this.type == 'KTP') {
-          await this.profileService.updateUrlKTP(this.profile.id, url);
+          // await this.profileService.updateUrlKTP(this.profile.id, url);
         } else {
-          await this.profileService.updateUrlSKTM(this.profile.id, url)
+          // await this.profileService.updateUrlSKTM(this.profile.id, url)
         }
         this.showAlert('Sukses', `${this.type} Berhasil di unggah`)
         await this.ngOnInit()

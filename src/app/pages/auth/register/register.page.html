@@ -1,4 +1,4 @@
-<ion-content class="ion-padding">
+<ion-content class="ion-padding konten">
   <div class="head">
     <ion-text>
       <h1>REGISTRASI</h1>
@@ -6,8 +6,8 @@
   </div>
 
   <form [formGroup]="FormRegister">
-    <ion-item>
-      <ion-label color="primary" position="floating">Nama</ion-label>
+    <ion-item class="item">
+      <ion-label class="label" color="primary" position="floating">Nama</ion-label>
       <ion-input type="text" name="nama" formControlName="nama"></ion-input>
       <div class="error-container">
         <ng-container *ngFor="let validation of validations.nama">
@@ -20,8 +20,8 @@
       </div>
     </ion-item>
 
-    <ion-item>
-      <ion-label color="primary" position="floating">Username</ion-label>
+    <ion-item  class="item">
+      <ion-label class="label" color="primary" position="floating">Username</ion-label>
       <ion-input type="text" name="username" formControlName="username"></ion-input>
       <div class="error-container">
         <ng-container *ngFor="let validation of validations.username">
@@ -34,8 +34,8 @@
       </div>
     </ion-item>
 
-    <ion-item>
-      <ion-label color="primary" position="floating">Email</ion-label>
+    <ion-item class="item">
+      <ion-label class="label" color="primary" position="floating">Email</ion-label>
       <ion-input type="text" name="email" formControlName="email"></ion-input>
       <div class="error-container">
         <ng-container *ngFor="let validation of validations.email">
@@ -48,8 +48,8 @@
       </div>
     </ion-item>
 
-    <ion-item>
-      <ion-label color="primary" position="floating">Tempat, Tanggal Lahir</ion-label>
+    <ion-item class="item">
+      <ion-label class="label" color="primary" position="floating">Tempat, Tanggal Lahir</ion-label>
       <ion-input type="text" name="ttl" formControlName="ttl"></ion-input>
       <div class="error-container">
         <ng-container *ngFor="let validation of validations.ttl">
@@ -62,8 +62,8 @@
       </div>
     </ion-item>
 
-    <ion-item>
-      <ion-label color="primary" position="floating">Password</ion-label>
+    <ion-item class="item">
+      <ion-label class="label" color="primary" position="floating">Password</ion-label>
       <ion-input type="text" name="password" formControlName="password" *ngIf="showPasswordText"></ion-input>
       <ion-input type="password" name="password" formControlName="password" *ngIf="!showPasswordText"></ion-input>
       <ion-icon color="dark" slot="icon-only" (click)="showPasswordText = !showPasswordText" *ngIf="showPasswordText"
@@ -81,8 +81,8 @@
       </div>
     </ion-item>
 
-    <ion-item>
-      <ion-label color="primary" position="floating">Alamat</ion-label>
+    <ion-item class="item">
+      <ion-label class="label" color="primary" position="floating">Alamat</ion-label>
       <ion-input type="text" name="alamat" formControlName="alamat"></ion-input>
       <div class="error-container">
         <ng-container *ngFor="let validation of validations.alamat">
@@ -96,7 +96,7 @@
     </ion-item>
 
     <br />
-    <ion-button expand="full" (click)="register(FormRegister.value)">Register</ion-button>
+    <ion-button class="button" expand="full" (click)="register(FormRegister.value)">Register</ion-button>
   </form>
   <p class="ion-text-center">
     Sudah punya akun?

@@ -1,37 +1,56 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="header">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/menu/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Pencairan</ion-title>
+    <ion-title class="title">Pencairan</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <!-- <div> -->
-  <div>
-    <ion-label position="stacked" floating>Sumber Dana</ion-label>
-    <ion-select>
-      <ion-select-option>Reguler</ion-select-option>
-      <ion-select-option>Pendidikan</ion-select-option>
-      <ion-select-option>Perayaan</ion-select-option>
-      <ion-select-option>Sosial</ion-select-option>
-    </ion-select>
-  </div>
+<ion-content class="konten">
+  <ion-list class="list">
+    <ion-label class="label">Sumber Dana</ion-label>
+    <ion-item>
+      <ion-select class="select" interface="popover" placeholder="Pilih Rekening">
+        <ion-select-option value="reguler">Reguler</ion-select-option>
+        <ion-select-option value="pendidikan">Pendidikan</ion-select-option>
+        <ion-select-option value="perayaan">Perayaan</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
-  <!-- <ion-grid>
-      <ion-col>
-        <ion-button (click)="startScanner(s)">Mulai Scan</ion-button>
+  <ion-grid class="grid">
+    <ion-row class="row">
+      <ion-col class="col">
+        <ion-button class="btn">{{ '100000' | currency:'Rp' }}</ion-button>
       </ion-col>
-       //(scanSuccess)="onCodeResult($event)"
+      <ion-col class="col">
+        <ion-button class="btn">{{ '200000' | currency:'Rp' }}</ion-button>
+      </ion-col>
+      <ion-col class="col">
+        <ion-button class="btn">{{ '300000' | currency:'Rp' }}</ion-button>
+      </ion-col>
+      <ion-col class="col">
+        <ion-button class="btn">{{ '400000' | currency:'Rp' }}</ion-button>
+      </ion-col>
+      <ion-col class="col">
+        <ion-button class="btn">{{ '500000' | currency:'Rp' }}</ion-button>
+      </ion-col>
+      <ion-col class="col">
+        <ion-button class="btn">{{ '600000' | currency:'Rp' }}</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-    </ion-grid> -->
-  <!-- </div> -->
-
-  <div id="container">
-    <ion-button (click)="barcodeScanner()">Scan My Code</ion-button>
-
-    <p>{{scannedOutput}}</p>
+  <div class="custom">
+    <ion-label class="label" position="stacked" floating>Masukkan Nominal Penarikan</ion-label>
+    <ion-item>
+      <ion-input placeholder="Masukan nominal yang ingin anda tarik"></ion-input>
+    </ion-item>
   </div>
-  <!-- </div> -->
+
+  <div class="btn">
+    <ion-button class="btn konfirm">Ajukan</ion-button>
+  </div>
+
 </ion-content>

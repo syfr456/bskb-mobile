@@ -1,20 +1,17 @@
-ion-toolbar {
-    color: #a6ce39;
-    font-family: 'Poppins', sans-serif;
-    text-align: justify;
-}
-ion-content{
+.header {
     font-family: 'Poppins', sans-serif;
 }
-
-ion-select {
-    border: 1px solid;
-    border-color: rgba(203, 220, 157, 0.86);
-    border-radius: 12px;
-    height: 40px;
+.konten{
+    font-family: 'Poppins', sans-serif;
+    .list{
+        margin: 20px;
+    }
+    .custom{
+        margin: 30px;
+    }
 }
 
-ion-label {
+.label {
     margin-left: 5px;
     color: #000;
     font-size: 16px;
@@ -26,29 +23,30 @@ ion-label {
     text-align: center;
 }
 
-ion-title {
+.title {
     font-weight: bold;
 }
 
-ion-grid{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.grid{
+    margin: 20px;
+    justify-content: center;
     align-items: center;
     text-align: center;
     
 }
-ion-button{
+
+.btn{
     margin: 20px;
     font-family: 'Poppins', sans-serif;
     font-size: 14x;
-    width: auto;
-    height: 45px;
+    height: 40px;
     border-radius: 12px;
     text-decoration-color: #FCFFF2;
     --background: #1D8A4D;
-}
+    justify-content: center;
+    display: flex;
+    .konfirm{
+        width: 85px;
 
-div{
-    margin: 20px;
+    }
 }

@@ -7,21 +7,21 @@ import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { RegisterModel } from '../model/register.model';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import * as moment from 'moment';
+import jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServiceService {
 
-  API_URL = 'https://bskb.000webhostapp.com';
+  API_URL = 'http://bskb.000webhostapp.com';
 
   constructor(
     private http: HttpClient,
     public toastController: ToastController,
     private router: Router,
-    private aufh: AngularFireAuth
   ) { }
-
   //login
   loginApi(credentials, type) {
     const form = new FormData();
@@ -30,10 +30,6 @@ export class ServiceService {
     return this.http.post(`${this.API_URL}/api/${type}`, form, {
       responseType: 'text',
     });
-  }
-
-  async loginFirebase(username: any, password: any) {
-    return await this.aufh.signInWithEmailAndPassword(username, password);
   }
   //register
   RegisterApi(credentials: RegisterModel, type) {
@@ -49,13 +45,16 @@ export class ServiceService {
     });
   }
 
-  async register(email: string, password: string) {
-    await this.aufh.createUserWithEmailAndPassword(email, password);
-  }
-
   //logout
   logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
   }
+
+  decodeToken() {
+    const token = localStorage.getItem('token')
+    const decoded: any = jwtDecode(token);
+    return decoded;
+  }
+  
 }

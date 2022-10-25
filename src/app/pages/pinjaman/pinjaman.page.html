@@ -3,27 +3,27 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/menu/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Pinjaman Sosial</ion-title>
+    <ion-title class="title">Pinjaman Sosial</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="konten">
   <div class="items">
     <p style="text-align: center;">Mohon isi data yang diperlukan dengan benar</p>
 
     <form #form="ngForm">
       <ion-list>
         <div class="nominal">
-          <ion-label position="stacked" floating>Nominal Peminjaman</ion-label>
-          <ion-input></ion-input>
+          <ion-label class="label" position="stacked" floating>Nominal Peminjaman</ion-label>
+          <ion-input class="input"></ion-input>
           <p>*Peminjaman sosial maksimal Rp 200.000</p>
         </div>
 
         <div class="keperluan">
-          <ion-label position="stacked" floating
+          <ion-label class="label" position="stacked" floating
             >Keperluan Peminjaman</ion-label
           >
-          <ion-select>
+          <ion-select class="pilih">
             <ion-select-option>Kesehatan</ion-select-option>
             <ion-select-option>Pendidikan</ion-select-option>
           </ion-select>
@@ -31,7 +31,7 @@
       </ion-list>
     </form>
 
-    <div class="button">
+    <div class="btn">
       <ion-button (click)="addToPinjam(pinjam)" class="log"> KIRIM </ion-button>
     </div>
   </div>

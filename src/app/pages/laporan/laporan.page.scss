@@ -1,5 +1,4 @@
-ion-toolbar {
-    color: #a6ce39;
+.tool {
     font-family: 'Poppins', sans-serif;
 }
 
@@ -7,11 +6,11 @@ div {
     margin: 0;
 }
 
-ion-row{
+.row{
     display: flex;
 }
 
-ion-title {
+.title {
     font-weight: bold;
 }
 
@@ -19,7 +18,7 @@ a {
     color: black;
 }
 
-ion-card {
+.card {
     margin: 20px;
     width: auto;
     --background: #e5eec9;
@@ -32,7 +31,7 @@ ion-card {
     color: #919794;
 }
 
-ion-card-title {
+.ct {
     margin: 10px;
     font-size: 14px;
     font-weight: bold;

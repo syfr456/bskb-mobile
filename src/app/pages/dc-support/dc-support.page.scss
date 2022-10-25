@@ -3,7 +3,7 @@
     input[type='file'] {
         display: none;
     }
-    ion-label {
+    .label {
         font-weight: 600;
     }
     .upload-file {
@@ -12,19 +12,19 @@
         padding: 0.5rem;
         display: flex;
         align-items: center;
-        ion-label {
+        .label {
             color: var(--ion-color-primary);
             font-size: 14px;
         }
-        ion-button {
+        .button {
             display: block;
             margin-left: auto;
-            ion-icon {
+            .icon {
                 margin-right: 5px;
             }
         }
     }
-    ion-row {
+    .row {
         margin-bottom: 1.5em;
     }
 }

@@ -38,12 +38,12 @@ export class BukarekPage implements OnInit {
   async getProfile() {
     try {
       const id = localStorage.getItem('islogin');
-      this.profile = await new Promise((res, rej) => {
-        this.profileService.getUser(id).subscribe({
-          next: result => res(result[0]),
-          error: err => rej(err.Message)
-        })
-      })
+      // this.profile = await new Promise((res, rej) => {
+      //   this.profileService.getUser(id).subscribe({
+      //     next: result => res(result[0]),
+      //     error: err => rej(err.Message)
+      //   })
+      // })
     } catch (error) {
       this.showAlert('Error', error)
     }

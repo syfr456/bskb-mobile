@@ -1,4 +1,4 @@
-ion-content {
+.konten {
     --background: url('../../../../assets/image/bglog.png') no-repeat 20%;
     background-size: cover;
     background-position: center;
@@ -17,18 +17,12 @@ h1{
     font-weight: bold;
 }
 
-
-ion-list {
-    background-color: transparent;
-    padding: 0;
-}
-
-ion-row {
+.row {
     align-items: center;
     text-align: center;
 }
 
-ion-item {
+.item {
     border-radius: 10px !important;
     font-size: 0.9em;
     margin-bottom: 15px;
@@ -41,11 +35,11 @@ ion-item {
     box-shadow: 4px 4px 6px -6px #222;
 }
 
-ion-input{
+.input{
     margin-left: 5px;
 }
 
-ion-button {
+.button {
     display: block;
     width: 100%;
     height: 3em;

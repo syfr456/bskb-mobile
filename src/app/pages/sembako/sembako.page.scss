@@ -9,7 +9,7 @@ ion-fab-button {
 
 }
 
-ion-title {
+.title {
     font-weight: bold;
 }
 
@@ -32,7 +32,7 @@ a {
     color: #1D8A4D;
 }
 
-ion-card {
+.card {
     margin: 20px;
     width: auto;
     height: 100px;
@@ -41,14 +41,14 @@ ion-card {
     border-radius: 0;
 }
 
-ion-card-title {
+.ct {
     margin: 10px;
     font-size: 14px;
     font-weight: bold;
 }
 
-ion-button {
-    width: auto;
+.btn {
+    width: 50px;
     height: 50px;
     --background: #1D8A4D;
     text-decoration: #1D8A4D;

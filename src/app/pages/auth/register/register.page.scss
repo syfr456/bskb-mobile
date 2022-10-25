@@ -1,4 +1,4 @@
-ion-content {
+.konten {
     --background: url('../../../../assets/image/bglog.png') no-repeat 60%;
     background-size: cover;
     background-position: center;
@@ -6,7 +6,7 @@ ion-content {
     font-family: 'Poppins', sans-serif;
 
 }
-ion-item {
+.item {
     border-radius: 10px !important;
     font-size: 0.9em;
     margin-bottom: 4px;
@@ -34,14 +34,14 @@ h1 {
 }
 
 
-ion-button {
+.button {
     margin-top: 20px;
     text-decoration-color: #FCFFF2;
     --background: #1D8A4D;
 }
 
 
-ion-label {
+.label {
     color: #B5B5B5;
 }
 

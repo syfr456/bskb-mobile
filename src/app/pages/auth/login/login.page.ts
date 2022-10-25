@@ -51,36 +51,23 @@ export class LoginPage implements OnInit {
   }
 
   // fungsi login
-  // async login() {
-  //   try {
-  //     await this.showLoading();
-  //     const tokenUser: any = await new Promise(async (res, rej) => {
-  //       await this.serviceService
-  //         .loginApi(this.FormLogin.value, 'login')
-  //         .subscribe({
-  //           next: (result) => res(result),
-  //           error: (err) => rej(err.message),
-  //         });
-  //     });
-  //     await localStorage.setItem('islogin', JSON.parse(tokenUser).data.username);
-  //     await this.router.navigate(['/menu/home']);
-  //     this.hideLoading();
-  //   } catch (error) {
-  //     this.hideLoading();
-  //     await this.showAlert('Error', error);
-  //   }
-  // }
-
   async login() {
     try {
       await this.showLoading();
-      const user: any = await this.serviceService.loginFirebase(this.FormLogin.controls['username'].value, this.FormLogin.controls['password'].value);
-      localStorage.setItem('islogin', user.user.email)
-      this.router.navigate(['/menu/home']);
-      this.hideLoading()
+      const tokenUser: any = await new Promise(async (res, rej) => {
+        await this.serviceService
+          .loginApi(this.FormLogin.value, 'login')
+          .subscribe({
+            next: (result) => res(result),
+            error: (err) => rej(err.message),
+          });
+      });
+      await localStorage.setItem('token', JSON.parse(tokenUser).token);
+      await this.router.navigate(['/menu/home']);
+      this.hideLoading();
     } catch (error) {
       this.hideLoading();
-      this.showAlert('Error', error)
+      await this.showAlert('Error', error);
     }
   }
 

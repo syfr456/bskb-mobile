@@ -6,15 +6,17 @@
 
 .swip {
     background: url('../../../assets/image/bgrek.jpg')10%;
-}
-
-ion-card {
-    width: auto;
-    margin: 20px;
+    padding: 2em;
+    margin-bottom: 20px;
     border-radius: 20px;
 }
 
-
+.card-menu {
+    width: auto;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 20px;
+}
 
 .swiper-slide {
     pointer-events: none;
@@ -22,13 +24,12 @@ ion-card {
 }
 
 
-p {
+.label {
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     line-height: 1.5;
     color: #000000;
-    text-align: center;
-
+    // text-align: center;
 }
 
 
@@ -40,71 +41,58 @@ p {
 
 img {
     border-radius: 0.3rem;
-    width: 3rem;
+    
 }
 
-ion-card {
-    margin: 1rem;
-
-    .flex {
-        display: flex;
-        justify-content: space-evenly;
-        // padding: 1rem 0.5rem;
-        text-align: center;
-
-    }
-}
-
-ion-button {
+.button {
     border-radius: 10px;
     width: 68px;
     height: 68px;
+    --padding-end: 0;
+    --padding-start: 0;
 }
 
-.withdrawl {
-    --background: rgba(46, 204, 113, 0.2);
-
-}
 
 .jmpt {
     --background: rgba(243, 156, 18, 0.2);
-
+    display: block;
+    margin: 0 auto;
 }
 
 .sembako {
     --background: rgba(231, 76, 60, 0.2);
-
+    display: block;
+    margin: 0 auto;
 }
 
 .pinjaman {
     --background: rgba(120, 192, 219, 0.2);
-
+    display: block;
+    margin: 0 auto;
 }
 
 .sampah {
     --background: rgba(231, 76, 60, 0.2);
+    display: block;
+    margin: 0 auto;
 }
 
 .invoice {
     --background: rgba(243, 156, 18, 0.2);
+    display: block;
+    margin: 0 auto;
 }
 
 .rekening {
     --background: rgba(46, 204, 113, 0.2);
+    display: block;
+    margin: 0 auto;
 }
-
-div {
-    margin: 10px;
-}
-
 .log {
-    margin: 20px;
     height: 50%;
     border-radius: 20px;
     font-family: "Poppins", sans-serif;
-
 }
-
 .rt {
     font-family: "Poppins", sans-serif;
     display: flex;

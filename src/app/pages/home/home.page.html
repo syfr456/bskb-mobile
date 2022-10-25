@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content class="ion-padding">
   <ion-card class="swip">
     <swiper [pagination]="false" class="swipers">
       <ng-template swiperSlide>
@@ -9,62 +9,59 @@
     </swiper>
   </ion-card>
 
-  <ion-card>
-    <div class="flex">
-      <div>
-        <ion-button class="jmpt" routerLink="/penjemputan">
+  <ion-card class="card-menu">
+    <ion-row class="center">
+      <ion-col size="4" style="margin-bottom:1em; text-align: center;">
+        <ion-button class="jmpt button" routerLink="/penjemputan">
           <img src="../../../assets/image/jmpt.png" alt="img" />
         </ion-button>
-        <p>Jemput<br />Sampah</p>
-      </div>
-      <div>
-        <ion-button class="sembako" routerLink="/sembako">
+        <ion-label class="label">Jemput Sampah</ion-label>
+      </ion-col>
+      <ion-col size="4" style="margin-bottom:1em; text-align: center;">
+        <ion-button class="sembako button" routerLink="/sembako">
           <img src="../../../assets/image/sembako.png" alt="img" />
         </ion-button>
-        <p>
-          Katalog<br />
-          Sembako
-        </p>
-      </div>
-
-      <div>
-        <ion-button class="pinjaman" routerLink="/pinjaman">
+        <ion-label class="label">
+          Katalog Sembako
+        </ion-label>
+      </ion-col>
+      <ion-col size="4" style="margin-bottom:1em; text-align: center;">
+        <ion-button class="pinjaman button" routerLink="/pinjaman">
           <img src="../../../assets/image/pinjam.png" alt="img" />
         </ion-button>
-        <p>Pinjaman<br />Sosial</p>
-      </div>
-    </div>
+        <ion-label class="label">Pinjaman Sosial</ion-label>
+      </ion-col>
+    </ion-row>
 
-    <div class="flex">
-      <div>
-        <ion-button class="invoice" routerLink="/laporan">
+    <ion-row class="center">
+      <ion-col size="4" style="margin-bottom:1em; text-align: center;">
+        <ion-button class="invoice button" routerLink="/laporan">
           <img src="../../../assets/image/invoice.png" alt="img" />
         </ion-button>
-        <p>Laporan<br />Penjualan</p>
-      </div>
-      <div>
-        <ion-button class="sampah" routerLink="/sampah">
+        <ion-label class="label">Laporan Penjualan</ion-label>
+      </ion-col>
+      <ion-col size="4" style="margin-bottom:1em; text-align: center;">
+        <ion-button class="sampah button" routerLink="/sampah">
           <img src="../../../assets/image/sampah.png" alt="img" />
         </ion-button>
-        <p>Katalog<br />Sampah</p>
-      </div>
-      <div>
-        <ion-button class="rekening" routerLink="/bukarek">
+        <ion-label class="label">Katalog Sampah</ion-label>
+      </ion-col>
+      <ion-col size="4" style="margin-bottom:1em; text-align: center;">
+        <ion-button class="rekening button" routerLink="/bukarek">
           <img src="../../../assets/image/tambah.png" alt="img" />
         </ion-button>
-        <p>
-          Buka<br />
-          Rekening
-        </p>
-      </div>
-    </div>
-  </ion-card>
+        <ion-label class="label">
+          Buka Rekening
+        </ion-label>
+      </ion-col>
+    </ion-row>
 
-  <div class="rt">
-    <b>Riwayat Transaksi</b>
-    <a class="link" routerLink="/log" click="">Lihat Semua</a>
-  </div>
+  </ion-card>
   <ion-card class="log">
+    <div class="rt">
+      <b>Riwayat Transaksi</b>
+      <a class="link" routerLink="/log" click="">Lihat Semua</a>
+    </div>
     <ion-infinite-scroll threshold="100px" id="infinite-scroll">
       <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data...">
       </ion-infinite-scroll-content>

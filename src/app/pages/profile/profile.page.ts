@@ -4,7 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { ProfileModel } from 'src/app/model/profile.model';
 import { ProfileService } from 'src/app/services/profile/profile.service';
+import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,9 +14,9 @@ import { ProfileService } from 'src/app/services/profile/profile.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-profile: any;
-FormProfile: FormGroup;
-isEdit: boolean = false;
+  profile: any;
+  FormProfile: FormGroup;
+  isEdit: boolean = false;
   isLoading: any;
 
 
@@ -22,7 +24,8 @@ isEdit: boolean = false;
     private formBuilder: FormBuilder,
     public alertController: AlertController,
     public loadingController: LoadingController,
-    private router: Router, private profileService: ProfileService, 
+    private service: ServiceService,
+    private router: Router, private profileService: ProfileService,
   ) {
     this.FormProfile = this.formBuilder.group({
       nama: ['', Validators.compose([Validators.required])],
@@ -33,77 +36,78 @@ isEdit: boolean = false;
       nik: ['', Validators.compose([Validators.required])],
       no_hp: ['', Validators.compose([Validators.required])],
     });
-   }
+  }
 
   async ngOnInit() {
-    await this.getProfile();
-    this.FormProfile.patchValue(this.profile);
-    this.FormProfile.disable();
-    
+    this.getProfile();
+    // this.FormProfile.patchValue(this.profile);
+    // this.FormProfile.disable();
+
   }
 
-  async getProfile(){
-    const id = localStorage.getItem('islogin');
-    this.profile = await new Promise((res, rej) => {
-      this.profileService.getUser(id).subscribe({
-        next: result => res(result[0]),
-        error: err => rej(err.Message)
-      })
-    })
+  async getProfile() {
+   try {
+    const decode = await this.service.decodeToken();
+    const profile = (await this.profileService.getProfile(decode.data.id)).subscribe(x => console.log(x))
+    console.log(this.profile)
+   } catch (error) {
+    
+   }
   }
+
   async doRefresh(event) {
     await this.ngOnInit();
     event.target.complete();
   }
 
-  async edit(){
+  async edit() {
     this.FormProfile.enable();
     this.FormProfile.controls['username'].disable();
     this.FormProfile.controls['email'].disable();
     this.isEdit = true;
   }
 
-  async save(){
+  async save() {
     await this.updateProfile(this.FormProfile.value);
     this.FormProfile.disable()
   }
 
   async updateProfile(user: any) {
     try {
-        await this.showLoading();
-        await this.profileService.updateUser(this.profile.id, user);
-        this.showAlert('Sukses', 'Profil anda sudah diperbarui');
-        this.hideLoading();
+      await this.showLoading();
+      // await this.profileService.updateUser(this.profile.id, user);
+      this.showAlert('Sukses', 'Profil anda sudah diperbarui');
+      this.hideLoading();
     } catch (error) {
-        this.showAlert('Error',error);
-        this.hideLoading();
+      this.showAlert('Error', error);
+      this.hideLoading();
     }
-}
-
-async showLoading() {
-  try {
-    this.isLoading = await this.loadingController.create({
-      message: 'Please wait...',
-    });
-    await this.isLoading.present();
-  } catch (error) {
-    await this.showAlert('Error', error.message);
   }
-}
 
-async showAlert(type: string, msg: string) {
-  const alert = await this.alertController.create({
-    header: type,
-    message: msg,
-    buttons: ['Ok'],
-  });
+  async showLoading() {
+    try {
+      this.isLoading = await this.loadingController.create({
+        message: 'Please wait...',
+      });
+      await this.isLoading.present();
+    } catch (error) {
+      await this.showAlert('Error', error.message);
+    }
+  }
 
-  await alert.present();
-}
+  async showAlert(type: string, msg: string) {
+    const alert = await this.alertController.create({
+      header: type,
+      message: msg,
+      buttons: ['Ok'],
+    });
 
-hideLoading() {
-  return this.isLoading.dismiss();
-}
+    await alert.present();
+  }
+
+  hideLoading() {
+    return this.isLoading.dismiss();
+  }
 
 
   back() {

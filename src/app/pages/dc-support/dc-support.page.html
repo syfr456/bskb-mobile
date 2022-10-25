@@ -12,35 +12,35 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-grid style="margin-top: 2em;">
-    <ion-row>
+    <ion-row class="row">
       <ion-col size="12" size-sm lines="none" style="margin-bottom: 10px;">
-        <ion-label>Kartu Tanda Penduduk (Wajib)</ion-label>
+        <ion-label class="label">Kartu Tanda Penduduk (Wajib)</ion-label>
       </ion-col>
       <ion-col class="upload-file">
-        <ion-label>
+        <ion-label class="label">
           {{(profile?.ktpUrl =='' || profile?.ktpUrl == undefined)? '':'KTP'}}
         </ion-label>
-        <ion-button *ngIf="profile?.ktpUrl != undefined" size="small" (click)="openFile('KTP')">
+        <ion-button class="button" *ngIf="profile?.ktpUrl != undefined" size="small" (click)="openFile('KTP')">
           <ion-icon name="create-outline"></ion-icon>Perbarui
         </ion-button>
-        <ion-button *ngIf="profile?.ktpUrl == undefined" size="small"
+        <ion-button class="button" *ngIf="profile?.ktpUrl == undefined" size="small"
           (click)="openFile('KTP')">
           <ion-icon name="cloud-upload-outline"></ion-icon>Unggah
         </ion-button>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row class="row">
       <ion-col size="12" size-sm lines="none" style="margin-bottom: 10px;">
-        <ion-label>Surat Keterangan Tidak Mampu (SKTM)</ion-label>
+        <ion-label class="label">Surat Keterangan Tidak Mampu (SKTM)</ion-label>
       </ion-col>
       <ion-col class="upload-file">
-        <ion-label>
+        <ion-label class="label">
           {{(profile?.sktmUrl =='' || profile?.sktmUrl == undefined)? '':'SKTM'}}
         </ion-label>
-        <ion-button *ngIf="profile?.sktmUrl != undefined" size="small" (click)="openFile('SKTM')">
+        <ion-button class="button" *ngIf="profile?.sktmUrl != undefined" size="small" (click)="openFile('SKTM')">
           <ion-icon name="create-outline"></ion-icon>Perbarui
         </ion-button>
-        <ion-button *ngIf="profile?.sktmUrl == undefined" size="small"
+        <ion-button class="button" *ngIf="profile?.sktmUrl == undefined" size="small"
           (click)="openFile('SKTM')">
           <ion-icon name="cloud-upload-outline"></ion-icon>Unggah
         </ion-button>

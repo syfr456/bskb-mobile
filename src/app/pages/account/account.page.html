@@ -1,48 +1,37 @@
-<ion-content class="ion-padding" mode="ios">
+<ion-content class="ion-padding konten">
   <ion-row class="text-center">
-    <!-- <ion-col size="12">
-      <img src="../../../assets/image/person.png" class="profile-img" />
-    </ion-col> -->
     <ion-col size="12">
       <h5><strong>{{profile?.nama}}</strong></h5>
     </ion-col>
-    <ion-col size="12" style="margin-bottom: 20px;">
+    <ion-col class="icon" size="12" style="margin-bottom: 20px;">
       {{profile?.email}}
     </ion-col>
   </ion-row>
-  <ion-card class="ion-padding default-card">
+  <ion-card class="ion-padding">
     <ion-grid>
       <ion-row>
         <ion-col size="12" size-sm>
           <ion-item lines="none" class="title"><strong>Akun Saya</strong> </ion-item>
           <ion-list>
             <ion-item button routerLink="/menu/profile">
-              <ion-icon slot="start" name="person-outline"></ion-icon>
+              <ion-icon class="icon" slot="start" name="person-outline"></ion-icon>
               <ion-label text-wrap>Profil Saya</ion-label>
             </ion-item>
             <ion-item button routerLink="/dc-support">
               <ion-icon slot="start" name="document-text-outline"></ion-icon>
               <ion-label text-wrap>Dokumen Pendukung</ion-label>
             </ion-item>
-            <!-- <ion-item button>
-              <ion-icon slot="start" name="navigate-circle-outline"></ion-icon>
-              <ion-label text-wrap>Alamat Saya</ion-label>
-            </ion-item> -->
           </ion-list>
         </ion-col>
         <ion-col size="12" size-sm>
           <ion-list>
             <ion-item lines="none" class="title"> <strong>Tentang Aplikasi</strong> </ion-item>
             <ion-item button routerLink="/sdk">
-              <ion-icon slot="start" name="receipt-outline"></ion-icon>
+              <ion-icon class="icon" slot="start" name="receipt-outline"></ion-icon>
               <ion-label text-wrap>Syarat & Ketentuan</ion-label>
             </ion-item>
-            <!-- <ion-item button>
-              <ion-icon slot="start" name="key-outline"></ion-icon>
-              <ion-label text-wrap>Ganti Kata Sandi</ion-label>
-            </ion-item> -->
             <ion-item button (click)="logout()">
-              <ion-icon slot="start" name="power-outline"></ion-icon>
+              <ion-icon class="icon" slot="start" name="power-outline"></ion-icon>
               <ion-label text-wrap>Logout</ion-label>
             </ion-item>
           </ion-list>

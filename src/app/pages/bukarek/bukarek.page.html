@@ -3,22 +3,22 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/menu/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Buka Rekening</ion-title>
+    <ion-title class="title">Buka Rekening</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding konten">
   <form [formGroup]="FormRek">
     <ion-row>
       <ion-col size="12">
-        <ion-label>Pilih Jenis Rekening</ion-label>
-        <ion-select type="text" name="Rek" formControlName="rek">
+        <ion-label class="label">Pilih Jenis Rekening</ion-label>
+        <ion-select class="pilih" type="text" name="Rek" formControlName="rek">
           <ion-select-option *ngFor="let item of jenisRekening" [value]="item?.id">{{item?.nama}}</ion-select-option>
         </ion-select>
       </ion-col>
     </ion-row>
   </form>
   <div class="button">
-    <ion-button [disabled]="!FormRek.valid" (click)="save()">Kirim</ion-button>
+    <ion-button class="button" [disabled]="!FormRek.valid" (click)="save()">Kirim</ion-button>
   </div>
 </ion-content>

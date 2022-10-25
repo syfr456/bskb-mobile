@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="tool">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/menu/home"></ion-back-button>
     </ion-buttons>
@@ -9,9 +9,9 @@
 
 <ion-content>
   <ion-list>
-    <ion-card *ngFor="let t of trash">
+    <ion-card class="card" *ngFor="let t of trash">
       <ion-card-header>
-        <ion-card-title>{{ t.name }}</ion-card-title>
+        <ion-card-title class="ct">{{ t.name }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <ion-col size="8">

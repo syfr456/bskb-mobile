@@ -1,8 +1,7 @@
-ion-content {
-    --background: url('../../../assets/image/bgpro.png') no-repeat 50%;
-    background-size: cover;
+.konten {
+    --background: url('../../../assets/image/bgpro.png') no-repeat;
+    background-size: contain;
     background-position: center;
-
     font-family: 'Poppins', sans-serif;
 }
 
@@ -16,7 +15,7 @@ ion-content {
     margin-top: 12px;
 }
 
-ion-icon {
+.icon {
     font-size: 20px;
     padding-right: 15px;
 }
