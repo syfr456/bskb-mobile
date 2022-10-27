@@ -9,48 +9,35 @@ import { RegisterModel } from '../model/register.model';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import * as moment from 'moment';
 import jwtDecode from 'jwt-decode';
+import { LoginModel } from '../model/login.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServiceService {
 
-  API_URL = 'http://bskb.000webhostapp.com';
+  API_URL = 'http://localhost:5000';
 
   constructor(
     private http: HttpClient,
     public toastController: ToastController,
     private router: Router,
   ) { }
-  //login
-  loginApi(credentials, type) {
-    const form = new FormData();
-    form.append('username', credentials.username);
-    form.append('password', credentials.password);
-    return this.http.post(`${this.API_URL}/api/${type}`, form, {
-      responseType: 'text',
-    });
-  }
-  //register
-  RegisterApi(credentials: RegisterModel, type) {
-    const form = new FormData();
-    form.append("nama", credentials.nama);
-    form.append("username", credentials.username);
-    form.append("email", credentials.email);
-    form.append("ttl", credentials.ttl);
-    form.append("password", credentials.password);
-    form.append("alamat", credentials.alamat);
-    return this.http.post(`${this.API_URL}/api/${type}`, form, {
-      responseType: 'text',
-    });
+
+    Register(user: RegisterModel) {
+    return this.http.post(`${this.API_URL}/api/register`, user);
   }
 
-  //logout
+  login(loginModel: LoginModel) {
+    return this.http.post(`${this.API_URL}/api/login`, loginModel);
+  }
+
   logout() {
     localStorage.clear();
-    this.router.navigate(['/login']);
+    sessionStorage.clear();
+    this.router.navigate(['/auth/login']);
+    location.reload();
   }
-
   decodeToken() {
     const token = localStorage.getItem('token')
     const decoded: any = jwtDecode(token);

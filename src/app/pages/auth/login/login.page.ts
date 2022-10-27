@@ -16,6 +16,7 @@ import {
 } from '@ionic/angular';
 import { ServiceService } from '../../../services/service.service';
 import { Router } from '@angular/router';
+import { LoginModel } from 'src/app/model/login.model';
 
 @Component({
   selector: 'app-login',
@@ -39,13 +40,13 @@ export class LoginPage implements OnInit {
   ) {
     //setting form login
     this.FormLogin = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required])],
     });
   }
 
   ngOnInit() {
-    if (localStorage.getItem('islogin')) {
+    if (localStorage.getItem('isLogin')) {
       this.router.navigate(['/menu/home']);
     }
   }
@@ -54,21 +55,31 @@ export class LoginPage implements OnInit {
   async login() {
     try {
       await this.showLoading();
-      const tokenUser: any = await new Promise(async (res, rej) => {
-        await this.serviceService
-          .loginApi(this.FormLogin.value, 'login')
-          .subscribe({
-            next: (result) => res(result),
-            error: (err) => rej(err.message),
-          });
-      });
-      await localStorage.setItem('token', JSON.parse(tokenUser).token);
-      await this.router.navigate(['/menu/home']);
+      const loginModel = new LoginModel();
+      loginModel.username = this.FormLogin.controls['username'].value;
+      loginModel.password = this.FormLogin.controls['password'].value;
+
+      const user = await new Promise((res, rej) => {
+        this.serviceService.login(loginModel).subscribe(result => res(result), err=> rej(err));
+      })
+      localStorage.setItem('isLogin', user[0].password);
+      localStorage.setItem('user_id', user[0].id);
+      this.router.navigate(['/menu/home']);
       this.hideLoading();
     } catch (error) {
       this.hideLoading();
-      await this.showAlert('Error', error);
+      await this.showMessage(error);
+      console.log(error)
     }
+  }
+
+  async showMessage(msg: string) {
+    const alert = await this.alertController.create({
+      header: 'Message',
+      message: msg,
+      buttons: ['OK'],
+    });
+    await alert.present();
   }
 
   goToRegister() {

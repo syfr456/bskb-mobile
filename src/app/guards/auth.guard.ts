@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   canActivate(): boolean {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('isLogin')
     if (token) {
       return true
     }

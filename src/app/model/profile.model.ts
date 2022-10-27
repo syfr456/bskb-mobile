@@ -7,4 +7,5 @@ export class ProfileModel {
     alamat: string = ""
     no_hp: number = 0
     nik: number = 0
+    sktm_expired: string = ""
 }

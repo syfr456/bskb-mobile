@@ -76,11 +76,10 @@ export class RegisterPage implements OnInit {
 
   async register() {
     try {
-      debugger
       await this.showLoading();
-      await new Promise(async (res, rej) => {
-        await this.serviceService
-          .RegisterApi(this.FormRegister.value, 'register')
+      await new Promise((res, rej) => {
+        this.serviceService
+          .Register(this.FormRegister.value)
           .subscribe({
             next: (result) => res(result),
             error: (err) => rej(err.message),

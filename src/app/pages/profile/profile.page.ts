@@ -39,19 +39,20 @@ export class ProfilePage implements OnInit {
   }
 
   async ngOnInit() {
-    this.getProfile();
-    // this.FormProfile.patchValue(this.profile);
-    // this.FormProfile.disable();
-
+    await this.getProfile();
+    this.FormProfile.patchValue(this.profile);
+    this.FormProfile.disable();
   }
 
   async getProfile() {
    try {
-    const decode = await this.service.decodeToken();
-    const profile = (await this.profileService.getProfile(decode.data.id)).subscribe(x => console.log(x))
-    console.log(this.profile)
+    this.profile = await new Promise((res, rej) => {
+      this.profileService.getProfile(localStorage.getItem("user_id")).subscribe(
+        (result) => res(result),
+        (err) => rej(err.Message)
+      );
+    });
    } catch (error) {
-    
    }
   }
 
