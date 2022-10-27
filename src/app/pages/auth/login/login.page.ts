@@ -46,7 +46,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    if (localStorage.getItem('isLogin')) {
+    if (localStorage.getItem('token')) {
       this.router.navigate(['/menu/home']);
     }
   }
@@ -59,11 +59,10 @@ export class LoginPage implements OnInit {
       loginModel.username = this.FormLogin.controls['username'].value;
       loginModel.password = this.FormLogin.controls['password'].value;
 
-      const user = await new Promise((res, rej) => {
-        this.serviceService.login(loginModel).subscribe(result => res(result), err=> rej(err));
+      const token: any = await new Promise((res, rej) => {
+        this.serviceService.login(loginModel).subscribe(result => res(result), err => rej(err));
       })
-      localStorage.setItem('isLogin', user[0].password);
-      localStorage.setItem('user_id', user[0].id);
+      localStorage.setItem('token', token)
       this.router.navigate(['/menu/home']);
       this.hideLoading();
     } catch (error) {

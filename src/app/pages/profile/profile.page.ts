@@ -45,15 +45,17 @@ export class ProfilePage implements OnInit {
   }
 
   async getProfile() {
-   try {
-    this.profile = await new Promise((res, rej) => {
-      this.profileService.getProfile(localStorage.getItem("user_id")).subscribe(
-        (result) => res(result),
-        (err) => rej(err.Message)
-      );
-    });
-   } catch (error) {
-   }
+    try {
+      const decode = this.service.decodeToken()
+      this.profile = await new Promise((res, rej) => {
+        this.profileService.getProfile(decode.id).subscribe({
+          next: result => res(result),
+          error: err => rej(err.message.Message || err.Message)
+        });
+      });
+    } catch (error) {
+      this.showAlert('Error', error)
+    }
   }
 
   async doRefresh(event) {

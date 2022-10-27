@@ -8,13 +8,25 @@ import { SampahService } from 'src/app/services/sampah/sampah.service';
 })
 export class SampahPage implements OnInit {
 
-  trash = [];
+  trash : any[];
 
   constructor(private sampahService: SampahService) { }
 
-  ngOnInit() {
-    this.trash = this.sampahService.getTrash();
-
+  async ngOnInit() {
+    await this.getSampah()
   }
 
+  async getSampah(){
+    try {
+      this.trash = await new Promise((resolve, rejected) => {
+        this.sampahService.getTrash().subscribe({
+          next: result => resolve(result),
+          error: err => rejected(err.message.Message || err.Message)
+        })
+      })
+      debugger
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }

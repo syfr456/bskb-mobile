@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { RegisterModel } from '../model/register.model';
@@ -16,7 +16,7 @@ import { LoginModel } from '../model/login.model';
 })
 export class ServiceService {
 
-  API_URL = 'http://localhost:5000';
+  API_URL = 'https://bskbmobile.herokuapp.com';
 
   constructor(
     private http: HttpClient,
@@ -38,10 +38,17 @@ export class ServiceService {
     this.router.navigate(['/auth/login']);
     location.reload();
   }
+  
   decodeToken() {
     const token = localStorage.getItem('token')
     const decoded: any = jwtDecode(token);
     return decoded;
+  }
+
+  getHeader() {
+    return new HttpHeaders({
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    })
   }
   
 }
