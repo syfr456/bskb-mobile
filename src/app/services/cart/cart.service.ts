@@ -10,15 +10,6 @@ export class Product {
   total: number;
 
 }
-
-// export class CartShop {
-//     idPembelian: number;
-//     idSembako: number;
-//     idNsbh: number;
-//     idRek: number;
-//     tanggalPembelian: Date = new Date();
-//     total: number;
-// }
 @Injectable({
   providedIn: 'root'
 })
@@ -30,10 +21,6 @@ export class CartService {
     {idSembako: 3, namaSembako:'Telur', harga: 2000, satuan: '/butir', total: 1},
     {idSembako: 4, namaSembako:'Minyak Goreng', harga: 14000, satuan: '/Kg', total: 1},
   ];
-
-  // shop: CartShop[] = [
-  //   {idPembelian: 0, idSembako: 0, idNsbh: 0, idRek: 0, tanggalPembelian: null, total: 1 }
-  // ];
 
   private cart = [];
   private cartItemCount = new BehaviorSubject(0);

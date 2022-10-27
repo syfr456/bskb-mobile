@@ -6,13 +6,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SampahService {
-  API_URL = 'http://localhost:5000';
+  API_URL = 'http://localhost:5000/docs';
 
 
   constructor(private http: HttpClient) { }
 
   getTrash() {
-    return this.http.get(`${this.API_URL}/api/katalog`);
+    return this.http.get(`${this.API_URL}/api/sampah`);
 
   }
 }
