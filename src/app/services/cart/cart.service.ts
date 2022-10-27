@@ -1,34 +1,28 @@
  /* eslint-disable eqeqeq */
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { CartModel } from 'src/app/model/cart.model';
+import { ServiceService } from '../service.service';
 
-export class Product {
-  idSembako: number;
-  namaSembako: string;
-  harga: number;
-  satuan: string;
-  total: number;
-
-}
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  data: Product[] = [
-    {idSembako: 0, namaSembako:'Beras', harga: 14000, satuan: '/Kg', total: 1},
-    {idSembako: 1, namaSembako:'Gula', harga: 8000, satuan: '/Kg', total: 1},
-    {idSembako: 2, namaSembako:'Garam', harga: 1000, satuan: '/pcks', total: 1},
-    {idSembako: 3, namaSembako:'Telur', harga: 2000, satuan: '/butir', total: 1},
-    {idSembako: 4, namaSembako:'Minyak Goreng', harga: 14000, satuan: '/Kg', total: 1},
-  ];
+  API_URL = 'https://bskbmobile.herokuapp.com';
+  cart = [];
+  cartItemCount = new BehaviorSubject(0);
+  product = CartModel;
 
-  private cart = [];
-  private cartItemCount = new BehaviorSubject(0);
 
-  constructor() {}
+  constructor(
+    private http: HttpClient,
+    private service: ServiceService
+  ) {}
+
 
   getProducts() {
-    return this.data;
+    return this.http.get(`${this.API_URL}/api/sembako`, { headers: this.service.getHeader() }) as Observable<any[]>;
   }
 
   getCart() {

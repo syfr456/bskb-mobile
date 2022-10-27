@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/menu/home"></ion-back-button>
+      <ion-back-button class="back" defaultHref="/menu/home"></ion-back-button>
     </ion-buttons>
     <ion-title class="title">Katalog Sembako</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="openCart()" #cart>
       <div class="cart-length">{{ cartItemCount | async }}</div>
@@ -15,22 +15,24 @@
     </ion-fab-button>
   </ion-fab>
   <ion-list>
-    <ion-card class="card" *ngFor="let p of products">
-      <ion-card-header>
-        <ion-card-title class="ct">{{ p.namaSembako }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-row class="ion-align-items-center">
-          <ion-col size="8">
-            <a>{{ p.harga | currency:'Rp' }}</a>
+    <ion-item *ngFor="let p of product" class="item">
+      <ion-thumbnail slot="start">
+        <img alt="product" src="../../../assets/image/undraw_barbecue_3x93.svg" />
+      </ion-thumbnail>
+      <ion-label>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label>{{p.nama_sembako}}</ion-label>
+            <p>Harga: {{p.harga | currency: "Rp"}}</p>
+            <p>Stok: {{p.stok}}</p>
           </ion-col>
-          <ion-col size="4" class="ion-text-right">
+          <ion-col size="2">
             <ion-button class="btn" (click)="addToCart(p)">
               <ion-icon name="add"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>
-      </ion-card-content>
-    </ion-card>
+      </ion-label>
+    </ion-item>
   </ion-list>
 </ion-content>

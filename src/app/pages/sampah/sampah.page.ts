@@ -24,7 +24,6 @@ export class SampahPage implements OnInit {
           error: err => rejected(err.message.Message || err.Message)
         })
       })
-      debugger
     } catch (error) {
       console.log(error)
     }

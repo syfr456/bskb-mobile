@@ -1,4 +1,4 @@
-<ion-content class="ion-padding konten">
+<ion-content class="ion-padding ctn">
   <ion-grid>
     <ion-row class="row">
       <ion-col><br />
@@ -34,7 +34,7 @@
         name="eye-off" slot="end" class="ion-align-self-center"></ion-icon>
     </ion-item>
   </form>
-  <ion-button class="button" [disabled]="!FormLogin.valid" (click)="login()">Login</ion-button>
+  <ion-button class="btn" [disabled]="!FormLogin.valid" (click)="login()">Login</ion-button>
   <p class="ion-text-center">Sudah punya akun?</p>
-  <ion-button class="button" color="danger" (click)="goToRegister()">Register</ion-button>
+  <ion-button class="btn" color="danger" (click)="goToRegister()">Register</ion-button>
 </ion-content>

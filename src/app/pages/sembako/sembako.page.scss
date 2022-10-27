@@ -1,22 +1,10 @@
-div {
-    margin: 0;
-}
+
 
 ion-fab-button {
     width: 50px;
     height: 50px;
     --background: #1D8A4D;
-
 }
-
-.title {
-    font-weight: bold;
-}
-
-a {
-    color: black;
-}
-
 .cart-icon {
     font-size: 40px;
     // width: auto;
@@ -30,26 +18,4 @@ a {
     font-size: 1em;
     z-index: 10;
     color: #1D8A4D;
-}
-
-.card {
-    margin: 20px;
-    width: auto;
-    height: 100px;
-    --background: #e5eec9;
-    font-family: 'Poppins', sans-serif;
-    border-radius: 0;
-}
-
-.ct {
-    margin: 10px;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.btn {
-    width: 50px;
-    height: 50px;
-    --background: #1D8A4D;
-    text-decoration: #1D8A4D;
 }

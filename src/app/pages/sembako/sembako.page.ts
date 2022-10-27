@@ -4,6 +4,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { CartModalPage } from 'src/app/modals/cart-modal/cart-modal.page';
+import { CartModel } from 'src/app/model/cart.model';
 import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
@@ -14,21 +15,37 @@ import { CartService } from 'src/app/services/cart/cart.service';
 export class SembakoPage implements OnInit {
 
   cart = [];
-  products = [];
+  product = [];
   cartItemCount: BehaviorSubject<number>;
 
-  @ViewChild('cart', {static: false, read: ElementRef})fab: ElementRef;
+  @ViewChild('cart', { static: false, read: ElementRef }) fab: ElementRef;
 
-  constructor(private cartService: CartService, private modalCtrl: ModalController, private navCtrl: NavController,) {}
+  constructor(private cartService: CartService, private modalCtrl: ModalController, private navCtrl: NavController,) { }
 
-  ngOnInit() {
-    this.products = this.cartService.getProducts();
+  async ngOnInit() {
+    await this.getSembako();
     this.cart = this.cartService.getCart();
     this.cartItemCount = this.cartService.getCartItemCount();
   }
-goHome(){
+
+  async getSembako() {
+    try {
+      this.product = await new Promise((resolve, rejected) => {
+        this.cartService.getProducts().subscribe({
+          next: result => resolve(result),
+          error: err => rejected(err.message.Message || err.Message)
+        })
+      })
+      debugger
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  goHome() {
     this.navCtrl.navigateForward('/menu/home');
   }
+
   addToCart(product) {
     this.cartService.addProduct(product);
     this.animateCSS('tada');

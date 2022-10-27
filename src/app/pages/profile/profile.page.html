@@ -2,10 +2,10 @@
   <ion-icon (click)="back()" slot="start" size="large" name="arrow-back-circle-outline"> </ion-icon>
   <ion-title>Profile</ion-title>
   <ion-buttons slot="end" (click)="edit()" *ngIf="!isEdit">
-    <ion-button>Edit</ion-button>
+    <ion-button class="es">Edit</ion-button>
   </ion-buttons>
-  <ion-buttons slot="end" (click)="save()" *ngIf="isEdit">
-    <ion-button>Simpan</ion-button>
+  <ion-buttons slot="end" (click)="save()" *ngIf="isEdit" >
+    <ion-button class="es">Simpan</ion-button>
   </ion-buttons>
 </ion-toolbar>
 

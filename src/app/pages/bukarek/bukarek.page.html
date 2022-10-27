@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/menu/home"></ion-back-button>
+      <ion-back-button class="back" defaultHref="/menu/home"></ion-back-button>
     </ion-buttons>
     <ion-title class="title">Buka Rekening</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding konten">
+<ion-content class="ion-padding ten">
   <form [formGroup]="FormRek">
     <ion-row>
       <ion-col size="12">
@@ -18,7 +18,7 @@
       </ion-col>
     </ion-row>
   </form>
-  <div class="button">
-    <ion-button class="button" [disabled]="!FormRek.valid" (click)="save()">Kirim</ion-button>
+  <div class="bttn">
+    <ion-button class="bttnn" [disabled]="!FormRek.valid" (click)="save()">Kirim</ion-button>
   </div>
 </ion-content>

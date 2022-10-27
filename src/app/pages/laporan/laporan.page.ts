@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { InvModalPage } from 'src/app/modals/inv-modal/inv-modal.page';
+import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
+import { InvoiceModel } from 'src/app/model/invoice';
 import { InvoiceService } from 'src/app/services/invoice/invoice.service';
+import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
   selector: 'app-laporan',
@@ -11,23 +12,37 @@ import { InvoiceService } from 'src/app/services/invoice/invoice.service';
   styleUrls: ['./laporan.page.scss'],
 })
 export class LaporanPage implements OnInit {
+  decode: any;
+  inv: InvoiceModel[];
 
-  inv = [];
+  constructor(private invoiceService: InvoiceService, public alertController: AlertController, private service: ServiceService,) { }
 
-
-  constructor(private invoiceService: InvoiceService, private modalCtrl: ModalController) { }
-
-  ngOnInit() {
-     this.inv = this.invoiceService.getInvoice();
+  async ngOnInit() {
+    await this.getReport()
   }
 
-  async openDetail() {
+  async getReport() {
+    try {
+      this.decode = this.service.decodeToken()
+      this.inv = await new Promise((res, rej) => {
+        this.invoiceService.getInvoice(this.decode.id).subscribe({
+          next: result => res(result),
+          error: err => rej(err.message.Message || err.Message)
+        });
+      });
+    } catch (error) {
+      this.showAlert('Error', error)
+    }
+  }
 
-    const modal = await this.modalCtrl.create({
-      component: InvModalPage,
-      cssClass: 'inv-modal'
+  async showAlert(type: string, msg: string) {
+    const alert = await this.alertController.create({
+      header: type,
+      message: msg,
+      buttons: ['Ok'],
     });
-    modal.present();
+
+    await alert.present();
   }
 
 

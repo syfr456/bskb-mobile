@@ -11,20 +11,14 @@
   <ion-list>
     <ion-card *ngFor="let i of inv" class="card">
       <ion-card-header>
-        <ion-card-title class="ct">{{i.tanggalPembelian }}</ion-card-title>
+        <ion-card-title class="ct">{{i.tanggal }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <ion-row class="ion-align-items-center row">
-          <ion-col>
-            <a>{{ i.jenis }} </a>
-          </ion-col>
-          <ion-col>
-            <a>{{ i.harga | currency:'Rp' }}</a>
-          </ion-col>
-          <ion-col class="ion-text-right">
-            <a class="detail" (click)="openDetail()">Detail </a>
-          </ion-col>
-        </ion-row>
+        <p>Jenis: {{t.id_jenis}}</p>
+        <p>Jenis Sampah: {{t.id_sampah}}</p>
+        <p>Berat: {{t.berat}}</p>
+        <p>Harga: {{t.harga | currency: 'Rp'}}/Kg</p>
+        <p>total: {{t.total | currency: 'Rp'}}</p>
       </ion-card-content>
     </ion-card>
   </ion-list>

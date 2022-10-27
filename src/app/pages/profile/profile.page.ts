@@ -14,10 +14,11 @@ import { ServiceService } from 'src/app/services/service.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  profile: any;
+  profile: ProfileModel;
   FormProfile: FormGroup;
   isEdit: boolean = false;
   isLoading: any;
+  decode: any;
 
 
   constructor(
@@ -46,9 +47,9 @@ export class ProfilePage implements OnInit {
 
   async getProfile() {
     try {
-      const decode = this.service.decodeToken()
+      this.decode = this.service.decodeToken()
       this.profile = await new Promise((res, rej) => {
-        this.profileService.getProfile(decode.id).subscribe({
+        this.profileService.getProfile(this.decode.id).subscribe({
           next: result => res(result),
           error: err => rej(err.message.Message || err.Message)
         });
@@ -66,19 +67,49 @@ export class ProfilePage implements OnInit {
   async edit() {
     this.FormProfile.enable();
     this.FormProfile.controls['username'].disable();
-    this.FormProfile.controls['email'].disable();
     this.isEdit = true;
   }
 
   async save() {
     await this.updateProfile(this.FormProfile.value);
-    this.FormProfile.disable()
+    this.FormProfile.disable();
+    this.isEdit = false;
   }
 
   async updateProfile(user: any) {
     try {
       await this.showLoading();
-      // await this.profileService.updateUser(this.profile.id, user);
+      const model: ProfileModel = user;
+      model.id = this.decode.id;
+      model.username = this.profile.username;
+      model.sktm_expired = this.profile.sktm_expired;
+      const nasabah: ProfileModel = await new Promise((resolve, rejected) => {
+        this.profileService.getNasabah(this.decode.id).subscribe({
+          next: result => resolve(result),
+          error: err => rejected(err.message.Message || err.Message)
+        })
+      })
+      await new Promise((res, rej) => {
+        this.profileService.updateUser(user).subscribe({
+          next: result => res(result),
+          error: err => rej(err.message.Message || err.Message)
+        })
+      })
+      if(nasabah){
+        await new Promise((res, rej) => {
+          this.profileService.updateNasabah(user).subscribe({
+            next: result => res(result),
+            error: err => rej(err.message.Message || err.Message)
+          })
+        })
+      } else {
+        await new Promise((res, rej) => {
+          this.profileService.postNasabah(user).subscribe({
+            next: result => res(result),
+            error: err => rej(err.message.Message || err.Message)
+          })
+        })
+      }
       this.showAlert('Sukses', 'Profil anda sudah diperbarui');
       this.hideLoading();
     } catch (error) {

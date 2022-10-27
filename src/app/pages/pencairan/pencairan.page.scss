@@ -1,7 +1,7 @@
 .header {
     font-family: 'Poppins', sans-serif;
 }
-.konten{
+.cntt{
     font-family: 'Poppins', sans-serif;
     .list{
         margin: 20px;
@@ -35,14 +35,18 @@
     
 }
 
-.btn{
+.tn{
+    margin: 5px;
+}
+
+.trx{
     margin: 20px;
     font-family: 'Poppins', sans-serif;
     font-size: 14x;
     height: 40px;
     border-radius: 12px;
     text-decoration-color: #FCFFF2;
-    --background: #1D8A4D;
+    // --background: #1D8A4D;
     justify-content: center;
     display: flex;
     .konfirm{

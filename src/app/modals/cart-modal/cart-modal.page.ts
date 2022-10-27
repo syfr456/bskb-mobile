@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { CartService, Product } from 'src/app/services/cart/cart.service';
+import { CartModel } from 'src/app/model/cart.model';
+import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-cart-modal',
@@ -9,7 +10,7 @@ import { CartService, Product } from 'src/app/services/cart/cart.service';
   styleUrls: ['./cart-modal.page.scss'],
 })
 export class CartModalPage implements OnInit {
-  cart: Product[] = [];
+  cart: CartModel[] = [];
 
   constructor(
     private cartService: CartService,
@@ -19,6 +20,7 @@ export class CartModalPage implements OnInit {
 
   ngOnInit() {
     this.cart = this.cartService.getCart();
+    console.log(this.cart)
   }
 
   decreaseCartItem(product) {
@@ -34,7 +36,7 @@ export class CartModalPage implements OnInit {
   }
 
   getTotal() {
-    return this.cart.reduce((i, j) => i + j.harga * j.total, 0);
+    // return this.cart.reduce((i, j) => i + j.harga * j.total, 0);
   }
 
   close() {

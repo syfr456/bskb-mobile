@@ -1,9 +1,9 @@
 export class SampahModel {
     id: number = 0
     nama: string = ""
-    username: string = ""
-    email: string = ""
-    ttl: string = ""
-    alamat: string = ""
-    password: string = ""
+    jenis_sampah: string = ""
+    foto: string = ""
+    kondisi: string = ""
+    harga: string = ""
+    satuan: string = ""
 }

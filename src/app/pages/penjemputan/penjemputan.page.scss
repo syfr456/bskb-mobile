@@ -11,16 +11,16 @@
         margin-bottom: 5px;
     }
 }
-p{
+.rgf{
     padding-left: 1em;
     color: rgb(201, 199, 199);
 }
-.button {
+.shr {
     display: flex;
     justify-content: center;
     margin: 0px;
 
-    .log {
+    .jm {
         height: 45px;
         width: 60px;
         border-radius: 12px;
@@ -31,4 +31,7 @@ p{
 .date{
     margin-left: 28px;
     margin-top: 22px;
+}
+.back{
+    color: black;
 }

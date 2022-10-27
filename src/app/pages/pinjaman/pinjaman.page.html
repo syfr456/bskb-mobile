@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/menu/home"></ion-back-button>
+      <ion-back-button class="back" defaultHref="/menu/home"></ion-back-button>
     </ion-buttons>
     <ion-title class="title">Pinjaman Sosial</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="konten">
+<ion-content class="cltn">
   <div class="items">
     <p style="text-align: center;">Mohon isi data yang diperlukan dengan benar</p>
 
@@ -16,7 +16,7 @@
         <div class="nominal">
           <ion-label class="label" position="stacked" floating>Nominal Peminjaman</ion-label>
           <ion-input class="input"></ion-input>
-          <p>*Peminjaman sosial maksimal Rp 200.000</p>
+          <p class="ragaf">*Peminjaman sosial maksimal Rp 200.000</p>
         </div>
 
         <div class="keperluan">
@@ -31,8 +31,8 @@
       </ion-list>
     </form>
 
-    <div class="btn">
-      <ion-button (click)="addToPinjam(pinjam)" class="log"> KIRIM </ion-button>
+    <div class="bor">
+      <ion-button (click)="addToPinjam(pinjam)" class="sav"> KIRIM </ion-button>
     </div>
   </div>
 </ion-content>

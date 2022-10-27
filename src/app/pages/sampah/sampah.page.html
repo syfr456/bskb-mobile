@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar class="tool">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/menu/home"></ion-back-button>
+      <ion-back-button class="back" defaultHref="/menu/home"></ion-back-button>
     </ion-buttons>
     <ion-title>Katalog Sampah</ion-title>
   </ion-toolbar>
@@ -9,20 +9,17 @@
 
 <ion-content>
   <ion-list>
-    <ion-card class="card" *ngFor="let t of trash">
+    <ion-card class="card text-center" *ngFor="let t of trash">
+      <img class="trash" alt="trash" src="../../../assets/image/undraw_throw_away_re_x60k.svg" />
       <ion-card-header>
-        <ion-card-title class="ct">{{ t.name }}</ion-card-title>
+        <ion-card-title class="ct">{{t.nama}}</ion-card-title>
       </ion-card-header>
+    
       <ion-card-content>
-        <ion-col size="8">
-          <a>Bersih:&nbsp; {{ t.bersih | currency: 'Rp' }}&nbsp;</a>
-          <a>{{ t.satuan }}</a>
-
-          <br />
-
-          <a>Kotor:&nbsp; {{ t.kotor | currency: 'Rp' }}&nbsp;</a>
-          <a>{{ t.satuan }}</a>
-        </ion-col>
+        <p>Harga: {{t.harga | currency: 'Rp'}}/Kg</p>
+        <p>Jenis: {{t.jenis_sampah}}</p>
+        <p>Kondisi: {{t.kondisi}}</p>
+        <!-- <p>Satuan: {{t.satuan | currency: 'Rp'}}</p> -->
       </ion-card-content>
     </ion-card>
   </ion-list>
