@@ -1,19 +1,32 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { RekModel } from 'src/app/model/rek.model';
+import { ServiceService } from '../service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RekService {
-  constructor(private db: AngularFirestore) { }
+  API_URL = 'https://bskbmobile.herokuapp.com';
+  // API_URL = 'http://localhost:5000';
 
-  async createRek(rek: RekModel) {
-    await this.db.collection('rekening').doc(rek.id.toString()).set({ ...rek });
+  constructor(
+    private http: HttpClient,
+    private service: ServiceService
+  ) { }
+
+  getRekeningByUser(idUser: string) {
+    return this.http.get(`${this.API_URL}/api/rek-by-user/${idUser}`, { headers: this.service.getHeader() }) as Observable<RekModel[]>;
   }
 
-  getRek() {
-    return this.db.collection('jenis_rekening').valueChanges() as Observable<any>;
+  getJenisRek() {
+    return this.http.get(`${this.API_URL}/api/jenis_rekening`, { headers: this.service.getHeader() }) as Observable<RekModel[]>;
   }
+
+  bukaRekening(data: RekModel) {
+    debugger
+    return this.http.post(`${this.API_URL}/api/buka-rekening`, data, { headers: this.service.getHeader() });
+  }
+
 }

@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding support" mode="ios" >
+<ion-content class="ion-padding support" mode="ios">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -18,13 +18,12 @@
       </ion-col>
       <ion-col class="upload-file">
         <ion-label class="label">
-          {{(profile?.ktpUrl =='' || profile?.ktpUrl == undefined)? '':'KTP'}}
+          {{(documents?.ktp =='' || documents?.ktp == undefined)? '':'KTP'}}
         </ion-label>
-        <ion-button class="btnn" *ngIf="profile?.ktpUrl != undefined" size="small" (click)="openFile('KTP')">
+        <ion-button class="btnn" *ngIf="documents?.ktp != undefined" size="small" (click)="openFile('KTP')">
           <ion-icon name="create-outline"></ion-icon>Perbarui
         </ion-button>
-        <ion-button class="btnn" *ngIf="profile?.ktpUrl == undefined" size="small"
-          (click)="openFile('KTP')">
+        <ion-button class="btnn" *ngIf="documents?.ktp == undefined" size="small" (click)="openFile('KTP')">
           <ion-icon name="cloud-upload-outline"></ion-icon>Unggah
         </ion-button>
       </ion-col>
@@ -35,13 +34,12 @@
       </ion-col>
       <ion-col class="upload-file">
         <ion-label class="label">
-          {{(profile?.sktmUrl =='' || profile?.sktmUrl == undefined)? '':'SKTM'}}
+          {{(documents?.sktm =='' || documents?.sktm == undefined)? '':'SKTM'}}
         </ion-label>
-        <ion-button class="btnn" *ngIf="profile?.sktmUrl != undefined" size="small" (click)="openFile('SKTM')">
+        <ion-button class="btnn" *ngIf="documents?.sktm != undefined" size="small" (click)="openFile('SKTM')">
           <ion-icon name="create-outline"></ion-icon>Perbarui
         </ion-button>
-        <ion-button class="btnn" *ngIf="profile?.sktmUrl == undefined" size="small"
-          (click)="openFile('SKTM')">
+        <ion-button class="btnn" *ngIf="documents?.sktm == undefined" size="small" (click)="openFile('SKTM')">
           <ion-icon name="cloud-upload-outline"></ion-icon>Unggah
         </ion-button>
       </ion-col>

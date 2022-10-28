@@ -1,13 +1,13 @@
 <ion-content class="ion-padding">
-  <ion-card class="swip">
-    <swiper [pagination]="false" class="swipers">
-      <ng-template swiperSlide>
-        <h2>REGULER</h2>
+  <swiper [pagination]="false" class="swipers">
+    <ng-template swiperSlide *ngFor="let rek of rekening">
+      <ion-card class="swip">
+        <h2>{{rek.nama}}</h2>
         <br />
-        <h3>Saldo</h3>
-      </ng-template>
-    </swiper>
-  </ion-card>
+        <h3>{{rek.saldo | currency: 'Rp. '}}</h3>
+      </ion-card>
+    </ng-template>
+  </swiper>
 
   <ion-card class="card-menu">
     <ion-row class="center">

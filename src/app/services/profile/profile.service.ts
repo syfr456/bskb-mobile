@@ -23,6 +23,10 @@ export class ProfileService {
     return this.http.get(`${this.API_URL}/api/nasabah/${userId}`, { headers: this.service.getHeader() }) as Observable<ProfileModel>;
   }
 
+  getDocSupport(userId: string) {
+    return this.http.get(`${this.API_URL}/api/nasabah/document/${userId}`, { headers: this.service.getHeader() }) as Observable<any>;
+  }
+
   updateUser(user: ProfileModel) {
     return this.http.put(`${this.API_URL}/api/user/${user.id}`, user, { headers: this.service.getHeader() });
   }
@@ -33,5 +37,13 @@ export class ProfileService {
 
   postNasabah(user: ProfileModel) {
     return this.http.post(`${this.API_URL}/api/nasabah/${user.id}`, user, { headers: this.service.getHeader() });
+  }
+
+  updateKtp(id: string, url: string) {
+    return this.http.put(`${this.API_URL}/api/nasabah/upload-ktp/${id}`, { ktp: url }, { headers: this.service.getHeader() });
+  }
+
+  updateSktm(id: string, url: string, exp: string) {
+    return this.http.put(`${this.API_URL}/api/nasabah/upload-sktm/${id}`, { sktm: url, sktm_expired: exp }, { headers: this.service.getHeader() });
   }
 }

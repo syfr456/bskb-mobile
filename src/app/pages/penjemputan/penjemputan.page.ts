@@ -10,10 +10,19 @@ import { moveMessagePortToContext } from 'worker_threads';
   styleUrls: ['./penjemputan.page.scss'],
 })
 export class PenjemputanPage implements OnInit {
-  date: string =''
+  date
+
   presentingElement = null;
+
   constructor() { }
+
   ngOnInit() {
-    this.date = moment().format('DD MMMM YYYY');
+    // this.date = moment().format('DD MMMM YYYY');
+  }
+
+  confirm(event){
+    this.date
+    debugger
+    this.date
   }
 }

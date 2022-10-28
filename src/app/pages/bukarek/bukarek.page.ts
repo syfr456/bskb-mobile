@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { RekModel } from 'src/app/model/rek.model';
-import { ProfileService } from 'src/app/services/profile/profile.service';
 import { RekService } from 'src/app/services/rek/rek.service';
+import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
   selector: 'app-bukarek',
@@ -15,15 +15,15 @@ export class BukarekPage implements OnInit {
   FormRek: FormGroup;
   jenisRekening: any[];
   isLoading: any;
-  profile: any;
+  decode: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private alertController: AlertController,
     private loadingController: LoadingController,
-    private profileService: ProfileService,
     private rekeningService: RekService,
-    private router: Router
+    private router: Router,
+    private service: ServiceService
   ) {
     this.FormRek = this.formBuilder.group({
       rek: ['', Validators.required]
@@ -31,28 +31,14 @@ export class BukarekPage implements OnInit {
   }
 
   async ngOnInit() {
+    this.decode = await this.service.decodeToken()
     await this.getJenisRekening();
-    await this.getProfile()
-  }
-
-  async getProfile() {
-    try {
-      const id = localStorage.getItem('islogin');
-      // this.profile = await new Promise((res, rej) => {
-      //   this.profileService.getUser(id).subscribe({
-      //     next: result => res(result[0]),
-      //     error: err => rej(err.Message)
-      //   })
-      // })
-    } catch (error) {
-      this.showAlert('Error', error)
-    }
   }
 
   async getJenisRekening() {
     try {
       this.jenisRekening = await new Promise((res, rej) => {
-        this.rekeningService.getRek().subscribe({
+        this.rekeningService.getJenisRek().subscribe({
           next: result => res(result),
           error: err => rej(err.message)
         });
@@ -66,23 +52,25 @@ export class BukarekPage implements OnInit {
     try {
       await this.showLoading();
       const rekModel = await this.generateRekModel();
-      await this.rekeningService.createRek(rekModel);
+      await new Promise((res, rej) => {
+        this.rekeningService.bukaRekening(rekModel).subscribe({
+          next: result => res(result),
+          error: err => rej(err.message)
+        });
+      });
+      this.hideLoading();
       this.showAlert('Sukses', 'Rekening berhasil dibuat')
       this.router.navigate(['/menu/home'])
-      this.hideLoading();
     } catch (error) {
       this.hideLoading();
-      this.showAlert('Error', error)
+      this.showAlert('Error', error.error.sqlMessage || error.message)
     }
   }
 
   generateRekModel() {
     const rekModel = new RekModel();
-    rekModel.id = Number(Math.random().toPrecision(36).substr(2, 5));
     rekModel.id_jenis = this.FormRek.controls['rek'].value;
-    rekModel.id_user = this.profile.id;
-    rekModel.no_rek = `1248989${Math.random().toPrecision(36).substr(11, 11)}`
-    rekModel.saldo = 0;
+    rekModel.id_user = this.decode.id;
     return rekModel;
   }
 

@@ -11,28 +11,24 @@
   <div class="items">
     <p style="text-align: center;">Mohon isi data yang diperlukan dengan benar</p>
 
-    <form #form="ngForm">
-      <ion-list>
-        <div class="nominal">
-          <ion-label class="label" position="stacked" floating>Nominal Peminjaman</ion-label>
-          <ion-input class="input"></ion-input>
-          <p class="ragaf">*Peminjaman sosial maksimal Rp 200.000</p>
-        </div>
+    <ion-list>
+      <div class="nominal">
+        <ion-label class="label" position="stacked" floating>Nominal Peminjaman</ion-label>
+        <ion-input class="input" [(ngModel)]="nominal_pinjaman"></ion-input>
+        <p class="ragaf">*Peminjaman sosial maksimal Rp 200.000</p>
+      </div>
 
-        <div class="keperluan">
-          <ion-label class="label" position="stacked" floating
-            >Keperluan Peminjaman</ion-label
-          >
-          <ion-select class="pilih">
-            <ion-select-option>Kesehatan</ion-select-option>
-            <ion-select-option>Pendidikan</ion-select-option>
-          </ion-select>
-        </div>
-      </ion-list>
-    </form>
+      <div class="keperluan">
+        <ion-label class="label" position="stacked" floating>Keperluan Peminjaman</ion-label>
+        <ion-select class="pilih" [(ngModel)]="keperluan_pinjaman">
+          <ion-select-option>Kesehatan</ion-select-option>
+          <ion-select-option>Pendidikan</ion-select-option>
+        </ion-select>
+      </div>
+    </ion-list>
 
     <div class="bor">
-      <ion-button (click)="addToPinjam(pinjam)" class="sav"> KIRIM </ion-button>
+      <ion-button (click)="submit()" class="sav"> KIRIM </ion-button>
     </div>
   </div>
 </ion-content>

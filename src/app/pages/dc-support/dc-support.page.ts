@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
+import * as moment from 'moment';
 import { ProfileService } from 'src/app/services/profile/profile.service';
+import { ServiceService } from 'src/app/services/service.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
@@ -14,32 +16,39 @@ export class DcSupportPage implements OnInit {
   isEdit: boolean = false;
   type: string;
   profile: any;
+  documents: any;
+
   constructor(
     private storageService: StorageService,
     private profileService: ProfileService,
     private alertController: AlertController,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private service: ServiceService
 
   ) { }
 
   async ngOnInit() {
-    await this.getProfile()
-
-    console.log(this.profile)
+    this.profile = await this.service.decodeToken();
+    await this.getDocumentSup();
   }
 
-  async getProfile() {
-    const id = localStorage.getItem('islogin');
-    // this.profile = await new Promise((res, rej) => {
-    //   this.profileService.getUser(id).subscribe({
-    //     next: result => res(result[0]),
-    //     error: err => rej(err.Message)
-    //   })
-    // })
+  async getDocumentSup() {
+    try {
+      await this.showLoading();
+      this.documents = await new Promise((resolve, rejected) => {
+        this.profileService.getDocSupport(this.profile.id).subscribe({
+          next: result => resolve(result[0]),
+          error: err => rejected(err.message.Message || err.Message)
+        })
+      })
+      this.hideLoading();
+    } catch (error) {
+      this.hideLoading();
+      this.showAlert('Error', error)
+    }
   }
 
   openFile(type: string) {
-
     this.filePickerRef.nativeElement.click()
     this.type = type
   }
@@ -52,22 +61,31 @@ export class DcSupportPage implements OnInit {
         await this.showLoading()
         const url: string = await new Promise((resolve, reject) => {
           reader.onload = async () => {
-            const email = localStorage.getItem('islogin')
-            const dataUrl: string = await this.storageService.uploadImageForSupportDoc(this.type, email, reader.result.toString())
+            const dataUrl: string = await this.storageService.uploadImageForSupportDoc(this.type, this.profile.username, reader.result.toString())
             resolve(dataUrl)
           };
           reader.onerror = (error) => reject(error);
           reader.readAsDataURL(file);
         })
         if (this.type == 'KTP') {
-          // await this.profileService.updateUrlKTP(this.profile.id, url);
+          await new Promise((resolve, rejected) => {
+            this.profileService.updateKtp(this.profile.id, url).subscribe({
+              next: result => resolve(result),
+              error: err => rejected(err)
+            });
+          })
         } else {
-          // await this.profileService.updateUrlSKTM(this.profile.id, url)
+          const exp = moment().add(3, 'month').format('YYYY-MM-DD')
+          await new Promise((resolve, rejected) => {
+            this.profileService.updateSktm(this.profile.id, url, exp).subscribe({
+              next: result => resolve(result),
+              error: err => rejected(err)
+            });
+          })
         }
-        this.showAlert('Sukses', `${this.type} Berhasil di unggah`)
-        await this.ngOnInit()
         this.hideLoading()
-        // await this.setDataUrl(url);
+        this.showAlert('Sukses', `${this.type} Berhasil di unggah`)
+        this.ngOnInit()
       }
       else {
         this.hideLoading()
@@ -76,7 +94,7 @@ export class DcSupportPage implements OnInit {
       reader.readAsDataURL(file);
     } catch (error) {
       this.hideLoading();
-      this.showAlert('Error', error)
+      this.showAlert('Error', error.error.sqlMessage)
     }
   }
 
