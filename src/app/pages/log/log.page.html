@@ -6,12 +6,17 @@
     <ion-title class="title">Riwayat Transaksi</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <ion-infinite-scroll threshold="100px" id="infinite-scroll">
-    <ion-infinite-scroll-content
-      loading-spinner="bubbles"
-      loading-text="Loading more data..."
-    >
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+<ion-content fullscreen class="ion-padding">
+  <div class="content">
+    <h6 class="text-center">Riwayat Pencairan Dana</h6>
+    <ion-list>
+      <ion-item *ngFor="let item of pencairan">
+        <ion-icon slot="start" name="albums-outline" style="margin-right: 10px;"></ion-icon>
+        <ion-label>
+          <h2>{{item?.tanggal | date: 'dd MMMM YYYY'}}</h2>
+          <p>{{item?.status}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

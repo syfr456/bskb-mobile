@@ -19,6 +19,7 @@ export class HomePage implements OnInit {
   rekening: RekModel[];
   decodeToken: any;
   isLoading: HTMLIonLoadingElement;
+  pencairan: any[];
 
   constructor(
     public loadingController: LoadingController,
@@ -30,6 +31,7 @@ export class HomePage implements OnInit {
   async ngOnInit() {
     this.decodeToken = await this.serviceService.decodeToken();
     await this.getRekeningByUser();
+    await this.getRiwayatPencairanByUser();
   }
 
   async getRekeningByUser() {
@@ -42,6 +44,23 @@ export class HomePage implements OnInit {
         })
       })
       this.rekening.reverse()
+      this.hideLoading()
+    } catch (error) {
+      this.hideLoading();
+      this.showAlert('Error', error.error.sqlMessage || error.message)
+    }
+  }
+
+  async getRiwayatPencairanByUser() {
+    try {
+      await this.showLoading()
+      this.pencairan = await new Promise((res, rej) => {
+        this.rekService.getPencairanByUser(this.decodeToken.id).subscribe({
+          next: result => res(result),
+          error: err => rej(err)
+        })
+      })
+      this.pencairan = this.pencairan.sort((x,y) => y.tanggal.localeCompare(x.tanggal))
       this.hideLoading()
     } catch (error) {
       this.hideLoading();

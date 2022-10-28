@@ -10,6 +10,7 @@ import { ServiceService } from '../service.service';
 })
 export class CartService {
   API_URL = 'https://bskbmobile.herokuapp.com';
+  // API_URL = 'http://localhost:5000';
   cart = [];
   cartItemCount = new BehaviorSubject(0);
   product = CartModel;
@@ -59,6 +60,10 @@ export class CartService {
       }
     }
     this.cartItemCount.next(this.cartItemCount.value - 1);
+  }
+
+  postCart(sembako){
+    return this.http.post(`${this.API_URL}/api/beli-sembako`, sembako, { headers: this.service.getHeader() });
   }
 
   removeProduct(product) {

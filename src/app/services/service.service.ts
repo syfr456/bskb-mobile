@@ -6,8 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { RegisterModel } from '../model/register.model';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import * as moment from 'moment';
 import jwtDecode from 'jwt-decode';
 import { LoginModel } from '../model/login.model';
 
@@ -17,6 +15,7 @@ import { LoginModel } from '../model/login.model';
 export class ServiceService {
 
   API_URL = 'https://bskbmobile.herokuapp.com';
+  // API_URL = 'http://localhost:5000';
 
   constructor(
     private http: HttpClient,

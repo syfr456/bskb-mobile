@@ -11,14 +11,14 @@
   <ion-list>
     <ion-card *ngFor="let i of inv" class="card">
       <ion-card-header>
-        <ion-card-title class="ct">{{i.tanggal }}</ion-card-title>
+        <ion-card-title class="ct">{{i.tanggal | date:'dd MMMM YYYY' }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>Jenis: {{t.id_jenis}}</p>
-        <p>Jenis Sampah: {{t.id_sampah}}</p>
-        <p>Berat: {{t.berat}}</p>
-        <p>Harga: {{t.harga | currency: 'Rp'}}/Kg</p>
-        <p>total: {{t.total | currency: 'Rp'}}</p>
+        <p>Rekening: {{i.id_jenis}}</p>
+        <p>Jenis Sampah: {{i.id_sampah}}</p>
+        <p>Berat: {{i.berat}}</p>
+        <p>Harga: {{i.harga | currency: 'Rp '}}/Kg</p>
+        <p>total: {{i.total | currency: 'Rp '}}</p>
       </ion-card-content>
     </ion-card>
   </ion-list>

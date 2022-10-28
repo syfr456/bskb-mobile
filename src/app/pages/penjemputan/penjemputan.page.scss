@@ -16,13 +16,9 @@
     color: rgb(201, 199, 199);
 }
 .shr {
-    display: flex;
-    justify-content: center;
     margin: 0px;
-
     .jm {
-        height: 45px;
-        width: 60px;
+        margin-top: 25px !important;
         border-radius: 12px;
         text-decoration-color: #FCFFF2;
         --background: #1D8A4D;

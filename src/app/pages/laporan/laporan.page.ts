@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { InvoiceModel } from 'src/app/model/invoice';
 import { InvoiceService } from 'src/app/services/invoice/invoice.service';
 import { ServiceService } from 'src/app/services/service.service';
@@ -14,8 +14,14 @@ import { ServiceService } from 'src/app/services/service.service';
 export class LaporanPage implements OnInit {
   decode: any;
   inv: InvoiceModel[];
+  isLoading: HTMLIonLoadingElement;
 
-  constructor(private invoiceService: InvoiceService, public alertController: AlertController, private service: ServiceService,) { }
+  constructor(
+    private invoiceService: InvoiceService,
+    public alertController: AlertController,
+    private service: ServiceService,
+    private loadingController: LoadingController
+  ) { }
 
   async ngOnInit() {
     await this.getReport()
@@ -23,6 +29,7 @@ export class LaporanPage implements OnInit {
 
   async getReport() {
     try {
+      await this.showLoading()
       this.decode = this.service.decodeToken()
       this.inv = await new Promise((res, rej) => {
         this.invoiceService.getInvoice(this.decode.id).subscribe({
@@ -30,7 +37,9 @@ export class LaporanPage implements OnInit {
           error: err => rej(err.message.Message || err.Message)
         });
       });
+      this.hideLoading()
     } catch (error) {
+      this.hideLoading()
       this.showAlert('Error', error)
     }
   }
@@ -41,9 +50,28 @@ export class LaporanPage implements OnInit {
       message: msg,
       buttons: ['Ok'],
     });
-
     await alert.present();
   }
 
+  async showLoading() {
+    try {
+      this.isLoading = await this.loadingController.create({
+        message: 'Please wait...',
+      });
+      await this.isLoading.present();
+    } catch (error) {
+      await this.showAlert('Error', error.message);
+    }
+  }
+
+
+  hideLoading(): Promise<boolean> {
+    return this.isLoading.dismiss();
+  }
+
+  async doRefresh(event) {
+    await this.ngOnInit();
+    event.target.complete();
+  }
 
 }

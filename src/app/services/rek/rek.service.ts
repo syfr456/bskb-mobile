@@ -20,13 +20,20 @@ export class RekService {
     return this.http.get(`${this.API_URL}/api/rek-by-user/${idUser}`, { headers: this.service.getHeader() }) as Observable<RekModel[]>;
   }
 
+  getPencairanByUser(idUser: string) {
+    return this.http.get(`${this.API_URL}/api/riwayat-pencairan/${idUser}`, { headers: this.service.getHeader() }) as Observable<any[]>;
+  }
+
   getJenisRek() {
     return this.http.get(`${this.API_URL}/api/jenis_rekening`, { headers: this.service.getHeader() }) as Observable<RekModel[]>;
   }
 
   bukaRekening(data: RekModel) {
-    debugger
     return this.http.post(`${this.API_URL}/api/buka-rekening`, data, { headers: this.service.getHeader() });
+  }
+
+  pencairandana(data) {
+    return this.http.post(`${this.API_URL}/api/tarik-dana`, data, { headers: this.service.getHeader() });
   }
 
 }

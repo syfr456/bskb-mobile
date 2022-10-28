@@ -10,6 +10,15 @@
 </ion-header>
 <ion-content fullscreen>
   <div class="ion-padding">
+    <ion-list class="list">
+      <ion-label class="label">Sumber Dana</ion-label>
+      <ion-item>
+        <ion-select class="select" placeholder="Pilih Rekening" [(ngModel)]="rekId" (ionChange)="setRekening()">
+          <ion-select-option *ngFor="let rek of rekening" [value]="rek.id_jenis">{{rek.nama}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
     <ion-list>
       <ion-item *ngFor="let p of cart" class="ion-text-wrap">
         <ion-grid>
@@ -44,11 +53,11 @@
       <ion-row>
         <ion-col size="8">
           <ion-item lines="none">
-            Total: {{ getTotal() | currency:'Rp' }}
+            Total: {{ getTotal() | currency:'Rp ' }}
           </ion-item>
         </ion-col>
         <ion-col size="4">
-          <ion-button class="cekout" (click)="checkout()"> Checkout </ion-button>
+          <ion-button class="cekout" (click)="checkout()" [disabled]="btnsubmit"> Checkout </ion-button>
         </ion-col>
       </ion-row>
     </div>

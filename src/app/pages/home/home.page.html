@@ -3,8 +3,8 @@
     <ng-template swiperSlide *ngFor="let rek of rekening">
       <ion-card class="swip">
         <h2>{{rek.nama}}</h2>
-        <br />
-        <h3>{{rek.saldo | currency: 'Rp. '}}</h3>
+        <p>{{rek.no_rek}}</p>
+        <h3 style="text-align:end;">{{rek.saldo | currency: 'Rp. '}}</h3>
       </ion-card>
     </ng-template>
   </swiper>
@@ -62,9 +62,17 @@
       <b>Riwayat Transaksi</b>
       <a class="link" routerLink="/log" click="">Lihat Semua</a>
     </div>
-    <ion-infinite-scroll threshold="100px" id="infinite-scroll">
-      <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+    <div class="content">
+      <h6 class="text-center">Riwayat Pencairan Dana</h6>
+      <ion-list>
+        <ion-item *ngFor="let item of pencairan">
+          <ion-icon slot="start" name="albums-outline" style="margin-right: 10px;"></ion-icon>
+          <ion-label>
+            <h2>{{item?.tanggal | date: 'dd MMMM YYYY'}}</h2>
+            <p>{{item?.status}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
   </ion-card>
 </ion-content>

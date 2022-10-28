@@ -11,26 +11,15 @@ export class AccountPage implements OnInit {
   profile: any;
 
   constructor(
-    private serviceService: ServiceService,
-    private profileService: ProfileService
+    private serviceService: ServiceService
   ) { }
 
   async ngOnInit() {
-    await this.getProfile()
+    this.profile = await this.serviceService.decodeToken();
   }
   
   async logout() {
     this.serviceService.logout();
-  }
-
-  async getProfile(){
-    const id = localStorage.getItem('islogin');
-    // this.profile = await new Promise((res, rej) => {
-    //   this.profileService.getUser(id).subscribe({
-    //     next: result => res(result[0]),
-    //     error: err => rej(err.Message)
-    //   })
-    // })
   }
 
 }

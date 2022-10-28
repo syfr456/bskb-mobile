@@ -11,10 +11,8 @@
   <ion-list class="list">
     <ion-label class="label">Sumber Dana</ion-label>
     <ion-item>
-      <ion-select class="select" interface="popover" placeholder="Pilih Rekening">
-        <ion-select-option value="reguler">Reguler</ion-select-option>
-        <ion-select-option value="pendidikan">Pendidikan</ion-select-option>
-        <ion-select-option value="perayaan">Perayaan</ion-select-option>
+      <ion-select class="select" placeholder="Pilih Rekening" [(ngModel)]="rekId" (ionChange)="setRekening()">
+        <ion-select-option *ngFor="let rek of rekening" [value]="rek.id_jenis">{{rek.nama}}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
@@ -22,22 +20,28 @@
   <ion-grid class="grid">
     <ion-row class="row">
       <ion-col class="col">
-        <ion-button class="tn">{{ '100000' | currency:'Rp' }}</ion-button>
+        <ion-button fill="outline" id="button1" class="tn" (click)="setValue('100000')">
+          {{ '100000' | currency:'Rp ' }}</ion-button>
       </ion-col>
       <ion-col class="col">
-        <ion-button class="tn">{{ '200000' | currency:'Rp' }}</ion-button>
+        <ion-button fill="outline" id="button2" class="tn" (click)="setValue('200000')">
+          {{ '200000' | currency:'Rp ' }}</ion-button>
       </ion-col>
       <ion-col class="col">
-        <ion-button class="tn">{{ '300000' | currency:'Rp' }}</ion-button>
+        <ion-button fill="outline" id="button3" class="tn" (click)="setValue('300000')">
+          {{ '300000' | currency:'Rp ' }}</ion-button>
       </ion-col>
       <ion-col class="col">
-        <ion-button class="tn">{{ '400000' | currency:'Rp' }}</ion-button>
+        <ion-button fill="outline" id="button4" class="tn" (click)="setValue('400000')">
+          {{ '400000' | currency:'Rp ' }}</ion-button>
       </ion-col>
       <ion-col class="col">
-        <ion-button class="tn">{{ '500000' | currency:'Rp' }}</ion-button>
+        <ion-button fill="outline" id="button5" class="tn" (click)="setValue('500000')">
+          {{ '500000' | currency:'Rp ' }}</ion-button>
       </ion-col>
       <ion-col class="col">
-        <ion-button class="tn">{{ '600000' | currency:'Rp' }}</ion-button>
+        <ion-button fill="outline" id="button6" class="tn" (click)="setValue('600000')">
+          {{ '600000' | currency:'Rp ' }}</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -45,12 +49,12 @@
   <div class="custom">
     <ion-label class="label" position="stacked" floating>Masukkan Nominal Penarikan</ion-label>
     <ion-item>
-      <ion-input placeholder="Masukan nominal yang ingin anda tarik"></ion-input>
+      <ion-input placeholder="Masukan nominal yang ingin anda tarik" [(ngModel)]="nominal" (keyup)="setNominal($event)"></ion-input>
     </ion-item>
   </div>
 
   <div class="trx">
-    <ion-button class="konfirm">Ajukan</ion-button>
+    <ion-button [disabled]="btnsubmit" class="konfirm" (click)="submit()">Ajukan</ion-button>
   </div>
 
 </ion-content>

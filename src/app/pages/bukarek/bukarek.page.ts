@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { RekModel } from 'src/app/model/rek.model';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 import { RekService } from 'src/app/services/rek/rek.service';
 import { ServiceService } from 'src/app/services/service.service';
 
@@ -16,6 +17,7 @@ export class BukarekPage implements OnInit {
   jenisRekening: any[];
   isLoading: any;
   decode: any;
+  document: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,7 +25,8 @@ export class BukarekPage implements OnInit {
     private loadingController: LoadingController,
     private rekeningService: RekService,
     private router: Router,
-    private service: ServiceService
+    private service: ServiceService,
+    private profileService: ProfileService
   ) {
     this.FormRek = this.formBuilder.group({
       rek: ['', Validators.required]
@@ -33,6 +36,28 @@ export class BukarekPage implements OnInit {
   async ngOnInit() {
     this.decode = await this.service.decodeToken()
     await this.getJenisRekening();
+    await this.getDocSupport();
+    await this.cekDocSupport();
+  }
+
+  cekDocSupport() {
+    if (!this.document.ktp) {
+      this.showAlert('Info', 'Silahkan untuk melengkapi dokument pendukung berupa KTP terlebih dahulu...')
+      this.router.navigate(['/dc-support']);
+    }
+  }
+
+  async getDocSupport() {
+    try {
+      this.document = await new Promise((res, rej) => {
+        this.profileService.getDocSupport(this.decode.id).subscribe({
+          next: result => res(result[0]),
+          error: err => rej(err.message.Message || err.Message)
+        });
+      });
+    } catch (error) {
+      this.showAlert('Error', error)
+    }
   }
 
   async getJenisRekening() {

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 import * as moment from 'moment';
+import { ProfileModel } from 'src/app/model/profile.model';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 import { ServiceService } from 'src/app/services/service.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
@@ -15,8 +16,9 @@ export class DcSupportPage implements OnInit {
   isLoading: any;
   isEdit: boolean = false;
   type: string;
-  profile: any;
+  decodeToken: any;
   documents: any;
+  profile: ProfileModel;
 
   constructor(
     private storageService: StorageService,
@@ -28,15 +30,41 @@ export class DcSupportPage implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.profile = await this.service.decodeToken();
+    this.decodeToken = await this.service.decodeToken();
+    await this.getProfile();
     await this.getDocumentSup();
+    await this.cekSktm();
   }
 
+  async cekSktm() {
+    const exp = moment(this.profile.sktm_expired)
+    if (exp < moment()) {
+      await new Promise((resolve, rejected) => {
+        this.profileService.updateSktm(this.decodeToken.id, null, this.profile.sktm_expired).subscribe({
+          next: result => resolve(result),
+          error: err => rejected(err)
+        });
+      })
+    }
+  }
+
+  async getProfile() {
+    try {
+      this.profile = await new Promise((res, rej) => {
+        this.profileService.getProfile(this.decodeToken.id).subscribe({
+          next: result => res(result),
+          error: err => rej(err.message.Message || err.Message)
+        });
+      });
+    } catch (error) {
+      this.showAlert('Error', error)
+    }
+  }
   async getDocumentSup() {
     try {
       await this.showLoading();
       this.documents = await new Promise((resolve, rejected) => {
-        this.profileService.getDocSupport(this.profile.id).subscribe({
+        this.profileService.getDocSupport(this.decodeToken.id).subscribe({
           next: result => resolve(result[0]),
           error: err => rejected(err.message.Message || err.Message)
         })
@@ -61,7 +89,7 @@ export class DcSupportPage implements OnInit {
         await this.showLoading()
         const url: string = await new Promise((resolve, reject) => {
           reader.onload = async () => {
-            const dataUrl: string = await this.storageService.uploadImageForSupportDoc(this.type, this.profile.username, reader.result.toString())
+            const dataUrl: string = await this.storageService.uploadImageForSupportDoc(this.type, this.decodeToken.username, reader.result.toString())
             resolve(dataUrl)
           };
           reader.onerror = (error) => reject(error);
@@ -69,7 +97,7 @@ export class DcSupportPage implements OnInit {
         })
         if (this.type == 'KTP') {
           await new Promise((resolve, rejected) => {
-            this.profileService.updateKtp(this.profile.id, url).subscribe({
+            this.profileService.updateKtp(this.decodeToken.id, url).subscribe({
               next: result => resolve(result),
               error: err => rejected(err)
             });
@@ -77,7 +105,7 @@ export class DcSupportPage implements OnInit {
         } else {
           const exp = moment().add(3, 'month').format('YYYY-MM-DD')
           await new Promise((resolve, rejected) => {
-            this.profileService.updateSktm(this.profile.id, url, exp).subscribe({
+            this.profileService.updateSktm(this.decodeToken.id, url, exp).subscribe({
               next: result => resolve(result),
               error: err => rejected(err)
             });

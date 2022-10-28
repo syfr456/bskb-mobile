@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, ModalController } from '@ionic/angular';
+import { ProfileModel } from 'src/app/model/profile.model';
 import { PinjamService } from 'src/app/services/pinjam/pinjam.service';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
@@ -14,6 +16,7 @@ export class PinjamanPage implements OnInit {
   keperluan_pinjaman: string;
   isLoading: HTMLIonLoadingElement;
   decode: any;
+  document: any[0];
 
 
   constructor(
@@ -21,11 +24,34 @@ export class PinjamanPage implements OnInit {
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
     private service: ServiceService,
-    private router: Router
+    private router: Router,
+    private profileService: ProfileService
   ) { }
 
   async ngOnInit() {
-    this.decode = await this.service.decodeToken()
+    this.decode = await this.service.decodeToken();
+    await this.getDocSupport();
+    await this.cekDocSupport();
+  }
+
+  cekDocSupport() {
+    if (!this.document[0].sktm) {
+      this.showAlert('Info', 'Silahkan untuk melengkapi dokument pendukung berupa SKTM terlebih dahulu...')
+      this.router.navigate(['/dc-support']);
+    }
+  }
+
+  async getDocSupport() {
+    try {
+      this.document = await new Promise((res, rej) => {
+        this.profileService.getDocSupport(this.decode.id).subscribe({
+          next: result => res(result),
+          error: err => rej(err.message.Message || err.Message)
+        });
+      });
+    } catch (error) {
+      this.showAlert('Error', error)
+    }
   }
 
   async submit() {
@@ -35,7 +61,7 @@ export class PinjamanPage implements OnInit {
       model.id_user = this.decode.id;
       model.nominal_pinjaman = this.nominal_pinjaman;
       model.keperluan = this.keperluan_pinjaman;
-      debugger
+
       await new Promise((res, rej) => {
         this.pinjamService.pinjamanDana(model).subscribe({
           next: result => res(result),
