@@ -14,6 +14,22 @@
         <ion-icon slot="start" name="albums-outline" style="margin-right: 10px;"></ion-icon>
         <ion-label>
           <h2>{{item?.tanggal | date: 'dd MMMM YYYY'}}</h2>
+          <p>{{item?.nominal | currency: 'Rp '}}</p>
+          <p>{{item?.status}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class="content">
+    <h6 class="text-center">Riwayat Pinjaman Sosial</h6>
+    <ion-list>
+      <ion-item *ngFor="let item of pinjaman">
+        <ion-icon slot="start" name="albums-outline" style="margin-right: 10px;"></ion-icon>
+        <ion-label>
+          <h2>{{item?.tanggal | date: 'dd MMMM YYYY'}}</h2>
+          <p>{{item?.nominal_pinjaman | currency: 'Rp '}}</p>
+          <p>{{item?.keperluan}}</p>
           <p>{{item?.status}}</p>
         </ion-label>
       </ion-item>

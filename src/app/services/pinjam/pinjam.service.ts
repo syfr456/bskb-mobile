@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ServiceService } from '../service.service';
 
 
@@ -23,5 +24,9 @@ export class PinjamService {
 
   pinjamanDana(pinjam) {
     return this.http.post(`${this.API_URL}/api/pinjaman`, pinjam, { headers: this.service.getHeader() });
+  }
+
+  getPinjamanByUser(idUser: string) {
+    return this.http.get(`${this.API_URL}/api/pinjaman/${idUser}`, { headers: this.service.getHeader() }) as Observable<any[]>;
   }
 }

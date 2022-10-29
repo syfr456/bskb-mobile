@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController, LoadingController } from '@ionic/angular';
+import { PinjamService } from 'src/app/services/pinjam/pinjam.service';
 import { RekService } from 'src/app/services/rek/rek.service';
 import { ServiceService } from 'src/app/services/service.service';
 
@@ -11,11 +12,12 @@ import { ServiceService } from 'src/app/services/service.service';
 export class LogPage implements OnInit {
   decodeToken: any;
   pencairan: any[];
+  pinjaman: any[];
   isLoading: HTMLIonLoadingElement;
 
   constructor(
-    private modalCtrl: ModalController,
     private rekService: RekService,
+    private pinjamanService: PinjamService,
     private service: ServiceService,
     private alertController: AlertController,
     private loadingController: LoadingController
@@ -24,6 +26,7 @@ export class LogPage implements OnInit {
   async ngOnInit() {
     this.decodeToken = await this.service.decodeToken();
     await this.getRiwayatPencairanByUser();
+    await this.getRiwayatPinjamanByUser();
   }
 
   async getRiwayatPencairanByUser() {
@@ -36,6 +39,23 @@ export class LogPage implements OnInit {
         })
       })
       this.pencairan = this.pencairan.sort((x, y) => y.tanggal.localeCompare(x.tanggal))
+      this.hideLoading()
+    } catch (error) {
+      this.hideLoading();
+      this.showAlert('Error', error.error.sqlMessage || error.message)
+    }
+  }
+
+  async getRiwayatPinjamanByUser() {
+    try {
+      await this.showLoading()
+      this.pinjaman = await new Promise((res, rej) => {
+        this.pinjamanService.getPinjamanByUser(this.decodeToken.id).subscribe({
+          next: result => res(result),
+          error: err => rej(err)
+        })
+      })
+      this.pinjaman = this.pinjaman.sort((x, y) => y.tanggal.localeCompare(x.tanggal))
       this.hideLoading()
     } catch (error) {
       this.hideLoading();
