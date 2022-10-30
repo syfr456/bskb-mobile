@@ -3,6 +3,7 @@ import { SwiperComponent } from 'swiper/angular';
 
 // import Swiper core and required modules
 import SwiperCore, { Pagination } from 'swiper';
+import { Router } from '@angular/router';
 
 // install Swiper modules
 SwiperCore.use([Pagination]);
@@ -14,10 +15,15 @@ SwiperCore.use([Pagination]);
 })
 export class OnboardingPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
-
+    const token = localStorage.getItem('token')
+    if(token) {
+      this.router.navigate(['/menu/home'])
+    }
   }
 
   onSwiper([swiper]) {

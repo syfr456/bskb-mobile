@@ -6,6 +6,7 @@ import SwiperCore, { Pagination } from 'swiper';
 import { RekService } from 'src/app/services/rek/rek.service';
 import { RekModel } from 'src/app/model/rek.model';
 import { SwiperComponent } from "swiper/angular";
+import { ProfileService } from 'src/app/services/profile/profile.service';
 
 SwiperCore.use([Pagination]);
 @Component({
@@ -20,23 +21,38 @@ export class HomePage implements OnInit {
   decodeToken: any;
   isLoading: HTMLIonLoadingElement;
   pencairan: any[];
+  nasabah: any;
 
   constructor(
     public loadingController: LoadingController,
     private serviceService: ServiceService,
     private rekService: RekService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private profileService: ProfileService
   ) { }
 
   async ngOnInit() {
     this.decodeToken = await this.serviceService.decodeToken();
     await this.getRekeningByUser();
     await this.getRiwayatPencairanByUser();
+    await this.getNasabahByID()
+  }
+
+  async getNasabahByID() {
+    try {
+      this.nasabah = await new Promise((res, rej) => {
+        this.profileService.getNasabah(this.decodeToken.id).subscribe({
+          next: result => res(result),
+          error: err => rej(err)
+        })
+      })
+    } catch (error) {
+      this.showAlert('Error', error.error.sqlMessage || error.message)
+    }
   }
 
   async getRekeningByUser() {
     try {
-      await this.showLoading()
       this.rekening = await new Promise((res, rej) => {
         this.rekService.getRekeningByUser(this.decodeToken.id).subscribe({
           next: result => res(result),
@@ -44,16 +60,13 @@ export class HomePage implements OnInit {
         })
       })
       this.rekening.reverse()
-      this.hideLoading()
     } catch (error) {
-      this.hideLoading();
       this.showAlert('Error', error.error.sqlMessage || error.message)
     }
   }
 
   async getRiwayatPencairanByUser() {
     try {
-      await this.showLoading()
       this.pencairan = await new Promise((res, rej) => {
         this.rekService.getPencairanByUser(this.decodeToken.id).subscribe({
           next: result => res(result),
@@ -61,9 +74,7 @@ export class HomePage implements OnInit {
         })
       })
       this.pencairan = this.pencairan.sort((x,y) => y.tanggal.localeCompare(x.tanggal))
-      this.hideLoading()
     } catch (error) {
-      this.hideLoading();
       this.showAlert('Error', error.error.sqlMessage || error.message)
     }
   }

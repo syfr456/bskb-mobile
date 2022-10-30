@@ -1,4 +1,6 @@
 <ion-content class="ion-padding">
+  <h6 *ngIf="!nasabah" style="text-align:center; margin: 20px 0 !important">Silahkan untuk melengkapi profil anda untuk bisa mengakses menu
+    lainnya</h6>
   <swiper [pagination]="false" class="swipers">
     <ng-template swiperSlide *ngFor="let rek of rekening">
       <ion-card class="swip">
@@ -10,7 +12,7 @@
   </swiper>
 
   <ion-card class="card-menu">
-    <ion-row class="center">
+    <ion-row class="center" *ngIf="nasabah">
       <ion-col size="4" style="margin-bottom:1em; text-align: center;">
         <ion-button class="jmpt butnn" routerLink="/penjemputan">
           <img src="../../../assets/image/jmpt.png" alt="img" />
@@ -34,7 +36,7 @@
     </ion-row>
 
     <ion-row class="center">
-      <ion-col size="4" style="margin-bottom:1em; text-align: center;">
+      <ion-col size="4" style="margin-bottom:1em; text-align: center;" *ngIf="nasabah">
         <ion-button class="invoice butnn" routerLink="/laporan">
           <img src="../../../assets/image/invoice.png" alt="img" />
         </ion-button>

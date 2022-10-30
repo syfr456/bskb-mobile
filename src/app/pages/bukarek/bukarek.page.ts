@@ -18,6 +18,7 @@ export class BukarekPage implements OnInit {
   isLoading: any;
   decode: any;
   document: any;
+  nasabah: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,7 +35,12 @@ export class BukarekPage implements OnInit {
   }
 
   async ngOnInit() {
-    this.decode = await this.service.decodeToken()
+    this.decode = await this.service.decodeToken();
+    await this.getNasabahByID();
+    if (!this.nasabah) {
+      this.showAlert('Info', 'Silahkan untuk lengkapi profile dan dokument pendukung anda terlebih dahulu')
+      this.router.navigate(['/menu/profile']);
+    }
     await this.getJenisRekening();
     await this.getDocSupport();
     await this.cekDocSupport();
@@ -57,6 +63,22 @@ export class BukarekPage implements OnInit {
       });
     } catch (error) {
       this.showAlert('Error', error)
+    }
+  }
+
+  async getNasabahByID() {
+    try {
+      await this.showLoading();
+      this.nasabah = await new Promise((res, rej) => {
+        this.profileService.getNasabah(this.decode.id).subscribe({
+          next: result => res(result),
+          error: err => rej(err.message)
+        });
+      });
+      this.hideLoading()
+    } catch (error) {
+      this.hideLoading()
+      this.showAlert('Error', error);
     }
   }
 

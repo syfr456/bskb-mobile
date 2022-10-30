@@ -36,7 +36,7 @@ export class ProfileService {
   }
 
   postNasabah(user: ProfileModel) {
-    return this.http.post(`${this.API_URL}/api/nasabah/${user.id}`, user, { headers: this.service.getHeader() });
+    return this.http.post(`${this.API_URL}/api/nasabah`, user, { headers: this.service.getHeader() });
   }
 
   updateKtp(id: string, url: string) {
