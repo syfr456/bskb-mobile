@@ -8,7 +8,7 @@ import { ServiceService } from '../service.service';
   providedIn: 'root'
 })
 export class SampahService {
-  API_URL = 'https://bskbmobile.herokuapp.com';
+  API_URL = 'http://gateway.bskb.skom.id';
 
 
   constructor(
