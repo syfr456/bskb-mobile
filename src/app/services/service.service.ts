@@ -14,7 +14,8 @@ import { LoginModel } from '../model/login.model';
 })
 export class ServiceService {
 
-  API_URL = 'https://bskbmobile.herokuapp.com';
+    API_URL = 'https://bskbmobile.herokuapp.com';
+  // API_URL = 'https://gateway.bskb.skom.id/';
   // API_URL = 'http://localhost:5000';
 
   constructor(
@@ -34,8 +35,7 @@ export class ServiceService {
   logout() {
     localStorage.clear();
     sessionStorage.clear();
-    this.router.navigate(['/auth/login']);
-    location.reload();
+    this.router.navigate(['/login']);
   }
   
   decodeToken() {

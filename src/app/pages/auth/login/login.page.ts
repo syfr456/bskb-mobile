@@ -67,8 +67,7 @@ export class LoginPage implements OnInit {
       this.hideLoading();
     } catch (error) {
       this.hideLoading();
-      await this.showMessage(error);
-      console.log(error)
+      await this.showMessage(error.error || error.message);
     }
   }
 

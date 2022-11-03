@@ -90,7 +90,7 @@ export class RegisterPage implements OnInit {
       this.hideLoading();
     } catch (error) {
       this.hideLoading();
-      await this.showAlert('Error', error);
+      await this.showAlert('Error', error.error.sqlMessage || error.error || error.message);
     }
   }
 

@@ -38,4 +38,8 @@ export class AccountPage implements OnInit {
     }
   }
 
+  async doRefresh(event) {
+    await this.ngOnInit();
+    event.target.complete();
+  }
 }

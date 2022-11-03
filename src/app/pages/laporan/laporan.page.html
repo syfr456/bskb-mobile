@@ -8,14 +8,18 @@
 </ion-header>
 
 <ion-content>
+  <div class="no-data" *ngIf="!inv?.length">
+    <img src="../../../assets/image/undraw_no_data_re_kwbl.svg" alt="report">
+    <h6 style="text-align: center;">Tidak ada penjualan</h6>
+  </div>
   <ion-list>
     <ion-card *ngFor="let i of inv" class="card">
       <ion-card-header>
         <ion-card-title class="ct">{{i.tanggal | date:'dd MMMM YYYY' }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>Rekening: {{i.id_jenis}}</p>
-        <p>Jenis Sampah: {{i.id_sampah}}</p>
+        <p>Rekening: {{i.jenis_tabungan}}</p>
+        <p>Jenis Sampah: {{i.nama_sampah}}</p>
         <p>Berat: {{i.berat}}</p>
         <p>Harga: {{i.harga | currency: 'Rp '}}/Kg</p>
         <p>total: {{i.total | currency: 'Rp '}}</p>

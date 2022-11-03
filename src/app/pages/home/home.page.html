@@ -1,5 +1,9 @@
 <ion-content class="ion-padding">
-  <h6 *ngIf="!nasabah" style="text-align:center; margin: 20px 0 !important">Silahkan untuk melengkapi profil anda untuk bisa mengakses menu
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <h6 *ngIf="!nasabah" style="text-align:center; margin: 20px 0 !important">Silahkan untuk melengkapi profil anda untuk
+    bisa mengakses menu
     lainnya</h6>
   <swiper [pagination]="false" class="swipers">
     <ng-template swiperSlide *ngFor="let rek of rekening">
@@ -60,11 +64,16 @@
 
   </ion-card>
   <ion-card class="rts">
+
     <div class="rt">
       <b>Riwayat Transaksi</b>
       <a class="link" routerLink="/log" click="">Lihat Semua</a>
     </div>
-    <div class="content">
+    <div class="no-data" *ngIf="!pencairan?.length">
+      <img src="../../../assets/image/undraw_no_data_re_kwbl.svg" alt="report" style="height: 106px; display: block; margin: 0 auto; margin-top: 1em !important;">
+      <h6 style="text-align: center;">Tidak ada riwayat transaksi</h6>
+    </div>
+    <div class="content" *ngIf="pencairan?.length">
       <h6 class="text-center">Riwayat Pencairan Dana</h6>
       <ion-list>
         <ion-item *ngFor="let item of pencairan">

@@ -13,7 +13,7 @@ import { ServiceService } from 'src/app/services/service.service';
 })
 export class LaporanPage implements OnInit {
   decode: any;
-  inv: InvoiceModel[];
+  inv: any[];
   isLoading: HTMLIonLoadingElement;
 
   constructor(

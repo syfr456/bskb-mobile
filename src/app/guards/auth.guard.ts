@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import * as moment from 'moment';
+import { Observable } from 'rxjs';
 
 import { ServiceService } from '../services/service.service';
 
@@ -16,19 +17,31 @@ export class AuthGuard implements CanActivate {
     private service: ServiceService
   ) { }
 
-  async canActivate(): Promise<boolean> {
-    const token = localStorage.getItem('token')
-    const now = moment().unix();
-    if (token) {
-      const decode = await this.service.decodeToken()
-      if (decode.exp < now) {
-        localStorage.clear();
-        this.router.navigate(['login'])
-        return false
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot,
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    return new Promise(async (res, rej) => {
+      try {
+        const token = localStorage.getItem('token')
+        const now = moment().unix()
+        if (token !== null) {
+          const decoded = await this.service.decodeToken()
+          if (now < decoded.exp) {
+            res(true)
+          } else {
+            this.service.logout();
+            rej(false);
+          }
+        }
+        else {
+          this.service.logout();
+          rej(false);
+        }
+      } catch (error) {
+        rej(error)
       }
-      return true
-    }
-
+    })
   }
 
 }

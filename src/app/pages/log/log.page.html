@@ -7,7 +7,11 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen class="ion-padding">
-  <div class="content">
+  <div class="no-data" *ngIf="!pinjaman?.length || !pencairan?.length">
+    <img src="../../../assets/image/undraw_no_data_re_kwbl.svg" alt="report">
+    <h6 style="text-align: center;">Tidak ada riwayat transaksi</h6>
+  </div>
+  <div class="content" *ngIf="pencairan?.length">
     <h6 class="text-center">Riwayat Pencairan Dana</h6>
     <ion-list>
       <ion-item *ngFor="let item of pencairan">
@@ -21,7 +25,7 @@
     </ion-list>
   </div>
 
-  <div class="content">
+  <div class="content" *ngIf="pinjaman?.length">
     <h6 class="text-center">Riwayat Pinjaman Sosial</h6>
     <ion-list>
       <ion-item *ngFor="let item of pinjaman">

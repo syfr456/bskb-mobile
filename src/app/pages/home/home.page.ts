@@ -59,7 +59,7 @@ export class HomePage implements OnInit {
           error: err => rej(err)
         })
       })
-      this.rekening.reverse()
+      this.rekening.sort((a,b) => a.id_jenis - b.id_jenis)
     } catch (error) {
       this.showAlert('Error', error.error.sqlMessage || error.message)
     }

@@ -15,7 +15,8 @@ export interface Pinjam {
   providedIn: 'root'
 })
 export class PinjamService {
-  API_URL = 'https://bskbmobile.herokuapp.com';
+    API_URL = 'https://bskbmobile.herokuapp.com';
+  // API_URL = 'https://gateway.bskb.skom.id/';
 
   constructor(
     private http: HttpClient,

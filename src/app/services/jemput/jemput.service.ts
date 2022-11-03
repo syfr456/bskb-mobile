@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class JemputService {
-  API_URL = 'https://bskbmobile.herokuapp.com';
+    API_URL = 'https://bskbmobile.herokuapp.com';
+  // API_URL = 'https://gateway.bskb.skom.id/';
 
   constructor(
     private service: ServiceService,

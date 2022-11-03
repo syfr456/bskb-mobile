@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { InvoiceModel } from 'src/app/model/invoice';
 import { ServiceService } from '../service.service';
 
 @Injectable({
@@ -9,7 +8,8 @@ import { ServiceService } from '../service.service';
 })
 export class InvoiceService {
 
-  API_URL = 'https://bskbmobile.herokuapp.com';
+    API_URL = 'https://bskbmobile.herokuapp.com';
+  // API_URL = 'https://gateway.bskb.skom.id/';
 
 
   constructor(
@@ -18,6 +18,6 @@ export class InvoiceService {
   ) { }
 
   getInvoice(userId: string) {
-    return this.http.get(`${this.API_URL}/api/penjualan/${userId}`, { headers: this.service.getHeader() }) as Observable<InvoiceModel[]>;
+    return this.http.get(`${this.API_URL}/api/penjualan/${userId}`, { headers: this.service.getHeader() }) as Observable<any[]>;
   }
 }
