@@ -13,8 +13,8 @@ import { LoginModel } from '../model/login.model';
   providedIn: 'root',
 })
 export class ServiceService {
-
-    API_URL = 'https://bskbmobile.herokuapp.com';
+  API_URL = 'https://worried-red-ostrich.cyclic.app';
+    // API_URL = 'https://bskbmobile.herokuapp.com';
   // API_URL = 'https://gateway.bskb.skom.id/';
   // API_URL = 'http://localhost:5000';
 
