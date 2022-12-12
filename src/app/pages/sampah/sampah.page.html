@@ -10,11 +10,15 @@
 <ion-content>
   <ion-list>
     <ion-card class="card text-center" *ngFor="let t of trash">
-      <img class="trash" alt="trash" src="../../../assets/image/undraw_throw_away_re_x60k.svg" />
+      <img
+        class="trash"
+        alt="trash"
+        src="https://pengudangmangrovetours.com/bskb/assets/images/sampah/aki_motor_bersih.jpg"
+      />
       <ion-card-header>
         <ion-card-title class="ct">{{t.nama}}</ion-card-title>
       </ion-card-header>
-    
+
       <ion-card-content>
         <p>Harga: {{t.harga | currency: 'Rp'}}/Kg</p>
         <p>Jenis: {{t.jenis_sampah}}</p>
