@@ -7,8 +7,8 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen class="ion-padding">
-  <div class="no-data" *ngIf="!pinjaman?.length || !pencairan?.length">
-    <img src="../../../assets/image/undraw_no_data_re_kwbl.svg" alt="report">
+  <div class="no-data" *ngIf="!pinjaman?.length && !pencairan?.length">
+    <img src="../../../assets/image/undraw_no_data_re_kwbl.svg" alt="report" height="300px" style="display: block; margin: auto;">
     <h6 style="text-align: center;">Tidak ada riwayat transaksi</h6>
   </div>
   <div class="content" *ngIf="pencairan?.length">

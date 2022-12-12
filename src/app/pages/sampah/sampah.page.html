@@ -9,22 +9,23 @@
 
 <ion-content>
   <ion-list>
-    <ion-card class="card text-center" *ngFor="let t of trash">
-      <img
-        class="trash"
-        alt="trash"
-        src="https://pengudangmangrovetours.com/bskb/assets/images/sampah/{{ t.foto }}"
-      />
-      <ion-card-header>
-        <ion-card-title class="ct">{{t.nama}}</ion-card-title>
-      </ion-card-header>
+    <ion-row>
+      <ion-col size-sm="6" size-md="4" size-lg="3" *ngFor="let t of trash">
+        <ion-card class="card text-center" style="margin: 10px; border-radius: 5px;">
+          <img class="trash" alt="trash" src="https://pengudangmangrovetours.com/bskb/assets/images/sampah/{{ t.foto }}"
+            height="160px" width="100%" />
+          <ion-card-header>
+            <ion-card-title class="ct">{{t.nama}}</ion-card-title>
+          </ion-card-header>
 
-      <ion-card-content>
-        <p>Harga: {{t.harga | currency: 'Rp'}}/Kg</p>
-        <p>Jenis: {{t.jenis_sampah}}</p>
-        <p>Kondisi: {{t.kondisi}}</p>
-        <!-- <p>Satuan: {{t.satuan | currency: 'Rp'}}</p> -->
-      </ion-card-content>
-    </ion-card>
+          <ion-card-content>
+            <p>Harga: {{t.harga | currency: 'Rp'}}/Kg</p>
+            <p>Jenis: {{t.jenis_sampah}}</p>
+            <p>Kondisi: {{t.kondisi}}</p>
+            <!-- <p>Satuan: {{t.satuan | currency: 'Rp'}}</p> -->
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
   </ion-list>
 </ion-content>
