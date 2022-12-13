@@ -69,18 +69,31 @@
       <b>Riwayat Transaksi</b>
       <a class="link" routerLink="/log" click="">Lihat Semua</a>
     </div>
-    <div class="no-data" *ngIf="!pencairan?.length">
-      <img src="../../../assets/image/undraw_no_data_re_kwbl.svg" alt="report" style="height: 106px; display: block; margin: 0 auto; margin-top: 1em !important;">
+    <div class="no-data" *ngIf="!history?.length">
+      <img src="../../../assets/image/undraw_no_data_re_kwbl.svg" alt="report"
+        style="height: 106px; display: block; margin: 0 auto; margin-top: 1em !important;">
       <h6 style="text-align: center;">Tidak ada riwayat transaksi</h6>
     </div>
-    <div class="content" *ngIf="pencairan?.length">
-      <h6 class="text-center">Riwayat Pencairan Dana</h6>
+    <div class="content" *ngIf="history?.length">
       <ion-list>
-        <ion-item *ngFor="let item of pencairan">
-          <ion-icon slot="start" name="albums-outline" style="margin-right: 10px;"></ion-icon>
-          <ion-label>
-            <h2>{{item?.tanggal | date: 'dd MMMM YYYY'}}</h2>
-            <p>{{item?.status}}</p>
+        <ion-item *ngFor="let item of history" style="margin-top: 10px;">
+          <ion-icon slot="start" name="cart-outline" style="margin-right: 10px;"
+            *ngIf="item.transaction_type == 'Pembelian Sembako'"></ion-icon>
+          <ion-icon slot="start" name="wallet-outline" style="margin-right: 10px;"
+            *ngIf="item.transaction_type == 'Pencairan Dana'"></ion-icon>
+          <ion-icon slot="start" name="receipt-outline" style="margin-right: 10px;"
+            *ngIf="item.transaction_type == 'Peminjaman Dana'"></ion-icon>
+          <ion-label style="margin-bottom: 5px;">
+            <h2 class="color-primary">{{item?.transaction_type}}</h2>
+            <h5>{{item?.update_at | date: 'dd MMMM YYYY'}}</h5>
+            <ion-row>
+              <ion-col>
+                <p class="text-mute">{{item?.nominal | currency: 'Rp '}}</p>
+              </ion-col>
+              <ion-col style="text-align: end;">
+                <p class="color-primary">{{item?.status}}</p>
+              </ion-col>
+            </ion-row>
           </ion-label>
         </ion-item>
       </ion-list>

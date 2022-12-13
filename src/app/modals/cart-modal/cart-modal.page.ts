@@ -109,7 +109,7 @@ export class CartModalPage implements OnInit {
         model.id_sembako = sembako.id;
         model.total = this.getTotal();
         model.quantitas = sembako.total;
-        model.created_at = moment().format('YYYY-MM-DD');
+        model.created_at = moment().format('YYYY-MM-DD hh:mm:ss');
         await new Promise((res, rej) => {
           this.cartService.postCart(model).subscribe({
             next: result => res(result),

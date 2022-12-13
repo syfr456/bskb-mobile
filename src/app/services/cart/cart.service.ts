@@ -9,11 +9,10 @@ import { ServiceService } from '../service.service';
   providedIn: 'root',
 })
 export class CartService {
-  // API_URL = 'https://bskbmobile.herokuapp.com';
   API_URL = 'https://worried-red-ostrich.cyclic.app';
-
+  // API_URL = 'https://bskbmobile.herokuapp.com';
   // API_URL = 'https://gateway.bskb.skom.id/';
-  // API_URL = 'http://localhost:5000';
+  // API_URL = 'http://127.0.0.1:5000';
   cart = [];
   cartItemCount = new BehaviorSubject(0);
   product = CartModel;

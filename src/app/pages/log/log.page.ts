@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, AlertController, LoadingController } from '@ionic/angular';
-import { PinjamService } from 'src/app/services/pinjam/pinjam.service';
-import { RekService } from 'src/app/services/rek/rek.service';
+import { AlertController, LoadingController } from '@ionic/angular';
+import { InvoiceService } from 'src/app/services/invoice/invoice.service';
 import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
@@ -10,14 +9,12 @@ import { ServiceService } from 'src/app/services/service.service';
   styleUrls: ['./log.page.scss'],
 })
 export class LogPage implements OnInit {
+  history: any[];
   decodeToken: any;
-  pencairan: any[];
-  pinjaman: any[];
-  isLoading: HTMLIonLoadingElement;
+  isLoading: any;
 
   constructor(
-    private rekService: RekService,
-    private pinjamanService: PinjamService,
+    private invService: InvoiceService,
     private service: ServiceService,
     private alertController: AlertController,
     private loadingController: LoadingController
@@ -25,40 +22,19 @@ export class LogPage implements OnInit {
 
   async ngOnInit() {
     this.decodeToken = await this.service.decodeToken();
-    await this.getRiwayatPencairanByUser();
-    await this.getRiwayatPinjamanByUser();
+    await this.getHistory();
   }
 
-  async getRiwayatPencairanByUser() {
+  async getHistory() {
     try {
-      await this.showLoading()
-      this.pencairan = await new Promise((res, rej) => {
-        this.rekService.getPencairanByUser(this.decodeToken.id).subscribe({
+      this.history = await new Promise((res, rej) => {
+        this.invService.getTransactionHistory(this.decodeToken.id).subscribe({
           next: result => res(result),
           error: err => rej(err)
         })
       })
-      this.pencairan = this.pencairan.sort((x, y) => y.tanggal.localeCompare(x.tanggal))
-      this.hideLoading()
+      this.history = this.history.sort((x, y) => y.update_at.localeCompare(x.update_at))
     } catch (error) {
-      this.hideLoading();
-      this.showAlert('Error', error.error.sqlMessage || error.message)
-    }
-  }
-
-  async getRiwayatPinjamanByUser() {
-    try {
-      await this.showLoading()
-      this.pinjaman = await new Promise((res, rej) => {
-        this.pinjamanService.getPinjamanByUser(this.decodeToken.id).subscribe({
-          next: result => res(result),
-          error: err => rej(err)
-        })
-      })
-      this.pinjaman = this.pinjaman.sort((x, y) => y.tanggal.localeCompare(x.tanggal))
-      this.hideLoading()
-    } catch (error) {
-      this.hideLoading();
       this.showAlert('Error', error.error.sqlMessage || error.message)
     }
   }
@@ -73,19 +49,8 @@ export class LogPage implements OnInit {
     await alert.present();
   }
 
-  async showLoading() {
-    try {
-      this.isLoading = await this.loadingController.create({
-        message: 'Please wait...',
-      });
-      await this.isLoading.present();
-    } catch (error) {
-      await this.showAlert('Error', error.message);
-    }
-  }
-
-
-  hideLoading(): Promise<boolean> {
-    return this.isLoading.dismiss();
+  async doRefresh(event) {
+    await this.ngOnInit();
+    event.target.complete();
   }
 }

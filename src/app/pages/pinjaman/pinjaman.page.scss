@@ -34,14 +34,8 @@ div {
 }
 
 .bor {
-    display: flex;
-    justify-content: center;
-    margin: 0px;
-
+    margin: auto 14px;
     .sav {
-        width: 55px;
-        height: 45px;
-        border-radius: 12px;
         text-decoration-color: #FCFFF2;
         --background: #1D8A4D;
     }

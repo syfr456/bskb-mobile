@@ -1,36 +1,25 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable eqeqeq */
-import { Component } from '@angular/core';
-import { ServiceService } from './services/service.service';
-import { Platform, NavController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { Plugins } from '@capacitor/core';
+import { Router } from '@angular/router';
+const { App } = Plugins;
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(
-    private platform: Platform,
-    private navCtrl: NavController,
-    private serviceService: ServiceService
-  ) {
-    // this.initializeApp();
+    private router: Router
+  ) { }
+
+  async ngOnInit() {
+    App.addListener('backButton', () => {
+      if (this.router.url.includes('home') || this.router.url.includes('login') || this.router.url.includes('onboarding')) {
+        App.exitApp();
+      } else {
+        window.history.back();
+      }
+    });
   }
-
-  // initializeApp() {
-  //   this.platform.ready().then(() => {
-  //     this.Auth();
-  //   });
-  // }
-
-  // Auth() {
-  //   this.serviceService.authenticationState.subscribe((data) => {
-  //     if (data == true) {
-  //       this.navCtrl.navigateRoot(['home']);
-  //     } else {
-  //       this.navCtrl.navigateRoot(['onboarding']);
-  //     }
-  //   });
-  // }
 }

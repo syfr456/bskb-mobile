@@ -12,7 +12,7 @@ export class RekService {
 
   // API_URL = 'https://bskbmobile.herokuapp.com';
   // API_URL = 'https://gateway.bskb.skom.id/';
-  // API_URL = 'http://localhost:5000';
+  // API_URL = 'http://127.0.0.1:5000';
 
   constructor(private http: HttpClient, private service: ServiceService) {}
 

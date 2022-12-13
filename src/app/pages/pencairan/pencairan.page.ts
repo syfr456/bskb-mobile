@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import * as moment from 'moment';
 import { RekModel } from 'src/app/model/rek.model';
+import { InvoiceService } from 'src/app/services/invoice/invoice.service';
 import { RekService } from 'src/app/services/rek/rek.service';
 import { ServiceService } from 'src/app/services/service.service';
 // import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
@@ -25,6 +26,7 @@ export class PencairanPage implements OnInit {
     private loadingController: LoadingController,
     private rekService: RekService,
     private service: ServiceService,
+    private invService: InvoiceService,
     private router: Router
   ) { }
 
@@ -34,7 +36,7 @@ export class PencairanPage implements OnInit {
   }
 
   setRekening() {
-    
+
     if (this.nominal) {
       const rek = this.rekening.filter(x => x.id_jenis == this.rekId)
       if (rek[0].saldo > this.nominal) {
@@ -136,14 +138,15 @@ export class PencairanPage implements OnInit {
     }
   }
 
-  async submit(){
+  async submit() {
     try {
       await this.showLoading();
       const model: any = new Object();
-      model.tanggal = moment().format('YYYY-MM-DD');
+      model.tanggal = moment().format('YYYY-MM-DD hh:mm:ss');
       model.nominal = this.nominal;
       model.id_jenis = this.rekId;
       model.id_user = this.decodeToken.id;
+      model.id_transaksi = Math.random().toPrecision(36).substr(2, 6);
       await new Promise((res, rej) => {
         this.rekService.pencairandana(model).subscribe({
           next: result => res(result),

@@ -7,6 +7,7 @@ import { RekService } from 'src/app/services/rek/rek.service';
 import { RekModel } from 'src/app/model/rek.model';
 import { SwiperComponent } from "swiper/angular";
 import { ProfileService } from 'src/app/services/profile/profile.service';
+import { InvoiceService } from 'src/app/services/invoice/invoice.service';
 
 SwiperCore.use([Pagination]);
 @Component({
@@ -20,13 +21,14 @@ export class HomePage implements OnInit {
   rekening: RekModel[];
   decodeToken: any;
   isLoading: HTMLIonLoadingElement;
-  pencairan: any[];
+  history: any[];
   nasabah: any;
 
   constructor(
     public loadingController: LoadingController,
     private serviceService: ServiceService,
     private rekService: RekService,
+    private invService: InvoiceService,
     private alertController: AlertController,
     private profileService: ProfileService
   ) { }
@@ -34,7 +36,7 @@ export class HomePage implements OnInit {
   async ngOnInit() {
     this.decodeToken = await this.serviceService.decodeToken();
     await this.getRekeningByUser();
-    await this.getRiwayatPencairanByUser();
+    await this.getHistory();
     await this.getNasabahByID()
   }
 
@@ -65,15 +67,15 @@ export class HomePage implements OnInit {
     }
   }
 
-  async getRiwayatPencairanByUser() {
+  async getHistory() {
     try {
-      this.pencairan = await new Promise((res, rej) => {
-        this.rekService.getPencairanByUser(this.decodeToken.id).subscribe({
+      this.history = await new Promise((res, rej) => {
+        this.invService.getTransactionHistory(this.decodeToken.id).subscribe({
           next: result => res(result),
           error: err => rej(err)
         })
       })
-      this.pencairan = this.pencairan.sort((x,y) => y.tanggal.localeCompare(x.tanggal))
+      this.history = this.history.sort((x,y) => y.update_at.localeCompare(x.update_at)).slice(0,5)
     } catch (error) {
       this.showAlert('Error', error.error.sqlMessage || error.message)
     }

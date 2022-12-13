@@ -61,7 +61,7 @@ export class PinjamanPage implements OnInit {
       model.id_user = this.decode.id;
       model.nominal_pinjaman = this.nominal_pinjaman;
       model.keperluan = this.keperluan_pinjaman;
-
+      model.id_transaksi = Math.random().toPrecision(36).substr(2, 6);
       await new Promise((res, rej) => {
         this.pinjamService.pinjamanDana(model).subscribe({
           next: result => res(result),

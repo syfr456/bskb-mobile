@@ -7,34 +7,34 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen class="ion-padding">
-  <div class="no-data" *ngIf="!pinjaman?.length && !pencairan?.length">
-    <img src="../../../assets/image/undraw_no_data_re_kwbl.svg" alt="report" height="300px" style="display: block; margin: auto;">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="no-data" *ngIf="!history?.length">
+    <img src="../../../assets/image/undraw_no_data_re_kwbl.svg" alt="report" height="300px"
+      style="display: block; margin: auto;">
     <h6 style="text-align: center;">Tidak ada riwayat transaksi</h6>
   </div>
-  <div class="content" *ngIf="pencairan?.length">
-    <h6 class="text-center">Riwayat Pencairan Dana</h6>
+  <div class="content" *ngIf="history?.length">
     <ion-list>
-      <ion-item *ngFor="let item of pencairan">
-        <ion-icon slot="start" name="albums-outline" style="margin-right: 10px;"></ion-icon>
-        <ion-label>
-          <h2>{{item?.tanggal | date: 'dd MMMM YYYY'}}</h2>
-          <p>{{item?.nominal | currency: 'Rp '}}</p>
-          <p>{{item?.status}}</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </div>
-
-  <div class="content" *ngIf="pinjaman?.length">
-    <h6 class="text-center">Riwayat Pinjaman Sosial</h6>
-    <ion-list>
-      <ion-item *ngFor="let item of pinjaman">
-        <ion-icon slot="start" name="albums-outline" style="margin-right: 10px;"></ion-icon>
-        <ion-label>
-          <h2>{{item?.tanggal | date: 'dd MMMM YYYY'}}</h2>
-          <p>{{item?.nominal_pinjaman | currency: 'Rp '}}</p>
-          <p>{{item?.keperluan}}</p>
-          <p>{{item?.status}}</p>
+      <ion-item *ngFor="let item of history" style="margin-top: 10px;">
+        <ion-icon slot="start" name="cart-outline" style="margin-right: 10px;"
+          *ngIf="item.transaction_type == 'Pembelian Sembako'"></ion-icon>
+        <ion-icon slot="start" name="wallet-outline" style="margin-right: 10px;"
+          *ngIf="item.transaction_type == 'Pencairan Dana'"></ion-icon>
+        <ion-icon slot="start" name="receipt-outline" style="margin-right: 10px;"
+          *ngIf="item.transaction_type == 'Peminjaman Dana'"></ion-icon>
+        <ion-label style="margin-bottom: 5px;">
+          <h2 class="color-primary">{{item?.transaction_type}}</h2>
+          <h5>{{item?.update_at | date: 'dd MMMM YYYY'}}</h5>
+          <ion-row>
+            <ion-col>
+              <p class="text-mute">{{item?.nominal | currency: 'Rp '}}</p>
+            </ion-col>
+            <ion-col style="text-align: end;">
+              <p class="color-primary">{{item?.status}}</p>
+            </ion-col>
+          </ion-row>
         </ion-label>
       </ion-item>
     </ion-list>
